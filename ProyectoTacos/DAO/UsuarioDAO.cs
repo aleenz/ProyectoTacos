@@ -131,7 +131,7 @@ namespace ProyectoTacos.DAO
                     cmd.Connection = Con;
                     cmd.CommandText = SQL;
                     rdr = cmd.ExecuteReader();
-                    int id = 0;
+                    int id = 1;
                     if (rdr.HasRows)
                     {
                         while (rdr.Read())
