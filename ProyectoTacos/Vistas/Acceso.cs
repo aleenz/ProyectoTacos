@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoTacos.Beans;
 using ProyectoTacos.Modelos;
+using ProyectoTacos.Vistas;
+
 namespace ProyectoTacos
 {
     public partial class FRMAcceso : Form
@@ -51,6 +53,7 @@ namespace ProyectoTacos
             if(usuario=="" || contrasena == "")
             {
                 MessageBox.Show("Debe introducir un nombre de usuario y una contraseña");
+                TXTUsuario.Focus();
             }
             else
             {
@@ -68,9 +71,19 @@ namespace ProyectoTacos
             
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+
+        private void LBLCrear_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            RegistrarCliente form = new RegistrarCliente(this);
+            form.Show();
+        }
+
+        private void TXTUsuario_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) BTNAcceder.PerformClick() ;
 
         }
+
     }
 }

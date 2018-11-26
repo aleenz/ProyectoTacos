@@ -34,6 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LBLCrear = new System.Windows.Forms.Label();
             this.BTNAcceder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -49,6 +50,7 @@
             this.TXTUsuario.Size = new System.Drawing.Size(245, 22);
             this.TXTUsuario.TabIndex = 3;
             this.TXTUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TXTUsuario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TXTUsuario_KeyPress);
             // 
             // TXTContrasena
             // 
@@ -61,6 +63,7 @@
             this.TXTContrasena.Size = new System.Drawing.Size(245, 22);
             this.TXTContrasena.TabIndex = 3;
             this.TXTContrasena.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TXTContrasena.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TXTUsuario_KeyPress);
             // 
             // label2
             // 
@@ -95,6 +98,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.LBLCrear);
             this.panel1.Controls.Add(this.BTNAcceder);
             this.panel1.Controls.Add(this.TXTUsuario);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -103,9 +107,18 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(4, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(269, 282);
+            this.panel1.Size = new System.Drawing.Size(269, 289);
             this.panel1.TabIndex = 6;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // LBLCrear
+            // 
+            this.LBLCrear.AutoSize = true;
+            this.LBLCrear.Location = new System.Drawing.Point(84, 263);
+            this.LBLCrear.Name = "LBLCrear";
+            this.LBLCrear.Size = new System.Drawing.Size(101, 13);
+            this.LBLCrear.TabIndex = 7;
+            this.LBLCrear.Text = "Crear cuenta nueva";
+            this.LBLCrear.Click += new System.EventHandler(this.LBLCrear_Click);
             // 
             // BTNAcceder
             // 
@@ -123,7 +136,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(276, 288);
+            this.ClientSize = new System.Drawing.Size(276, 295);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
@@ -150,6 +163,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BTNAcceder;
+        private System.Windows.Forms.Label LBLCrear;
     }
 }
 

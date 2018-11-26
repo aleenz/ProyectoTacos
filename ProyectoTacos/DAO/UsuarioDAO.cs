@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProyectoTacos.Modelos;
 using ProyectoTacos.Beans;
+using System.Windows.Forms;
 
 namespace ProyectoTacos.DAO
 {
@@ -17,11 +18,12 @@ namespace ProyectoTacos.DAO
         SqlCommand cmd = new SqlCommand();
 
 
-      
+
         public Usuario IniciarSesion(string usuario, string contrasena)
         {
-            Usuario u = null;
             SqlDataReader rdr;
+
+            Usuario u = null;
             try
             {
                 string SQL;
@@ -64,15 +66,116 @@ namespace ProyectoTacos.DAO
             return u;
         }
 
+        private bool nombreExiste(string usuario)
+        {
+            SqlDataReader rdr;
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "Select * from usuario where usuario ='" + usuario + "'";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                rdr = cmd.ExecuteReader();
 
+                if (rdr.HasRows) return true;
+                else return false;
+
+
+            }
+            catch (SqlException)
+            {
+                return false;
+                throw;
+            }
+            finally
+            {
+                Con.Close();
+            }
+            
+        }
+
+        public Error RegistrarUsuario(Usuario u, string contrasena)
+        {
+            Error er = null;
+            SqlDataReader rdr;
+
+            if (!nombreExiste(u.Nombre))
+            {
+                try
+                {
+                    string SQL;
+                    conectar();
+                    SQL = "INSERT into persona(nombre,apaterno,amaterno,fechanac,genero,telefono,cp,domicilio,colonia)" +
+                        " values(@nombre,@apaterno,@amaterno,@fechanac,@genero,@telefono,@cp,@domicilio,@colonia)";
+                    Con.Open();
+                    cmd.Connection = Con;
+                    cmd.CommandText = SQL;
+                    cmd.Parameters.AddWithValue("@nombre", u.Persona.Nombre);
+                    cmd.Parameters.AddWithValue("@apaterno", u.Persona.Apaterno);
+                    cmd.Parameters.AddWithValue("@amaterno", u.Persona.Amaterno);
+                    cmd.Parameters.AddWithValue("@fechanac", u.Persona.FechaNac);
+                    cmd.Parameters.AddWithValue("@genero", u.Persona.Genero);
+                    cmd.Parameters.AddWithValue("@telefono", u.Persona.Telefono);
+                    cmd.Parameters.AddWithValue("@cp", u.Persona.Domicilio.CP);
+                    cmd.Parameters.AddWithValue("@domicilio", u.Persona.Domicilio.Calle);
+                    cmd.Parameters.AddWithValue("@colonia", u.Persona.Domicilio.Colonia);
+
+
+
+                    cmd.ExecuteNonQuery();
+
+                    SQL = "Select top 1 idpersona from persona order by idpersona DESC";
+                    cmd = new SqlCommand();
+                    cmd.Connection = Con;
+                    cmd.CommandText = SQL;
+                    rdr = cmd.ExecuteReader();
+                    int id = 0;
+                    if (rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+                            id = rdr.GetInt32(0);
+                        }
+
+                    }
+                        rdr.Close();
+                    SQL = "INSERT into usuario(usuario,contraseña,rol,idpersona)" +
+                        " values(@usuario,@contrasena,@rol,@idpersona)";
+                    cmd = new SqlCommand();
+                    cmd.Connection = Con;
+                    cmd.CommandText = SQL;
+                    cmd.Parameters.AddWithValue("@usuario", u.Nombre);
+                    cmd.Parameters.AddWithValue("@contrasena", contrasena);
+                    cmd.Parameters.AddWithValue("@rol", u.Rol);
+                    cmd.Parameters.AddWithValue("@idpersona", id);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Exito");
+
+                }
+                catch (Exception ex)
+                {
+                    er = new Error(ex.ToString());
+                }
+            }
+            else er = new Error("El usuario indicado ya existe");
+
+
+            return er;
+        }
 
        
+        }
 
 
 
 
 
 
-    }
+
+
+
+    
 }
 

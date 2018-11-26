@@ -28,5 +28,23 @@ namespace ProyectoTacos.Beans
                 throw;
             }
         }
+
+        public Error RegistroCliente(Usuario user, string contrasena)
+        {
+            UsuarioDAO usuarioDAO;
+            Error er = null;
+            try
+            {
+                usuarioDAO = new UsuarioDAO();
+                er = usuarioDAO.RegistrarUsuario(user, contrasena);
+                
+            }
+            catch (SqlException)
+            {
+
+                throw;
+            }
+            return er;
+        }
     }
 }
