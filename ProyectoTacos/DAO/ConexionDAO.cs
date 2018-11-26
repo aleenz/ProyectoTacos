@@ -15,15 +15,14 @@ namespace ProyectoTacos.DAO
         {
             string connectionSTring = "Server=DESKTOP-E90SOJ0;" +
                 "persist security info = True; Integrated Security = true;" +
-                "Database = iti708utl;";
+                "Database = tacos;";
             try
             {
                 con = new SqlConnection(connectionSTring);
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
-
-                throw;
+                Console.WriteLine(ex);
             }
         }
     }

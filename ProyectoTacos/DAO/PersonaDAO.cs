@@ -30,7 +30,20 @@ namespace ProyectoTacos.DAO
                     
                         /*TODO: PONER LOS CAMPOS CON RESPECTO A LA BDD*/
                         persona = new Persona();
-                        persona.IdPersona = rdr.GetInt32(1);
+                        persona.IdPersona = rdr.GetInt32(0);
+                        persona.Nombre = rdr.GetString(1);
+                        persona.Apaterno = rdr.GetString(2);
+                        persona.Amaterno = rdr.GetString(3);
+                        persona.FechaNac = rdr.GetDateTime(4);
+                        persona.Genero = rdr.GetString(5);
+                        persona.Telefono = rdr.GetInt64(6).ToString();
+
+                        Domicilio d = new Domicilio();
+                        d.CP = rdr.GetInt32(7).ToString();
+                        d.Calle = rdr.GetString(8);
+                        d.Colonia = rdr.GetString(9);
+
+                        persona.Domicilio = d;
                       
                     }
 

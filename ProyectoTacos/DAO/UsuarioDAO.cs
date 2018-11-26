@@ -26,7 +26,7 @@ namespace ProyectoTacos.DAO
             {
                 string SQL;
                 conectar();
-                SQL = "Select usuario, rol, persona from usuario where usuario ='" + usuario + "' and contrasena = '" + Usuario.toMD5(contrasena) + "' ";
+                SQL = "Select usuario, rol, idpersona from usuario where usuario ='" + usuario + "' and contraseña = '" + Usuario.toMD5(contrasena) + "' ";
                 Con.Open();
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;
@@ -36,19 +36,25 @@ namespace ProyectoTacos.DAO
                     while (rdr.Read())
                     {
                         u = new Usuario();
-                        u.Nombre = rdr.GetString(1);
-                        u.Rol = rdr.GetInt16(2);
+                        u.Nombre = rdr.GetString(0);
+                        u.Rol = Convert.ToInt32(rdr.GetString(1));
                         PersonaBeans p_beans = new PersonaBeans();
-                        u.Persona = p_beans.getPersona(rdr.GetInt16(3));
+                        u.Persona = p_beans.getPersona(rdr.GetInt32(2));
 
                     }
                     Usuario.Activo = u;
 
                 }
+                else
+                {
+                    Console.WriteLine("NO HAY");
+                }
                 Con.Close();
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
+                Console.WriteLine(ex);
+
                 throw;
             }
             finally

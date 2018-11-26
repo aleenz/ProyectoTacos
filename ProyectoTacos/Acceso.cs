@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoTacos.Beans;
+using ProyectoTacos.Modelos;
 namespace ProyectoTacos
 {
     public partial class FRMAcceso : Form
@@ -55,7 +56,7 @@ namespace ProyectoTacos
             {
                 if(usuario_beans.IniciarSesion(TXTUsuario.Text, TXTContrasena.Text))
                 {
-                    MessageBox.Show("Debe introducir un nombre de usuario y una contraseña");
+                    MessageBox.Show("Bienvenido, " + Usuario.Activo.Persona.Nombre);
 
                 }
                 else
@@ -65,6 +66,11 @@ namespace ProyectoTacos
                 }
             }
             
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
