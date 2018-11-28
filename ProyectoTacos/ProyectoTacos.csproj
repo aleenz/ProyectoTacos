@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Beans\MateriapBeans.cs" />
     <Compile Include="Beans\PersonaBeans.cs" />
+    <Compile Include="Beans\ProductoBeans.cs" />
     <Compile Include="Beans\UsuarioBeans.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
     <Compile Include="DAO\MateriapDAO.cs" />
@@ -98,6 +99,12 @@
     <Compile Include="Vistas\RegistrarMateriaP.Designer.cs">
       <DependentUpon>RegistrarMateriaP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\RegistrarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\RegistrarProducto.Designer.cs">
+      <DependentUpon>RegistrarProducto.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Vistas\Acceso.resx">
       <DependentUpon>Acceso.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegistrarMateriaP.resx">
       <DependentUpon>RegistrarMateriaP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\RegistrarProducto.resx">
+      <DependentUpon>RegistrarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
