@@ -16,9 +16,8 @@ namespace ProyectoTacos.Vistas
 
     public partial class Main : Form
     {
-        Form[] formsMenu = { new RegistrarCliente(new Form()), new RegistrarMateriaP()};
+        public Form[] formsMenu = { new RegistrarCliente(new Form()), new RegistrarMateriaP()};
         Form actual = null;
-        Panel panelBorde;
         public Panel p;
         public int anchoBandaDerecha = 300;
         public Main()
@@ -65,8 +64,9 @@ namespace ProyectoTacos.Vistas
             barraArriba.Location = new Point(0, 0);
             barraArriba.BackColor = Color.Orange;
             barraArriba.Parent = this;
-
             barraArriba.Show();
+
+
             p = new Panel();
             p.Size = new Size(anchoBandaDerecha, this.Size.Height);
             p.Location = new Point(0, 0);
@@ -75,7 +75,7 @@ namespace ProyectoTacos.Vistas
             p.Show();
 
             ItemMenu registroClientes = new ItemMenu(this, "Registro nuevo Cliente", 0, new Bitmap(ProyectoTacos.Properties.Resources.logo), 60);
-            ItemMenu registroMateria = new ItemMenu(this, "Registro nuevo materia", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 130);
+            ItemMenu registroMateria = new ItemMenu(this, "Registro nuevo materia", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
 
 
 
@@ -83,44 +83,9 @@ namespace ProyectoTacos.Vistas
 
 
 
-        public void MouseSobre(object sender, EventArgs e)
-        {
+        
 
-            Panel p = sender as Panel;
-
-            panelBorde = new Panel();
-            panelBorde.BackColor = Color.LightGray;
-            panelBorde.Size = new Size(p.Width + 2, p.Height + 2);
-            panelBorde.Location = new Point(p.Location.X - 1, p.Location.Y - 1);
-            panelBorde.Parent = p.Parent;
-
-            panelBorde.Show();
-
-
-        }
-
-        public void MouseSale(object sender, EventArgs e)
-        {
-       
-                panelBorde.Dispose();
-         
-                
-            
-               
-              
-         
-        }
-
-        public void OnClick(object sender, EventArgs e)
-        {
-            int i = Convert.ToInt16((sender as Control).Tag);
-
-            Form frm = formsMenu[i];
-            abrirForm(frm);
-
-        }
-
-        private void abrirForm(Form frm)
+        public void abrirForm(Form frm)
         {
             if(actual!= null)
             {
