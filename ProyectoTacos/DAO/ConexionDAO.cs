@@ -13,7 +13,9 @@ namespace ProyectoTacos.DAO
         public SqlConnection Con { get => con; set => con = value; }
         public void conectar()
         {
-            string connectionSTring = "Server=DESKTOP-E90SOJ0;" +
+            //DESKTOP-5EUQD5F
+            //DESKTOP-E90SOJ0
+            string connectionSTring = "Server=DESKTOP-5EUQD5F;" +
                 "persist security info = True; Integrated Security = true;" +
                 "Database = tacos;";
             try
