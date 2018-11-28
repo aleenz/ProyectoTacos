@@ -37,6 +37,7 @@ namespace ProyectoTacos.Vistas
         }
         public void carga_reg()
         {
+            this.materiaP_bean.Materiap.Idmateria = Convert.ToInt32(txtId.Text);
             this.materiaP_bean.Materiap.Nombre = txtNombre.Text;
             this.materiaP_bean.Materiap.Inventario = Convert.ToInt32(txtInventario.Text);
             this.materiaP_bean.Materiap.Costomed = Convert.ToDouble(txtCosto.Text);
