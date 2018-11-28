@@ -46,12 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Beans\MateriapBeans.cs" />
     <Compile Include="Beans\PersonaBeans.cs" />
     <Compile Include="Beans\UsuarioBeans.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
+    <Compile Include="DAO\MateriapDAO.cs" />
     <Compile Include="DAO\PersonaDAO.cs" />
+    <Compile Include="DAO\ProductoDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Modelos\Error.cs" />
+    <Compile Include="Modelos\MateriaPrima.cs" />
+    <Compile Include="Modelos\Producto.cs" />
+    <Compile Include="Modelos\UsoMateria.cs" />
     <Compile Include="Vistas\Acceso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,11 +74,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>tacosDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\ConsultarMateriaP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ConsultarMateriaP.Designer.cs">
+      <DependentUpon>ConsultarMateriaP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ModificarMateriaP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ModificarMateriaP.Designer.cs">
+      <DependentUpon>ModificarMateriaP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\RegistrarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\RegistrarCliente.Designer.cs">
       <DependentUpon>RegistrarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\RegistrarMateriaP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\RegistrarMateriaP.Designer.cs">
+      <DependentUpon>RegistrarMateriaP.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Vistas\Acceso.resx">
       <DependentUpon>Acceso.cs</DependentUpon>
@@ -87,8 +111,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vistas\ConsultarMateriaP.resx">
+      <DependentUpon>ConsultarMateriaP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ModificarMateriaP.resx">
+      <DependentUpon>ModificarMateriaP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegistrarCliente.resx">
       <DependentUpon>RegistrarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\RegistrarMateriaP.resx">
+      <DependentUpon>RegistrarMateriaP.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
