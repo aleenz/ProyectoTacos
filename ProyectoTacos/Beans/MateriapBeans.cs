@@ -118,6 +118,20 @@ namespace ProyectoTacos.Beans
                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public void activar()
+        {
+            MateriapDAO matepDao;
+            try
+            {
+                matepDao = new MateriapDAO();
+                matepDao.activar(materiap);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                   "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
     }

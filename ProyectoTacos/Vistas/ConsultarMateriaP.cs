@@ -150,7 +150,7 @@ namespace ProyectoTacos.Vistas
             string param = comboBox1.GetItemText(comboBox1.SelectedItem);
             if (param == "")
             {
-                var resultado = MessageBox.Show("Selecciona el parametro de busqueda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("Selecciona el parametro de busqueda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
             else
             {
@@ -197,14 +197,94 @@ namespace ProyectoTacos.Vistas
             materiap.Idmateria = Convert.ToInt32(a);
             ModificarMateriaP mod = new ModificarMateriaP(materiap);
             mod.ShowDialog();
+            tabla();
+            listarAct();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+
             MateriaPrima materiap = new MateriaPrima();
-            materiap.Idmateria = Convert.ToInt32(txtBusqueda.Text);
+            int indice = dataGridView1.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[indice];
+            string a = Convert.ToString(selectedRow.Cells["Id"].Value);
+            materiap.Idmateria = Convert.ToInt32(a);
             this.materiaP_bean.Materiap.Idmateria = materiap.Idmateria;
-            materiaP_bean.eliminar();
+            if (button3.Text=="Eliminar")
+            {
+                materiaP_bean.buscarid();
+                materiap = materiaP_bean.Materiap;
+                if (materiap.Inventario == 0)
+                {
+                    var resultado = MessageBox.Show("Seguro de eliminar este registro", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resultado == DialogResult.Yes)
+                    {
+                        materiaP_bean.eliminar();
+                        tabla();
+                        listarAct();
+                        button4.Text = "Todos";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se puede eliminar si tiene inventario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+            }
+            else
+            {
+                materiaP_bean.activar();
+                tabla();
+                listarAct();
+                button4.Text = "Todos";
+                button3.Text = "Eliminar";
+            }
+            
+        }
+
+
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MateriaPrima materiap = new MateriaPrima();
+            int indice = dataGridView1.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[indice];
+            string a = Convert.ToString(selectedRow.Cells["Id"].Value);
+            materiap.Idmateria = Convert.ToInt32(a);
+            this.materiaP_bean.Materiap.Idmateria = materiap.Idmateria;
+            materiaP_bean.buscarid();
+            materiap = materiaP_bean.Materiap;
+            if (materiap.Status == 0)
+            {
+                button3.Text = "Activar";
+            }
+            else
+            {
+                button3.Text = "Eliminar";
+            }
+        }
+
+
+        private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+            {
+                MateriaPrima materiap = new MateriaPrima();
+                int indice = dataGridView1.CurrentCell.RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[indice];
+                string a = Convert.ToString(selectedRow.Cells["Id"].Value);
+                materiap.Idmateria = Convert.ToInt32(a);
+                this.materiaP_bean.Materiap.Idmateria = materiap.Idmateria;
+                materiaP_bean.buscarid();
+                materiap = materiaP_bean.Materiap;
+                if (materiap.Status == 0)
+                {
+                    button3.Text = "Activar";
+                }
+                else
+                {
+                    button3.Text = "Eliminar";
+                }
+            }
         }
     }
 }

@@ -44,6 +44,28 @@ namespace ProyectoTacos.Vistas
             this.materiaP_bean.Materiap.Status = 1;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (txtNombre.Text == "" || txtCosto.Text == "" || txtInventario.Text == ""
+                || txtUnidad.Text == "")
+            {
+                MessageBox.Show("Debe llenar todos los campos");
+            }
+            else if (txtCosto.Text == "0" || txtCosto.Text == "0.0")
+            {
+                MessageBox.Show("Debe colocar un costo real");
+            }
+            else
+            {
+                carga_reg();
+                materiaP_bean.modificar();
+                this.Close();
+            }
+        }
     }
 }
