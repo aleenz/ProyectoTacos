@@ -15,9 +15,12 @@ namespace ProyectoTacos
 {
     public partial class FRMAcceso : Form
     {
-        public FRMAcceso()
+
+        Main parent;
+        public FRMAcceso(Main parent)
         {
             InitializeComponent();
+            this.parent = parent;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -60,8 +63,8 @@ namespace ProyectoTacos
             {
                 if(usuario_beans.IniciarSesion(TXTUsuario.Text, TXTContrasena.Text))
                 {
-                    MessageBox.Show("Bienvenido, " + Usuario.Activo.Persona.Nombre);
-
+                    this.Close();
+                    parent.cargar();
                 }
                 else
                 {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoTacos.Vistas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace ProyectoTacos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FRMAcceso());
+            Application.Run(new Main());
         }
     }
 }
