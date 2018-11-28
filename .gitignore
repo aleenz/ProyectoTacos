@@ -18,6 +18,7 @@
 x64/
 x86/
 bld/
+ProyectoTacos/DAO/ConexionDAO.cs
 [Bb]in/
 [Oo]bj/
 [Ll]og/

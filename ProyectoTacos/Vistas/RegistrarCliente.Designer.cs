@@ -29,50 +29,50 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.TXTNombreUsuario = new System.Windows.Forms.TextBox();
-            this.TXTContrasena1 = new System.Windows.Forms.TextBox();
-            this.TXTContrasena2 = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.CBXAno = new System.Windows.Forms.ComboBox();
+            this.CBXMes = new System.Windows.Forms.ComboBox();
+            this.CBXDia = new System.Windows.Forms.ComboBox();
+            this.BTNAceptar = new System.Windows.Forms.Button();
+            this.BTNCancelar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.CBXGenero = new System.Windows.Forms.ComboBox();
             this.TXTAmaterno = new System.Windows.Forms.TextBox();
             this.TXTApaterno = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.TXTNombre = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.CBXGenero = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.TXTTelefono = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.TXTCP = new System.Windows.Forms.TextBox();
+            this.TXTTelefono = new System.Windows.Forms.TextBox();
             this.TXTColonia = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.TXTDireccion = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.BTNCancelar = new System.Windows.Forms.Button();
-            this.BTNAceptar = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.CBXDia = new System.Windows.Forms.ComboBox();
-            this.CBXMes = new System.Windows.Forms.ComboBox();
-            this.CBXAno = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TXTContrasena2 = new System.Windows.Forms.TextBox();
+            this.TXTContrasena1 = new System.Windows.Forms.TextBox();
+            this.TXTNombreUsuario = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.BTNAceptar);
             this.panel1.Controls.Add(this.BTNCancelar);
@@ -81,99 +81,70 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(485, 293);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // pictureBox1
+            // groupBox4
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = global::ProyectoTacos.Properties.Resources.logo1;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(70, 70);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.groupBox4.Controls.Add(this.CBXAno);
+            this.groupBox4.Controls.Add(this.CBXMes);
+            this.groupBox4.Controls.Add(this.CBXDia);
+            this.groupBox4.Location = new System.Drawing.Point(246, 200);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(230, 57);
+            this.groupBox4.TabIndex = 4;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Fecha de Nacimiento";
             // 
-            // label1
+            // CBXAno
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label1.Location = new System.Drawing.Point(152, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 26);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Registro de cliente nuevo";
+            this.CBXAno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBXAno.FormattingEnabled = true;
+            this.CBXAno.Location = new System.Drawing.Point(163, 20);
+            this.CBXAno.Name = "CBXAno";
+            this.CBXAno.Size = new System.Drawing.Size(61, 21);
+            this.CBXAno.TabIndex = 13;
             // 
-            // label2
+            // CBXMes
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Nombre de usuario";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.CBXMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBXMes.FormattingEnabled = true;
+            this.CBXMes.Location = new System.Drawing.Point(71, 20);
+            this.CBXMes.Name = "CBXMes";
+            this.CBXMes.Size = new System.Drawing.Size(90, 21);
+            this.CBXMes.TabIndex = 12;
             // 
-            // groupBox1
+            // CBXDia
             // 
-            this.groupBox1.Controls.Add(this.TXTContrasena2);
-            this.groupBox1.Controls.Add(this.TXTContrasena1);
-            this.groupBox1.Controls.Add(this.TXTNombreUsuario);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(9, 84);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(231, 91);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cuenta";
+            this.CBXDia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBXDia.FormattingEnabled = true;
+            this.CBXDia.Location = new System.Drawing.Point(7, 20);
+            this.CBXDia.Name = "CBXDia";
+            this.CBXDia.Size = new System.Drawing.Size(61, 21);
+            this.CBXDia.TabIndex = 11;
             // 
-            // label3
+            // BTNAceptar
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 39);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Contraseña";
-            this.label3.Click += new System.EventHandler(this.label2_Click);
+            this.BTNAceptar.Location = new System.Drawing.Point(317, 263);
+            this.BTNAceptar.Name = "BTNAceptar";
+            this.BTNAceptar.Size = new System.Drawing.Size(75, 23);
+            this.BTNAceptar.TabIndex = 14;
+            this.BTNAceptar.Text = "Aceptar";
+            this.BTNAceptar.UseVisualStyleBackColor = true;
+            this.BTNAceptar.Click += new System.EventHandler(this.BTNAceptar_Click);
             // 
-            // label4
+            // BTNCancelar
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Confirmar Contraseña";
-            this.label4.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // TXTNombreUsuario
-            // 
-            this.TXTNombreUsuario.Location = new System.Drawing.Point(119, 13);
-            this.TXTNombreUsuario.Name = "TXTNombreUsuario";
-            this.TXTNombreUsuario.Size = new System.Drawing.Size(100, 20);
-            this.TXTNombreUsuario.TabIndex = 0;
-            // 
-            // TXTContrasena1
-            // 
-            this.TXTContrasena1.Location = new System.Drawing.Point(119, 36);
-            this.TXTContrasena1.Name = "TXTContrasena1";
-            this.TXTContrasena1.Size = new System.Drawing.Size(100, 20);
-            this.TXTContrasena1.TabIndex = 1;
-            // 
-            // TXTContrasena2
-            // 
-            this.TXTContrasena2.Location = new System.Drawing.Point(119, 59);
-            this.TXTContrasena2.Name = "TXTContrasena2";
-            this.TXTContrasena2.Size = new System.Drawing.Size(100, 20);
-            this.TXTContrasena2.TabIndex = 2;
+            this.BTNCancelar.Location = new System.Drawing.Point(401, 263);
+            this.BTNCancelar.Name = "BTNCancelar";
+            this.BTNCancelar.Size = new System.Drawing.Size(75, 23);
+            this.BTNCancelar.TabIndex = 7;
+            this.BTNCancelar.Text = "Cancelar";
+            this.BTNCancelar.UseVisualStyleBackColor = true;
+            this.BTNCancelar.Click += new System.EventHandler(this.BTNCancelar_Click);
             // 
             // groupBox2
             // 
@@ -192,6 +163,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Personales";
             // 
+            // CBXGenero
+            // 
+            this.CBXGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBXGenero.FormattingEnabled = true;
+            this.CBXGenero.Items.AddRange(new object[] {
+            "Masculino",
+            "Femenino",
+            "Otro"});
+            this.CBXGenero.Location = new System.Drawing.Point(119, 82);
+            this.CBXGenero.Name = "CBXGenero";
+            this.CBXGenero.Size = new System.Drawing.Size(100, 21);
+            this.CBXGenero.TabIndex = 10;
+            // 
             // TXTAmaterno
             // 
             this.TXTAmaterno.Location = new System.Drawing.Point(119, 59);
@@ -205,6 +189,16 @@
             this.TXTApaterno.Name = "TXTApaterno";
             this.TXTApaterno.Size = new System.Drawing.Size(100, 20);
             this.TXTApaterno.TabIndex = 8;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(71, 85);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Genero";
+            this.label8.Click += new System.EventHandler(this.label2_Click);
             // 
             // TXTNombre
             // 
@@ -243,46 +237,6 @@
             this.label7.Text = "Nombre";
             this.label7.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(71, 85);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 13);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Genero";
-            this.label8.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // CBXGenero
-            // 
-            this.CBXGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBXGenero.FormattingEnabled = true;
-            this.CBXGenero.Items.AddRange(new object[] {
-            "Masculino",
-            "Femenino",
-            "Otro"});
-            this.CBXGenero.Location = new System.Drawing.Point(119, 82);
-            this.CBXGenero.Name = "CBXGenero";
-            this.CBXGenero.Size = new System.Drawing.Size(100, 21);
-            this.CBXGenero.TabIndex = 10;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(71, 85);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(49, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Teléfono";
-            this.label9.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // TXTTelefono
-            // 
-            this.TXTTelefono.Location = new System.Drawing.Point(119, 82);
-            this.TXTTelefono.Name = "TXTTelefono";
-            this.TXTTelefono.Size = new System.Drawing.Size(100, 20);
-            this.TXTTelefono.TabIndex = 6;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.TXTCP);
@@ -308,12 +262,29 @@
             this.TXTCP.Size = new System.Drawing.Size(100, 20);
             this.TXTCP.TabIndex = 5;
             // 
+            // TXTTelefono
+            // 
+            this.TXTTelefono.Location = new System.Drawing.Point(119, 82);
+            this.TXTTelefono.Name = "TXTTelefono";
+            this.TXTTelefono.Size = new System.Drawing.Size(100, 20);
+            this.TXTTelefono.TabIndex = 6;
+            // 
             // TXTColonia
             // 
             this.TXTColonia.Location = new System.Drawing.Point(119, 36);
             this.TXTColonia.Name = "TXTColonia";
             this.TXTColonia.Size = new System.Drawing.Size(100, 20);
             this.TXTColonia.TabIndex = 4;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(71, 85);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(49, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Teléfono";
+            this.label9.Click += new System.EventHandler(this.label2_Click);
             // 
             // TXTDireccion
             // 
@@ -352,71 +323,100 @@
             this.label12.Text = "Dirección";
             this.label12.Click += new System.EventHandler(this.label2_Click);
             // 
-            // BTNCancelar
+            // groupBox1
             // 
-            this.BTNCancelar.Location = new System.Drawing.Point(401, 263);
-            this.BTNCancelar.Name = "BTNCancelar";
-            this.BTNCancelar.Size = new System.Drawing.Size(75, 23);
-            this.BTNCancelar.TabIndex = 7;
-            this.BTNCancelar.Text = "Cancelar";
-            this.BTNCancelar.UseVisualStyleBackColor = true;
-            this.BTNCancelar.Click += new System.EventHandler(this.BTNCancelar_Click);
+            this.groupBox1.Controls.Add(this.TXTContrasena2);
+            this.groupBox1.Controls.Add(this.TXTContrasena1);
+            this.groupBox1.Controls.Add(this.TXTNombreUsuario);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(9, 84);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(231, 91);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cuenta";
             // 
-            // BTNAceptar
+            // TXTContrasena2
             // 
-            this.BTNAceptar.Location = new System.Drawing.Point(317, 263);
-            this.BTNAceptar.Name = "BTNAceptar";
-            this.BTNAceptar.Size = new System.Drawing.Size(75, 23);
-            this.BTNAceptar.TabIndex = 14;
-            this.BTNAceptar.Text = "Aceptar";
-            this.BTNAceptar.UseVisualStyleBackColor = true;
-            this.BTNAceptar.Click += new System.EventHandler(this.BTNAceptar_Click);
+            this.TXTContrasena2.Location = new System.Drawing.Point(119, 59);
+            this.TXTContrasena2.Name = "TXTContrasena2";
+            this.TXTContrasena2.Size = new System.Drawing.Size(100, 20);
+            this.TXTContrasena2.TabIndex = 2;
             // 
-            // groupBox4
+            // TXTContrasena1
             // 
-            this.groupBox4.Controls.Add(this.CBXAno);
-            this.groupBox4.Controls.Add(this.CBXMes);
-            this.groupBox4.Controls.Add(this.CBXDia);
-            this.groupBox4.Location = new System.Drawing.Point(246, 200);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(230, 57);
-            this.groupBox4.TabIndex = 4;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Fecha de Nacimiento";
+            this.TXTContrasena1.Location = new System.Drawing.Point(119, 36);
+            this.TXTContrasena1.Name = "TXTContrasena1";
+            this.TXTContrasena1.Size = new System.Drawing.Size(100, 20);
+            this.TXTContrasena1.TabIndex = 1;
             // 
-            // CBXDia
+            // TXTNombreUsuario
             // 
-            this.CBXDia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBXDia.FormattingEnabled = true;
-            this.CBXDia.Location = new System.Drawing.Point(7, 20);
-            this.CBXDia.Name = "CBXDia";
-            this.CBXDia.Size = new System.Drawing.Size(61, 21);
-            this.CBXDia.TabIndex = 11;
+            this.TXTNombreUsuario.Location = new System.Drawing.Point(119, 13);
+            this.TXTNombreUsuario.Name = "TXTNombreUsuario";
+            this.TXTNombreUsuario.Size = new System.Drawing.Size(100, 20);
+            this.TXTNombreUsuario.TabIndex = 0;
             // 
-            // CBXMes
+            // label4
             // 
-            this.CBXMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBXMes.FormattingEnabled = true;
-            this.CBXMes.Location = new System.Drawing.Point(71, 20);
-            this.CBXMes.Name = "CBXMes";
-            this.CBXMes.Size = new System.Drawing.Size(90, 21);
-            this.CBXMes.TabIndex = 12;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(5, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(108, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Confirmar Contraseña";
+            this.label4.Click += new System.EventHandler(this.label2_Click);
             // 
-            // CBXAno
+            // label3
             // 
-            this.CBXAno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBXAno.FormattingEnabled = true;
-            this.CBXAno.Location = new System.Drawing.Point(163, 20);
-            this.CBXAno.Name = "CBXAno";
-            this.CBXAno.Size = new System.Drawing.Size(61, 21);
-            this.CBXAno.TabIndex = 13;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(52, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Contraseña";
+            this.label3.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Nombre de usuario";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label1.Location = new System.Drawing.Point(152, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(257, 26);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Registro de cliente nuevo";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Image = global::ProyectoTacos.Properties.Resources.logo1;
+            this.pictureBox1.Location = new System.Drawing.Point(9, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // RegistrarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(491, 298);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.ClientSize = new System.Drawing.Size(510, 319);
             this.Controls.Add(this.panel1);
             this.Name = "RegistrarCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -424,14 +424,14 @@
             this.Load += new System.EventHandler(this.RegistrarCliente_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

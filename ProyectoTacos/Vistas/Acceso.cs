@@ -23,6 +23,7 @@ namespace ProyectoTacos
         private void Form1_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            
         }
 
 
@@ -85,5 +86,14 @@ namespace ProyectoTacos
 
         }
 
+        private void TXTUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TXTContrasena_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
