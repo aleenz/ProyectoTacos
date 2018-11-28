@@ -10,21 +10,21 @@ using System.Windows.Forms;
 
 namespace ProyectoTacos.Beans
 {
-    class MateriapBeans
+    class ProductoBeans
     {
-        private MateriaPrima materiap = new MateriaPrima();
-        private List<MateriaPrima> lst_Materiap = new List<MateriaPrima>();
+        private Producto prod = new Producto();
+        private List<Producto> lst_Producto = new List<Producto>();
 
-        internal MateriaPrima Materiap { get => materiap; set => materiap = value; }
-        internal List<MateriaPrima> Lst_Materiap { get => lst_Materiap; set => lst_Materiap = value; }
+        internal Producto Prod { get => prod; set => prod = value; }
+        internal List<Producto> Lst_Producto { get => lst_Producto; set => lst_Producto = value; }
 
         public void registrar()
         {
-            MateriapDAO matepDao;
+            ProductoDAO prodDao;
             try
             {
-                matepDao = new MateriapDAO();
-                matepDao.registrar(materiap);
+                prodDao = new ProductoDAO();
+                prodDao.registrar(prod);
             }
             catch (SqlException ex)
             {
@@ -35,11 +35,11 @@ namespace ProyectoTacos.Beans
 
         public void listaract()
         {
-            MateriapDAO matepDao;
+            ProductoDAO prodDao;
             try
             {
-                matepDao = new MateriapDAO();
-                Lst_Materiap = matepDao.listarActivos();
+                prodDao = new ProductoDAO();
+                Lst_Producto = prodDao.listarActivos();
             }
             catch (SqlException ex)
             {
@@ -49,11 +49,11 @@ namespace ProyectoTacos.Beans
         }
         public void listar()
         {
-            MateriapDAO matepDao;
+            ProductoDAO prodDao;
             try
             {
-                matepDao = new MateriapDAO();
-                Lst_Materiap = matepDao.listar();
+                prodDao = new ProductoDAO();
+                Lst_Producto = prodDao.listar();
             }
             catch (SqlException ex)
             {
@@ -63,11 +63,11 @@ namespace ProyectoTacos.Beans
         }
         public void buscarid()
         {
-            MateriapDAO matepDao;
+            ProductoDAO prodDao;
             try
             {
-                matepDao = new MateriapDAO();
-                Materiap = matepDao.buscarid(materiap);
+                prodDao = new ProductoDAO();
+                Prod = prodDao.buscarid(prod);
             }
             catch (SqlException ex)
             {
@@ -77,11 +77,11 @@ namespace ProyectoTacos.Beans
         }
         public void buscarnom()
         {
-            MateriapDAO matepDao;
+            ProductoDAO prodDao;
             try
             {
-                matepDao = new MateriapDAO();
-                Lst_Materiap = matepDao.buscarnombre(materiap);
+                prodDao = new ProductoDAO();
+                Lst_Producto = prodDao.buscarnombre(prod);
             }
             catch (SqlException ex)
             {
@@ -91,11 +91,11 @@ namespace ProyectoTacos.Beans
         }
         public void modificar()
         {
-            MateriapDAO matepDao;
+            ProductoDAO prodDao;
             try
             {
-                matepDao = new MateriapDAO();
-                matepDao.modificar(materiap);
+                prodDao = new ProductoDAO();
+                prodDao.modificar(prod);
             }
             catch (SqlException ex)
             {
@@ -106,11 +106,11 @@ namespace ProyectoTacos.Beans
 
         public void eliminar()
         {
-            MateriapDAO matepDao;
+            ProductoDAO prodDao;
             try
             {
-                matepDao = new MateriapDAO();
-                matepDao.eliminar(materiap);
+                prodDao = new ProductoDAO();
+                prodDao.eliminar(prod);
             }
             catch (SqlException ex)
             {
@@ -120,11 +120,11 @@ namespace ProyectoTacos.Beans
         }
         public void activar()
         {
-            MateriapDAO matepDao;
+            ProductoDAO prodDao;
             try
             {
-                matepDao = new MateriapDAO();
-                matepDao.activar(materiap);
+                prodDao = new ProductoDAO();
+                prodDao.activar(prod);
             }
             catch (SqlException ex)
             {
@@ -132,7 +132,6 @@ namespace ProyectoTacos.Beans
                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
     }
 }

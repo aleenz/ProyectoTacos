@@ -247,7 +247,7 @@ namespace ProyectoTacos.DAO
                 string SQL;
                 conectar();
                 SQL = "UPDATE materiaprima SET " +
-                    "status=@status" +
+                    "status=0" +
                     " WHERE idmateria=@idmateria";
                 Con.Open();
                 cmd.Connection = Con;
@@ -256,6 +256,35 @@ namespace ProyectoTacos.DAO
                 cmd.Parameters.AddWithValue("@status", materiap.Status);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se ha dado de baja el registro correctamente",
+                    "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                Con.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                   "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Con.Close();
+            }
+        }
+        public void activar(MateriaPrima materiap)
+        {
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "UPDATE materiaprima SET " +
+                    "status=1" +
+                    " WHERE idmateria=@idmateria";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                cmd.Parameters.AddWithValue("@idmateria", materiap.Idmateria);
+                cmd.Parameters.AddWithValue("@status", materiap.Status);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Se ha dado activado el registro correctamente",
                     "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 Con.Close();
             }
