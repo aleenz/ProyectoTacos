@@ -14,9 +14,13 @@ namespace ProyectoTacos.Beans
     {
         private Producto prod = new Producto();
         private List<Producto> lst_Producto = new List<Producto>();
+        private Usomateria usom = new Usomateria();
+        private List<Usomateria> lst_Uso = new List<Usomateria>();
 
         internal Producto Prod { get => prod; set => prod = value; }
         internal List<Producto> Lst_Producto { get => lst_Producto; set => lst_Producto = value; }
+        internal Usomateria Usom { get => usom; set => usom = value; }
+        internal List<Usomateria> Lst_Uso { get => lst_Uso; set => lst_Uso = value; }
 
         public void registrar()
         {
@@ -132,6 +136,38 @@ namespace ProyectoTacos.Beans
                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        // Uso de Materia Prima
 
+        public void registraruso()
+        {
+            ProductoDAO prodDao;
+            try
+            {
+                foreach (Usomateria uso in Lst_Uso) {
+                    prodDao = new ProductoDAO();
+                    prodDao.registraruso(uso);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error!!!" + ex.Number + "Ha ocurrido: " + ex.Message,
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void ultimo()
+        {
+            ProductoDAO prodDao;
+            try
+            {
+                prodDao = new ProductoDAO();
+                Prod = prodDao.ultimoprod();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                   "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

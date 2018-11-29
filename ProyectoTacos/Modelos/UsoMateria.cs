@@ -10,12 +10,12 @@ namespace ProyectoTacos.Modelos
     {
         private int cantidad;
         private string unidadmed;
-        private Producto producto;
-        private MateriaPrima matep;
+        private int idproducto;
+        private int idmatep;
 
         public int Cantidad { get => cantidad; set => cantidad = value; }
         public string Unidadmed { get => unidadmed; set => unidadmed = value; }
-        public Producto Producto { get => producto; set => producto = value; }
-        public MateriaPrima Matep { get => matep; set => matep = value; }
+        public int Idproducto { get => idproducto; set => idproducto = value; }
+        public int Idmatep { get => idmatep; set => idmatep = value; }
     }
 }

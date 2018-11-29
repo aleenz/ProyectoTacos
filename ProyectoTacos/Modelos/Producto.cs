@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ProyectoTacos.Modelos
 {
-    class Producto
+   public class Producto
     {
         private int idproducto;
         private string nombre;

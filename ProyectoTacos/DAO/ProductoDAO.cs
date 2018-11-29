@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using ProyectoTacos.Modelos;
 using System.Windows.Forms;
+using System.Data;
+using System.Data.Sql;
+using System.Drawing;
+using System.IO;
 
 namespace ProyectoTacos.DAO
 {
@@ -28,17 +32,21 @@ namespace ProyectoTacos.DAO
                 cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
                 cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
                 cmd.Parameters.AddWithValue("@precioun", producto.Precioun);
-                System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                producto.Foto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-               // cmd.Parameters["@Imagen"].Value = ms.GetBuffer();
-                cmd.Parameters.AddWithValue("@foto", ms.GetBuffer());
-                // cmd.Parameters.AddWithValue("@foto", producto.Foto);
                 cmd.Parameters.AddWithValue("@status", producto.Status);
+                cmd.Parameters.Add("@foto", SqlDbType.Image);
+                MemoryStream ms = new MemoryStream();
+                producto.Foto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                cmd.Parameters["@foto"].Value = ms.GetBuffer();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se ha dado de alta el" +
                     " Registro correctamente!", "Success!", MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
                 Con.Close();
+                // System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                //  producto.Foto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                // cmd.Parameters["@Imagen"].Value = ms.GetBuffer();
+                // cmd.Parameters.AddWithValue("@foto", ms.GetBuffer());
+                // cmd.Parameters.AddWithValue("@foto", producto.Foto);
             }
             catch (SqlException ex)
             {
@@ -155,7 +163,9 @@ namespace ProyectoTacos.DAO
                         producto.Nombre = rdr.GetString(1);
                         producto.Descripcion = rdr.GetString(2);
                         producto.Precioun = rdr.GetDouble(3);
-                        //   producto.Foto = rdr.GetBytes(4); //Generar fotos para busqueda
+                        MemoryStream ms = new MemoryStream((byte[])rdr["foto"]);
+                        producto.Foto = new PictureBox();
+                        producto.Foto.Image = new Bitmap(ms);
                         producto.Status = rdr.GetInt32(5);
                     }
                 }
@@ -304,6 +314,79 @@ namespace ProyectoTacos.DAO
             {
                 Con.Close();
             }
+        }
+
+        // Comandos de Uso de Materia
+        public void registraruso(Usomateria usoma)
+        {
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "Insert into usomateria(cantidad,unidadmed,idproducto," +
+                    "idmateria) values (" +
+                    "@cantidad,@unidadmed,@idproducto,@idmateria)";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                cmd.Parameters.AddWithValue("@cantidad", usoma.Cantidad);
+                cmd.Parameters.AddWithValue("@unidadmed", usoma.Unidadmed);
+                cmd.Parameters.AddWithValue("@idproducto", usoma.Idproducto);
+                cmd.Parameters.AddWithValue("@idmateria", usoma.Idmatep);
+                cmd.ExecuteNonQuery();
+                //MessageBox.Show("Se ha dado de alta el" + " Registro correctamente!", "Success!", MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
+                Con.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("error" + ex,
+                    "Advertencia!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Con.Close();
+            }
+        }
+
+        public Producto ultimoprod()
+        {
+            Producto prod = null;
+            SqlDataReader rdr;
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "SELECT TOP 1 * FROM producto ORDER BY idproducto DESC";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        prod = new Producto();
+                        prod.Idproducto = rdr.GetInt32(0);
+                        prod.Nombre = rdr.GetString(1);
+                        //prod.Descripcion = rdr.GetString(2);
+                        //prod.Precioun = rdr.GetInt32(3);
+                        //prod.Foto = rdr.GetDouble(4);
+                        //prod.Status = rdr.GetInt32(5);
+                    }
+                }
+                Con.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Con.Close();
+            }
+            return prod;
         }
     }
 }
