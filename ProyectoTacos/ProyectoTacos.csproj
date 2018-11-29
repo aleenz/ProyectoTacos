@@ -90,6 +90,12 @@
     <Compile Include="Vistas\Content.Designer.cs">
       <DependentUpon>Content.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\IngredientesProd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\IngredientesProd.Designer.cs">
+      <DependentUpon>IngredientesProd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </Compile>
     <EmbeddedResource Include="Vistas\ConsultarMateriaP.resx">
       <DependentUpon>ConsultarMateriaP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\IngredientesProd.resx">
+      <DependentUpon>IngredientesProd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

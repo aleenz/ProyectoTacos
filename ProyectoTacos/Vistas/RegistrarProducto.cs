@@ -51,18 +51,20 @@ namespace ProyectoTacos.Vistas
             else
             {
                 carga_reg();
-                producto_bean.registrar();
-                limpiar();
+                IngredientesProd igp = new IngredientesProd(producto);
+                igp.Show();
+                //limpiar();
             }
         }
 
         public void carga_reg()
         {
-            this.producto_bean.Prod.Nombre = txtNombre.Text;
-            this.producto_bean.Prod.Descripcion = txtDescripcion.Text;
-            this.producto_bean.Prod.Precioun = Convert.ToDouble(txtPrecio.Text);
-            this.producto_bean.Prod.Foto = pictureBox2;
-            this.producto_bean.Prod.Status = 1;
+            producto.Nombre = txtNombre.Text;
+            producto.Descripcion = txtDescripcion.Text;
+            producto.Precioun = Convert.ToDouble(txtPrecio.Text);
+            producto.Foto = new PictureBox();
+            producto.Foto.Image = pictureBox2.Image;
+            producto.Status = 1;
         }
 
         public void limpiar()
@@ -71,6 +73,11 @@ namespace ProyectoTacos.Vistas
             txtPrecio.Text = null;
             txtNombre.Text = null;
             pictureBox2.Image = null;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            limpiar();
         }
     }
 
