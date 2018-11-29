@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using ProyectoTacos.Modelos;
 using System.Windows.Forms;
+using System.Data;
+using System.Data.Sql;
+using System.Drawing;
+using System.IO;
 
 namespace ProyectoTacos.DAO
 {
@@ -28,17 +32,21 @@ namespace ProyectoTacos.DAO
                 cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
                 cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
                 cmd.Parameters.AddWithValue("@precioun", producto.Precioun);
+                cmd.Parameters.AddWithValue("@status", producto.Status);
+                cmd.Parameters.Add("@foto", SqlDbType.Image);
                 System.IO.MemoryStream ms = new System.IO.MemoryStream();
                 producto.Foto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-               // cmd.Parameters["@Imagen"].Value = ms.GetBuffer();
-                cmd.Parameters.AddWithValue("@foto", ms.GetBuffer());
-                // cmd.Parameters.AddWithValue("@foto", producto.Foto);
-                cmd.Parameters.AddWithValue("@status", producto.Status);
+                cmd.Parameters["@foto"].Value = ms.GetBuffer();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se ha dado de alta el" +
                     " Registro correctamente!", "Success!", MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
                 Con.Close();
+                // System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                //  producto.Foto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                // cmd.Parameters["@Imagen"].Value = ms.GetBuffer();
+                // cmd.Parameters.AddWithValue("@foto", ms.GetBuffer());
+                // cmd.Parameters.AddWithValue("@foto", producto.Foto);
             }
             catch (SqlException ex)
             {
@@ -155,7 +163,9 @@ namespace ProyectoTacos.DAO
                         producto.Nombre = rdr.GetString(1);
                         producto.Descripcion = rdr.GetString(2);
                         producto.Precioun = rdr.GetDouble(3);
-                        //   producto.Foto = rdr.GetBytes(4); //Generar fotos para busqueda
+                        MemoryStream ms = new MemoryStream((byte[])rdr["foto"]);
+                        producto.Foto = new PictureBox();
+                        producto.Foto.Image = new Bitmap(ms);
                         producto.Status = rdr.GetInt32(5);
                     }
                 }
