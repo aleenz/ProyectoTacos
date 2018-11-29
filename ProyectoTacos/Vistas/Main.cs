@@ -67,6 +67,15 @@ namespace ProyectoTacos.Vistas
             barraArriba.Show();
 
 
+            Label titulo = new Label();
+            titulo.Size = new Size(this.Size.Width / 3,45);
+            titulo.Location = new Point((this.Size.Width / 2) - ((this.Size.Width / 3) / 2));
+            titulo.Text = "Bienvenido a la taqueria el chancho contento";
+            titulo.ForeColor = Color.White;
+            titulo.Font = new Font("Arial", 12f);
+            titulo.Parent = barraArriba;
+            titulo.TextAlign = ContentAlignment.MiddleCenter;
+            titulo.Show();
             p = new Panel();
             p.Size = new Size(anchoBandaDerecha, this.Size.Height);
             p.Location = new Point(0, 0);
@@ -96,7 +105,7 @@ namespace ProyectoTacos.Vistas
 
             actual = frm;
             actual.MdiParent = this;
-
+            //actual.FormBorderStyle = FormBorderStyle.None;
             int posx = (((this.Width - anchoBandaDerecha) / 2) - (actual.Width / 2)) + anchoBandaDerecha;
             int posy = (this.Height / 2) - (actual.Height / 2);
             actual.Location = new Point(posx, posy);
