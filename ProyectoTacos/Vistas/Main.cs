@@ -56,9 +56,6 @@ namespace ProyectoTacos.Vistas
         public void dibujar()
         {
 
-
-
-
             Panel barraArriba = new Panel();
             barraArriba.Size = new Size(this.Size.Width, 50);
             barraArriba.Location = new Point(0, 0);

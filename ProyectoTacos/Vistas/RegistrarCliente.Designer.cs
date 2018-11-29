@@ -342,6 +342,7 @@
             // 
             this.TXTContrasena2.Location = new System.Drawing.Point(119, 59);
             this.TXTContrasena2.Name = "TXTContrasena2";
+            this.TXTContrasena2.PasswordChar = '■';
             this.TXTContrasena2.Size = new System.Drawing.Size(100, 20);
             this.TXTContrasena2.TabIndex = 2;
             // 
@@ -349,6 +350,7 @@
             // 
             this.TXTContrasena1.Location = new System.Drawing.Point(119, 36);
             this.TXTContrasena1.Name = "TXTContrasena1";
+            this.TXTContrasena1.PasswordChar = '■';
             this.TXTContrasena1.Size = new System.Drawing.Size(100, 20);
             this.TXTContrasena1.TabIndex = 1;
             // 
