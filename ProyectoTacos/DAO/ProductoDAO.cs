@@ -464,7 +464,7 @@ namespace ProyectoTacos.DAO
             return usomateria;
         }
 
-        public void mpdificaruso(Usomateria usoma)
+        public void modificaruso(Usomateria usoma)
         {
             try
             {
@@ -477,6 +477,33 @@ namespace ProyectoTacos.DAO
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;
                 cmd.Parameters.AddWithValue("@cantidad", usoma.Cantidad);
+                cmd.Parameters.AddWithValue("@idproducto", usoma.Idproducto);
+                cmd.Parameters.AddWithValue("@idmateria", usoma.Idmatep);
+                cmd.ExecuteNonQuery();
+                Con.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("error" + ex,
+                    "Advertencia!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Con.Close();
+            }
+        }
+
+        public void eliminaruso(Usomateria usoma)
+        {
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "DELETE FROM usomateria WHERE idproducto=@idproducto AND idmateria=@idmateria";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
                 cmd.Parameters.AddWithValue("@idproducto", usoma.Idproducto);
                 cmd.Parameters.AddWithValue("@idmateria", usoma.Idmatep);
                 cmd.ExecuteNonQuery();

@@ -219,7 +219,23 @@ namespace ProyectoTacos.Beans
             try
             {
                 prodDao = new ProductoDAO();
-                prodDao.mpdificaruso(usom);
+                prodDao.modificaruso(usom);
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error!!!" + ex.Number + "Ha ocurrido: " + ex.Message,
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void eliminaruso()
+        {
+            ProductoDAO prodDao;
+            try
+            {
+                prodDao = new ProductoDAO();
+                prodDao.eliminaruso(usom);
 
             }
             catch (SqlException ex)

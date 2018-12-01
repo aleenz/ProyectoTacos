@@ -171,7 +171,10 @@ namespace ProyectoTacos.Vistas
             {
                 if (lst_uso[i].Nombre.Equals(uso.Nombre))
                 {
+                    this.producto_bean.Usom = lst_uso[i];
+                    producto_bean.eliminaruso();
                     lst_uso.Remove(lst_uso[i]);
+
                 }
             }
             tabla();
