@@ -30,7 +30,9 @@ namespace ProyectoTacos.Vistas
             txtNombre.Text = producto.Nombre;
             txtPrecio.Text = Convert.ToString(producto.Precioun);
             txtDescripcion.Text = producto.Descripcion;
-            pictureBox2.Image = producto.Foto.Image;
+            if (producto.Foto!=null) {
+                pictureBox2.Image = producto.Foto.Image;
+            }
 
         }
 
