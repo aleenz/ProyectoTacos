@@ -108,6 +108,12 @@
     <Compile Include="Vistas\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\ModificarIngredientesProd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ModificarIngredientesProd.Designer.cs">
+      <DependentUpon>ModificarIngredientesProd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\ModificarMateriaP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ModificarIngredientesProd.resx">
+      <DependentUpon>ModificarIngredientesProd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ModificarMateriaP.resx">
       <DependentUpon>ModificarMateriaP.cs</DependentUpon>

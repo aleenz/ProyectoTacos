@@ -20,32 +20,123 @@ namespace ProyectoTacos.Vistas
         {
             InitializeComponent();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        public ModificarProducto(Producto pro) : this()
         {
-            this.producto_bean.Prod.Idproducto = 5;
+            this.producto = pro;
+            this.producto_bean.Prod.Idproducto = producto.Idproducto;
             producto_bean.buscarid();
             producto = producto_bean.Prod;
+            txtId.Text = Convert.ToString(producto.Idproducto);
             txtNombre.Text = producto.Nombre;
             txtPrecio.Text = Convert.ToString(producto.Precioun);
             txtDescripcion.Text = producto.Descripcion;
             pictureBox2.Image = producto.Foto.Image;
-            
-        }
 
-        public void carga_reg()
-        {
-            this.producto_bean.Prod.Idproducto = 2;
-            this.producto_bean.Prod.Nombre = txtNombre.Text;
-            this.producto_bean.Prod.Descripcion = txtDescripcion.Text;
-            this.producto_bean.Prod.Precioun = Convert.ToDouble(txtPrecio.Text);
-            this.producto_bean.Prod.Foto = pictureBox2;
-            this.producto_bean.Prod.Status = 1;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.openFileDialog1.ShowDialog();
+                if (this.openFileDialog1.FileName.Equals("") == false)
+                {
+                    pictureBox2.Load(this.openFileDialog1.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cargar la imagen: " + ex.ToString());
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (txtNombre.Text == "" || txtPrecio.Text == "" || txtDescripcion.Text == ""
+                || pictureBox2.Image == null)
+            {
+                MessageBox.Show("Debe llenar todos los campos y seleccionar una imagen");
+            }
+            else if (txtPrecio.Text == "0" || txtPrecio.Text == "0.0")
+            {
+                MessageBox.Show("Debe colocar un costo real");
+            }
+            else
+            {
+                carga_reg();
+                ModificarIngredientesProd igp = new ModificarIngredientesProd(producto);
+                igp.Show();
+                igp.FormClosing += Formed_Closing;
+            }
+        }
+
+        private void Formed_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Close();
+
+        }
+        public void carga_reg()
+        {
+            producto.Nombre = txtNombre.Text;
+            producto.Descripcion = txtDescripcion.Text;
+            producto.Precioun = Convert.ToDouble(txtPrecio.Text);
+            producto.Foto = new PictureBox();
+            producto.Foto.Image = pictureBox2.Image;
+            producto.Status = 1;
+        }
+
+        public void limpiar()
+        {
+            txtDescripcion.Text = null;
+            txtPrecio.Text = null;
+            txtNombre.Text = null;
+            pictureBox2.Image = null;
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+
+            {
+                e.Handled = true;
+
+                return;
+
+            }
+        }
+
+        private void txtDescripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && !char.IsWhiteSpace(e.KeyChar))
+
+            {
+                e.Handled = true;
+
+                return;
+
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && !char.IsWhiteSpace(e.KeyChar))
+
+            {
+                e.Handled = true;
+
+                return;
+
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

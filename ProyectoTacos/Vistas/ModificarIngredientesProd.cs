@@ -12,7 +12,7 @@ using ProyectoTacos.Beans;
 
 namespace ProyectoTacos.Vistas
 {
-    public partial class IngredientesProd : Form
+    public partial class ModificarIngredientesProd : Form
     {
         Producto producto = new Producto();
         ProductoBeans producto_bean = new ProductoBeans();
@@ -20,21 +20,36 @@ namespace ProyectoTacos.Vistas
         MateriapBeans materiap_bean = new MateriapBeans();
         List<MateriaPrima> lst_MateriaP = new List<MateriaPrima>();
         List<Usomateria> lst_uso = new List<Usomateria>();
+        List<Usomateria> lst_uso2 = new List<Usomateria>();
         DataTable dt = new DataTable();
         int idprod;
-        public IngredientesProd()
+        public ModificarIngredientesProd()
         {
             InitializeComponent();
         }
-
-        public IngredientesProd(Producto pro) : this()
+        public ModificarIngredientesProd(Producto pro) : this()
         {
             this.producto = pro;
             pictureBox2.Image = producto.Foto.Image;
             label5.Text = producto.Nombre;
-        
-        }
+            this.producto_bean.Prod.Idproducto = producto.Idproducto;
+            producto_bean.listaring();
+            lst_uso = producto_bean.Lst_Uso;
+            int i = 0;
+            foreach (Usomateria uso in lst_uso)
+            {
+                Usomateria usomat = uso;
+                this.materiap_bean.Materiap.Idmateria = usomat.Idmatep;
+                materiap_bean.buscarid();
+                materiap = materiap_bean.Materiap;
+                usomat.Nombre = materiap.Nombre;
+                lst_uso2.Add(usomat);
+            }
+            lst_uso = lst_uso2;
+            tabla();
+            listar();
 
+        }
         public void listar()
         {
             List<Usomateria> lst_usotabl = new List<Usomateria>();
@@ -44,8 +59,7 @@ namespace ProyectoTacos.Vistas
             {
                 Usomateria mat = mp;
                 DataRow fila = dt.NewRow();
-
-              //  fila["Id"] = mat.Idmateria;
+                
                 fila["Ingrediente"] = mat.Nombre;
                 fila["Cantidad"] = mat.Cantidad;
                 fila["UnidadMed"] = mat.Unidadmed;
@@ -70,21 +84,6 @@ namespace ProyectoTacos.Vistas
             dt.Columns.Add("UnidadMed");
         }
 
-        private void IngredientesProd_Load(object sender, EventArgs e)
-        {
-            materiap_bean.listaract();
-            lst_MateriaP = materiap_bean.Lst_Materiap;
-
-            comboBox1.DataSource = lst_MateriaP;
-            comboBox1.DisplayMember = "nombre";
-            comboBox1.ValueMember = "idmateria";
-            comboBox1.Text = "Ingredientes a usar";
-            txtUnidad.Text = null;
-
-            producto_bean.ultimo();
-            idprod = producto_bean.Prod.Idproducto + 1;
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             String ir = Convert.ToString(comboBox1.SelectedValue);
@@ -106,20 +105,20 @@ namespace ProyectoTacos.Vistas
             {
                 MessageBox.Show("Debe llenar el campo de cantidad con una cantidad correcta");
             }
-            else { 
-            Usomateria um = new Usomateria();
-            um.Idmatep = materiap.Idmateria;
-            um.Nombre = materiap.Nombre;
-            um.Unidadmed = materiap.Unidadmed;
-            um.Cantidad = Convert.ToInt32(txtCantidad.Text);
-            um.Idproducto = idprod;
-            lst_uso.Add(um);
-            MessageBox.Show("Se añadio el ingrediente :)");
-            tabla();
-            listar();
+            else
+            {
+                Usomateria um = new Usomateria();
+                um.Idmatep = materiap.Idmateria;
+                um.Nombre = materiap.Nombre;
+                um.Unidadmed = materiap.Unidadmed;
+                um.Cantidad = Convert.ToInt32(txtCantidad.Text);
+                um.Idproducto = producto.Idproducto;
+                lst_uso.Add(um);
+                MessageBox.Show("Se añadio el ingrediente :)");
+                tabla();
+                listar();
+            }
         }
-        }
-
         public void carga_reg()
         {
             this.producto_bean.Prod.Nombre = producto.Nombre;
@@ -127,7 +126,7 @@ namespace ProyectoTacos.Vistas
             this.producto_bean.Prod.Precioun = producto.Precioun;
             this.producto_bean.Prod.Foto = producto.Foto;
             this.producto_bean.Prod.Status = 1;
-            this.producto_bean.Lst_Uso = lst_uso;
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -139,9 +138,25 @@ namespace ProyectoTacos.Vistas
             else
             {
                 carga_reg();
-                producto_bean.registrar();
-                producto_bean.registraruso();
+                producto_bean.modificar();
+                foreach (Usomateria uso in lst_uso)
+                {
+                    this.producto_bean.Usom = uso;
+                    producto_bean.buscarm();
+                    Usomateria usm = producto_bean.Usom;
+                    if (usm == null)
+                    {
+                    this.producto_bean.Usom = uso;
+                    producto_bean.registraruson();
+                    }
+                    else {
+                        this.producto_bean.Usom = uso;
+                        producto_bean.modificaruso();
+                    }
+                }
+                
                 this.Close();
+                
             }
         }
 
@@ -152,14 +167,15 @@ namespace ProyectoTacos.Vistas
             DataGridViewRow selectedRow = dataGridView1.Rows[indice];
             string a = Convert.ToString(selectedRow.Cells["Ingrediente"].Value);
             uso.Nombre = a;
-            for (int i=0;i<lst_uso.Count();i++) {
-                if (lst_uso[i].Nombre.Equals(uso.Nombre)) {
+            for (int i = 0; i < lst_uso.Count(); i++)
+            {
+                if (lst_uso[i].Nombre.Equals(uso.Nombre))
+                {
                     lst_uso.Remove(lst_uso[i]);
                 }
             }
             tabla();
             listar();
-
         }
 
         private void btmCancelar_Click(object sender, EventArgs e)
@@ -177,6 +193,21 @@ namespace ProyectoTacos.Vistas
                 return;
 
             }
+        }
+
+        private void ModificarIngredientesProd_Load(object sender, EventArgs e)
+        {
+            materiap_bean.listaract();
+            lst_MateriaP = materiap_bean.Lst_Materiap;
+
+            comboBox1.DataSource = lst_MateriaP;
+            comboBox1.DisplayMember = "nombre";
+            comboBox1.ValueMember = "idmateria";
+            comboBox1.Text = "Ingredientes a usar";
+            txtUnidad.Text = null;
+
+            producto_bean.ultimo();
+            idprod = producto_bean.Prod.Idproducto + 1;
         }
     }
 }

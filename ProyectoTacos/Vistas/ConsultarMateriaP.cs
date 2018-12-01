@@ -289,14 +289,43 @@ namespace ProyectoTacos.Vistas
 
         private void txtBusqueda_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsNumber(e.KeyChar)) && !(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && !char.IsWhiteSpace(e.KeyChar))
-
+            string param = comboBox1.GetItemText(comboBox1.SelectedItem);
+            if (param == "Nombre")
             {
-                e.Handled = true;
+                if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && !char.IsWhiteSpace(e.KeyChar))
 
-                return;
+                {
+                    e.Handled = true;
 
+                    return;
+
+                }
             }
+            else
+            {
+                if (param == "Id")
+                {
+                    if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+
+                    {
+                        e.Handled = true;
+
+                        return;
+
+                    }
+                }
+                else
+                {
+                    e.Handled = true;
+
+                    return;
+                }
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtBusqueda.Text = null;
         }
     }
 }
