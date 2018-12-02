@@ -42,20 +42,17 @@ namespace ProyectoTacos.Vistas
                 FRMAcceso frm = new FRMAcceso(this);
                 frm.MdiParent = this;
                 frm.Show();
-
             }
             else
             {
                 dibujar();
                 Console.WriteLine("Usuario");
             }
-
         }
 
 
         public void dibujar()
         {
-
             Panel barraArriba = new Panel();
             barraArriba.Size = new Size(this.Size.Width, 50);
             barraArriba.Location = new Point(0, 0);
@@ -69,10 +66,11 @@ namespace ProyectoTacos.Vistas
             titulo.Location = new Point((this.Size.Width / 2) - ((this.Size.Width / 3) / 2));
             titulo.Text = "Bienvenido a la taqueria el chancho contento";
             titulo.ForeColor = Color.White;
-            titulo.Font = new Font("Arial", 12f);
+            titulo.Font = new Font("Arial", 14f);
             titulo.Parent = barraArriba;
             titulo.TextAlign = ContentAlignment.MiddleCenter;
             titulo.Show();
+
             p = new Panel();
             p.Size = new Size(anchoBandaDerecha, this.Size.Height);
             p.Location = new Point(0, 0);
@@ -80,16 +78,24 @@ namespace ProyectoTacos.Vistas
             p.Parent = this;
             p.Show();
 
-            ItemMenu registroClientes = new ItemMenu(this, "Registro nuevo Cliente", 0, new Bitmap(ProyectoTacos.Properties.Resources.logo), 60);
-            ItemMenu registroMateria = new ItemMenu(this, "Registro nuevo materia", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
+            
 
 
+
+            ItemMenu realizarPedido = new ItemMenu(this, "Realizar Pedido", 0, new Bitmap(ProyectoTacos.Properties.Resources.logo), 60);
+            ItemMenu BTNproductos = new ItemMenu(this, "Productos", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
+            ItemMenu BTNClientes = new ItemMenu(this, "Clientes", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
+            ItemMenu BTNProveedores = new ItemMenu(this, "Proveedor", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
+            ItemMenu BTNMateriaPrima = new ItemMenu(this, "Materia Prima", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
+            ItemMenu BTNEmpleados = new ItemMenu(this, "Empleados", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
+            ItemMenu BTNPedidos = new ItemMenu(this, "Pedidos", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
+            ItemMenu BTNReportes = new ItemMenu(this, "Reportes", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
 
         }
 
 
 
-        
+
 
         public void abrirForm(Form frm)
         {
@@ -98,8 +104,6 @@ namespace ProyectoTacos.Vistas
                 actual.Hide();
                 actual = null;
             }
-            
-
             actual = frm;
             actual.MdiParent = this;
             //actual.FormBorderStyle = FormBorderStyle.None;
