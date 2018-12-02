@@ -42,11 +42,6 @@ namespace ProyectoTacos.DAO
                     " Registro correctamente!", "Success!", MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
                 Con.Close();
-                // System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                //  producto.Foto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                // cmd.Parameters["@Imagen"].Value = ms.GetBuffer();
-                // cmd.Parameters.AddWithValue("@foto", ms.GetBuffer());
-                // cmd.Parameters.AddWithValue("@foto", producto.Foto);
             }
             catch (SqlException ex)
             {
@@ -163,9 +158,12 @@ namespace ProyectoTacos.DAO
                         producto.Nombre = rdr.GetString(1);
                         producto.Descripcion = rdr.GetString(2);
                         producto.Precioun = rdr.GetDouble(3);
+                        if (!rdr["foto"].Equals(DBNull.Value))
+                        {
                         MemoryStream ms = new MemoryStream((byte[])rdr["foto"]);
                         producto.Foto = new PictureBox();
                         producto.Foto.Image = new Bitmap(ms);
+                        }
                         producto.Status = rdr.GetInt32(5);
                     }
                 }
@@ -241,7 +239,10 @@ namespace ProyectoTacos.DAO
                 cmd.Parameters.AddWithValue("@nombre", prod.Nombre);
                 cmd.Parameters.AddWithValue("@descripcion", prod.Descripcion);
                 cmd.Parameters.AddWithValue("@precioun", prod.Precioun);
-                cmd.Parameters.AddWithValue("@foto", prod.Foto);    //Cambiar por foto
+                cmd.Parameters.Add("@foto", SqlDbType.Image);
+                MemoryStream ms = new MemoryStream();
+                prod.Foto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                cmd.Parameters["@foto"].Value = ms.GetBuffer();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se ha actualizado el registro correctamente",
                     "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -387,6 +388,140 @@ namespace ProyectoTacos.DAO
                 Con.Close();
             }
             return prod;
+        }
+
+        public List<Usomateria> listaingred(Producto prod)
+        {
+            List<Usomateria> lista = new List<Usomateria>();
+            SqlDataReader rdr;
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "SELECT * FROM usomateria WHERE idproducto='" + prod.Idproducto + "'";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        Usomateria usomateria = new Usomateria();
+                        usomateria.Cantidad = rdr.GetInt32(0);
+                        usomateria.Unidadmed = rdr.GetString(1);
+                        usomateria.Idproducto = rdr.GetInt32(2);
+                        usomateria.Idmatep = rdr.GetInt32 (3);
+                        lista.Add(usomateria);
+                    }
+                }
+                Con.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Con.Close();
+            }
+            return lista;
+        }
+
+        public Usomateria buscarm(Usomateria uso)
+        {
+            Usomateria usomateria = null;
+            SqlDataReader rdr;
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "SELECT * FROM usomateria WHERE idproducto='" + uso.Idproducto + "' and idmateria='" + uso.Idmatep + "'";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        usomateria = new Usomateria();
+                        usomateria.Cantidad = rdr.GetInt32(0);
+                        usomateria.Unidadmed = rdr.GetString(1);
+                        usomateria.Idproducto = rdr.GetInt32(2);
+                        usomateria.Idmatep = rdr.GetInt32(3);
+                    }
+                }
+                Con.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Con.Close();
+            }
+            return usomateria;
+        }
+
+        public void modificaruso(Usomateria usoma)
+        {
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "UPDATE usomateria SET " +
+                    "cantidad=@cantidad" +
+                    " WHERE idproducto=@idproducto AND idmateria=@idmateria";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                cmd.Parameters.AddWithValue("@cantidad", usoma.Cantidad);
+                cmd.Parameters.AddWithValue("@idproducto", usoma.Idproducto);
+                cmd.Parameters.AddWithValue("@idmateria", usoma.Idmatep);
+                cmd.ExecuteNonQuery();
+                Con.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("error" + ex,
+                    "Advertencia!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Con.Close();
+            }
+        }
+
+        public void eliminaruso(Usomateria usoma)
+        {
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "DELETE FROM usomateria WHERE idproducto=@idproducto AND idmateria=@idmateria";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                cmd.Parameters.AddWithValue("@idproducto", usoma.Idproducto);
+                cmd.Parameters.AddWithValue("@idmateria", usoma.Idmatep);
+                cmd.ExecuteNonQuery();
+                Con.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("error" + ex,
+                    "Advertencia!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Con.Close();
+            }
         }
     }
 }

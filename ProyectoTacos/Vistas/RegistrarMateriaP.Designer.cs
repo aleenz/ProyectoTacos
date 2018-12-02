@@ -134,6 +134,7 @@
             this.txtInventario.Name = "txtInventario";
             this.txtInventario.Size = new System.Drawing.Size(100, 20);
             this.txtInventario.TabIndex = 6;
+            this.txtInventario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInventario_KeyPress);
             // 
             // txtCosto
             // 
@@ -141,6 +142,7 @@
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(100, 20);
             this.txtCosto.TabIndex = 5;
+            this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCosto_KeyPress);
             // 
             // txtUnidad
             // 
@@ -148,6 +150,7 @@
             this.txtUnidad.Name = "txtUnidad";
             this.txtUnidad.Size = new System.Drawing.Size(100, 20);
             this.txtUnidad.TabIndex = 4;
+            this.txtUnidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnidad_KeyPress);
             // 
             // label4
             // 
@@ -182,6 +185,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 0;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // RegistrarMateriaP
             // 

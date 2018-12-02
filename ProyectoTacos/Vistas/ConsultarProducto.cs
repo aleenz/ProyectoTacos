@@ -1,6 +1,4 @@
-﻿using ProyectoTacos.Modelos;
-using ProyectoTacos.Beans;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,15 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoTacos.Modelos;
+using ProyectoTacos.Beans;
 
 namespace ProyectoTacos.Vistas
 {
-    public partial class ConsultarMateriaP : Form
+    public partial class ConsultarProducto : Form
     {
-        List<MateriaPrima> lst_MateriaP = new List<MateriaPrima>();
-        MateriapBeans materiaP_bean = new MateriapBeans();
+        List<Producto> lst_producto = new List<Producto>();
+        ProductoBeans producto_bean = new ProductoBeans();
         DataTable dt = new DataTable();
-        public ConsultarMateriaP()
+        public ConsultarProducto()
         {
             InitializeComponent();
             tabla();
@@ -26,19 +26,18 @@ namespace ProyectoTacos.Vistas
 
         public void listar()
         {
-            materiaP_bean.listar();
-            lst_MateriaP = materiaP_bean.Lst_Materiap;
-            foreach (MateriaPrima mp in lst_MateriaP)
+            producto_bean.listar();
+            lst_producto = producto_bean.Lst_Producto;
+            foreach (Producto pro in lst_producto)
             {
-                MateriaPrima mat = mp;
+                Producto prod = pro;
                 DataRow fila = dt.NewRow();
 
-                fila["Id"] = mat.Idmateria;
-                fila["Nombre"] = mat.Nombre;
-                fila["UnidadMed"] = mat.Unidadmed;
-                fila["Inventario"] = mat.Inventario;
-                fila["CostoMed"] = mat.Costomed;
-                fila["Status"] = mat.Status;
+                fila["Id"] = prod.Idproducto;
+                fila["Nombre"] = prod.Nombre;
+                fila["Precio"] = prod.Precioun;
+                fila["Descripcion"] = prod.Descripcion;
+                fila["Status"] = prod.Status;
                 dt.Rows.Add(fila);
             }
             dataGridView1.Rows.Clear();
@@ -48,27 +47,25 @@ namespace ProyectoTacos.Vistas
                 int num = dataGridView1.Rows.Add();
                 dataGridView1.Rows[num].Cells[0].Value = fila["Id"].ToString();
                 dataGridView1.Rows[num].Cells[1].Value = fila["Nombre"].ToString();
-                dataGridView1.Rows[num].Cells[2].Value = fila["Inventario"].ToString();
-                dataGridView1.Rows[num].Cells[3].Value = fila["UnidadMed"].ToString();
-                dataGridView1.Rows[num].Cells[4].Value = fila["CostoMed"].ToString();
-                dataGridView1.Rows[num].Cells[5].Value = fila["Status"].ToString();
+                dataGridView1.Rows[num].Cells[2].Value = fila["Precio"].ToString();
+                dataGridView1.Rows[num].Cells[3].Value = fila["Descripcion"].ToString();
+                dataGridView1.Rows[num].Cells[4].Value = fila["Status"].ToString();
             }
         }
         public void listarAct()
         {
-            materiaP_bean.listaract();
-            lst_MateriaP = materiaP_bean.Lst_Materiap;
-            foreach (MateriaPrima mp in lst_MateriaP)
+            producto_bean.listaract();
+            lst_producto = producto_bean.Lst_Producto;
+            foreach (Producto pro in lst_producto)
             {
-                MateriaPrima mat = mp;
+                Producto prod = pro;
                 DataRow fila = dt.NewRow();
 
-                fila["Id"] = mat.Idmateria;
-                fila["Nombre"] = mat.Nombre;
-                fila["UnidadMed"] = mat.Unidadmed;
-                fila["Inventario"] = mat.Inventario;
-                fila["CostoMed"] = mat.Costomed;
-                fila["Status"] = mat.Status;
+                fila["Id"] = prod.Idproducto;
+                fila["Nombre"] = prod.Nombre;
+                fila["Precio"] = prod.Precioun;
+                fila["Descripcion"] = prod.Descripcion;
+                fila["Status"] = prod.Status;
                 dt.Rows.Add(fila);
             }
             dataGridView1.Rows.Clear();
@@ -78,28 +75,26 @@ namespace ProyectoTacos.Vistas
                 int num = dataGridView1.Rows.Add();
                 dataGridView1.Rows[num].Cells[0].Value = fila["Id"].ToString();
                 dataGridView1.Rows[num].Cells[1].Value = fila["Nombre"].ToString();
-                dataGridView1.Rows[num].Cells[2].Value = fila["Inventario"].ToString();
-                dataGridView1.Rows[num].Cells[3].Value = fila["UnidadMed"].ToString();
-                dataGridView1.Rows[num].Cells[4].Value = fila["CostoMed"].ToString();
-                dataGridView1.Rows[num].Cells[5].Value = fila["Status"].ToString();
+                dataGridView1.Rows[num].Cells[2].Value = fila["Precio"].ToString();
+                dataGridView1.Rows[num].Cells[3].Value = fila["Descripcion"].ToString();
+                dataGridView1.Rows[num].Cells[4].Value = fila["Status"].ToString();
             }
         }
 
         public void listarNombre()
         {
-            materiaP_bean.buscarnom();
-            lst_MateriaP = materiaP_bean.Lst_Materiap;
-            foreach (MateriaPrima mp in lst_MateriaP)
+            producto_bean.buscarnom();
+            lst_producto = producto_bean.Lst_Producto;
+            foreach (Producto pro in lst_producto)
             {
-                MateriaPrima mat = mp;
+                Producto prod = pro;
                 DataRow fila = dt.NewRow();
 
-                fila["Id"] = mat.Idmateria;
-                fila["Nombre"] = mat.Nombre;
-                fila["UnidadMed"] = mat.Unidadmed;
-                fila["Inventario"] = mat.Inventario;
-                fila["CostoMed"] = mat.Costomed;
-                fila["Status"] = mat.Status;
+                fila["Id"] = prod.Idproducto;
+                fila["Nombre"] = prod.Nombre;
+                fila["Precio"] = prod.Precioun;
+                fila["Descripcion"] = prod.Descripcion;
+                fila["Status"] = prod.Status;
                 dt.Rows.Add(fila);
             }
             dataGridView1.Rows.Clear();
@@ -109,10 +104,9 @@ namespace ProyectoTacos.Vistas
                 int num = dataGridView1.Rows.Add();
                 dataGridView1.Rows[num].Cells[0].Value = fila["Id"].ToString();
                 dataGridView1.Rows[num].Cells[1].Value = fila["Nombre"].ToString();
-                dataGridView1.Rows[num].Cells[2].Value = fila["Inventario"].ToString();
-                dataGridView1.Rows[num].Cells[3].Value = fila["UnidadMed"].ToString();
-                dataGridView1.Rows[num].Cells[4].Value = fila["CostoMed"].ToString();
-                dataGridView1.Rows[num].Cells[5].Value = fila["Status"].ToString();
+                dataGridView1.Rows[num].Cells[2].Value = fila["Precio"].ToString();
+                dataGridView1.Rows[num].Cells[3].Value = fila["Descripcion"].ToString();
+                dataGridView1.Rows[num].Cells[4].Value = fila["Status"].ToString();
             }
         }
 
@@ -121,9 +115,8 @@ namespace ProyectoTacos.Vistas
             dt = new DataTable();
             dt.Columns.Add("Id");
             dt.Columns.Add("Nombre");
-            dt.Columns.Add("Inventario");
-            dt.Columns.Add("UnidadMed");
-            dt.Columns.Add("CostoMed");
+            dt.Columns.Add("Precio");
+            dt.Columns.Add("Descripcion");
             dt.Columns.Add("Status");
         }
 
@@ -141,8 +134,6 @@ namespace ProyectoTacos.Vistas
                 listarAct();
                 button4.Text = "Todos";
             }
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -162,25 +153,25 @@ namespace ProyectoTacos.Vistas
                 {
                     if (param == "Nombre")
                     {
-                        this.materiaP_bean.Materiap.Nombre = txtBusqueda.Text;
+                        this.producto_bean.Prod.Nombre = txtBusqueda.Text;
                         tabla();
                         listarNombre();
                     }
                     else if (param == "Id")
                     {
-                        MateriaPrima materiap = new MateriaPrima();
-                        materiap.Idmateria = Convert.ToInt32(txtBusqueda.Text);
-                        this.materiaP_bean.Materiap.Idmateria = materiap.Idmateria;
-                        materiaP_bean.buscarid();
-                        materiap = materiaP_bean.Materiap;
-                        if (materiap == null)
+                        Producto producto = new Producto();
+                        producto.Idproducto = Convert.ToInt32(txtBusqueda.Text);
+                        this.producto_bean.Prod.Idproducto = producto.Idproducto;
+                        producto_bean.buscarid();
+                        producto = producto_bean.Prod;
+                        if (producto == null)
                         {
                             MessageBox.Show("No se encontraron registros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
                         }
                         else
                         {
-                            ModificarMateriaP mod = new ModificarMateriaP(materiap);
+                            ModificarProducto mod = new ModificarProducto(producto);
                             mod.ShowDialog();
                         }
                     }
@@ -190,12 +181,12 @@ namespace ProyectoTacos.Vistas
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MateriaPrima materiap = new MateriaPrima();
+            Producto producto = new Producto();
             int indice = dataGridView1.CurrentCell.RowIndex;
             DataGridViewRow selectedRow = dataGridView1.Rows[indice];
             string a = Convert.ToString(selectedRow.Cells["Id"].Value);
-            materiap.Idmateria = Convert.ToInt32(a);
-            ModificarMateriaP mod = new ModificarMateriaP(materiap);
+            producto.Idproducto = Convert.ToInt32(a);
+            ModificarProducto mod = new ModificarProducto(producto);
             mod.ShowDialog();
             tabla();
             listarAct();
@@ -203,57 +194,45 @@ namespace ProyectoTacos.Vistas
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            MateriaPrima materiap = new MateriaPrima();
+            Producto producto = new Producto();
             int indice = dataGridView1.CurrentCell.RowIndex;
             DataGridViewRow selectedRow = dataGridView1.Rows[indice];
             string a = Convert.ToString(selectedRow.Cells["Id"].Value);
-            materiap.Idmateria = Convert.ToInt32(a);
-            this.materiaP_bean.Materiap.Idmateria = materiap.Idmateria;
-            if (button3.Text=="Eliminar")
+            producto.Idproducto = Convert.ToInt32(a);
+            this.producto_bean.Prod.Idproducto = producto.Idproducto;
+            if (button3.Text == "Eliminar")
             {
-                materiaP_bean.buscarid();
-                materiap = materiaP_bean.Materiap;
-                if (materiap.Inventario == 0)
-                {
                     var resultado = MessageBox.Show("Seguro de eliminar este registro", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (resultado == DialogResult.Yes)
                     {
-                        materiaP_bean.eliminar();
+                    producto_bean.eliminar();
                         tabla();
                         listarAct();
                         button4.Text = "Todos";
                     }
-                }
-                else
-                {
-                    MessageBox.Show("No se puede eliminar si tiene inventario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                }
+                
             }
             else
             {
-                materiaP_bean.activar();
+                producto_bean.activar();
                 tabla();
                 listarAct();
                 button4.Text = "Todos";
                 button3.Text = "Eliminar";
             }
-            
         }
-
-
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            MateriaPrima materiap = new MateriaPrima();
+            Producto producto = new Producto();
             int indice = dataGridView1.CurrentCell.RowIndex;
             DataGridViewRow selectedRow = dataGridView1.Rows[indice];
             string a = Convert.ToString(selectedRow.Cells["Id"].Value);
-            materiap.Idmateria = Convert.ToInt32(a);
-            this.materiaP_bean.Materiap.Idmateria = materiap.Idmateria;
-            materiaP_bean.buscarid();
-            materiap = materiaP_bean.Materiap;
-            if (materiap.Status == 0)
+            producto.Idproducto = Convert.ToInt32(a);
+            this.producto_bean.Prod.Idproducto = producto.Idproducto;
+            producto_bean.buscarid();
+            producto = producto_bean.Prod;
+            if (producto.Status == 0)
             {
                 button3.Text = "Activar";
             }
@@ -263,20 +242,19 @@ namespace ProyectoTacos.Vistas
             }
         }
 
-
         private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
-                MateriaPrima materiap = new MateriaPrima();
+                Producto producto = new Producto();
                 int indice = dataGridView1.CurrentCell.RowIndex;
                 DataGridViewRow selectedRow = dataGridView1.Rows[indice];
                 string a = Convert.ToString(selectedRow.Cells["Id"].Value);
-                materiap.Idmateria = Convert.ToInt32(a);
-                this.materiaP_bean.Materiap.Idmateria = materiap.Idmateria;
-                materiaP_bean.buscarid();
-                materiap = materiaP_bean.Materiap;
-                if (materiap.Status == 0)
+                producto.Idproducto = Convert.ToInt32(a);
+                this.producto_bean.Prod.Idproducto = producto.Idproducto;
+                producto_bean.buscarid();
+                producto = producto_bean.Prod;
+                if (producto.Status == 0)
                 {
                     button3.Text = "Activar";
                 }

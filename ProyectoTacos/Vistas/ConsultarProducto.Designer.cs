@@ -1,6 +1,6 @@
 ﻿namespace ProyectoTacos.Vistas
 {
-    partial class ConsultarMateriaP
+    partial class ConsultarProducto
     {
         /// <summary>
         /// Required designer variable.
@@ -38,9 +38,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inventario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnidadMed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CostoMed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -64,7 +63,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(569, 328);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 1;
             // 
             // button4
             // 
@@ -135,9 +134,8 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Nombre,
-            this.Inventario,
-            this.UnidadMed,
-            this.CostoMed,
+            this.Precio,
+            this.Descripcion,
             this.Status});
             this.dataGridView1.Location = new System.Drawing.Point(9, 95);
             this.dataGridView1.MultiSelect = false;
@@ -165,29 +163,20 @@
             this.Nombre.ReadOnly = true;
             this.Nombre.Width = 69;
             // 
-            // Inventario
+            // Precio
             // 
-            this.Inventario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Inventario.HeaderText = "Inventario";
-            this.Inventario.Name = "Inventario";
-            this.Inventario.ReadOnly = true;
-            this.Inventario.Width = 79;
+            this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Width = 62;
             // 
-            // UnidadMed
+            // Descripcion
             // 
-            this.UnidadMed.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.UnidadMed.HeaderText = "UnidadMed";
-            this.UnidadMed.Name = "UnidadMed";
-            this.UnidadMed.ReadOnly = true;
-            this.UnidadMed.Width = 87;
-            // 
-            // CostoMed
-            // 
-            this.CostoMed.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.CostoMed.HeaderText = "CostoMed";
-            this.CostoMed.Name = "CostoMed";
-            this.CostoMed.ReadOnly = true;
-            this.CostoMed.Width = 80;
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
             // 
             // Status
             // 
@@ -201,11 +190,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label1.Location = new System.Drawing.Point(85, 26);
+            this.label1.Location = new System.Drawing.Point(131, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(359, 26);
+            this.label1.Size = new System.Drawing.Size(321, 26);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Tabla de Consulta de Materia Prima";
+            this.label1.Text = "Tabla de Consulta de Productos";
             // 
             // pictureBox1
             // 
@@ -219,15 +208,15 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // ConsultarMateriaP
+            // ConsultarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(575, 333);
+            this.ClientSize = new System.Drawing.Size(575, 335);
             this.Controls.Add(this.panel1);
-            this.Name = "ConsultarMateriaP";
-            this.Text = "ConsultarMateriaP";
+            this.Name = "ConsultarProducto";
+            this.Text = "ConsultarProducto";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -239,6 +228,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button3;
@@ -249,10 +239,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Inventario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CostoMed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.Button button4;
     }
 }

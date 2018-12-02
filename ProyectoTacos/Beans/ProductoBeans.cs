@@ -154,6 +154,21 @@ namespace ProyectoTacos.Beans
                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public void registraruson()
+        {
+            ProductoDAO prodDao;
+            try
+            {
+                    prodDao = new ProductoDAO();
+                    prodDao.registraruso(usom);
+                
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error!!!" + ex.Number + "Ha ocurrido: " + ex.Message,
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         public void ultimo()
         {
@@ -167,6 +182,66 @@ namespace ProyectoTacos.Beans
             {
                 MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void listaring()
+        {
+            ProductoDAO prodDao;
+            try
+            {
+                prodDao = new ProductoDAO();
+                Lst_Uso = prodDao.listaingred(prod);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                   "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void buscarm()
+        {
+            ProductoDAO prodDao;
+            try
+            {
+                prodDao = new ProductoDAO();
+                Usom = prodDao.buscarm(Usom);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                   "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void modificaruso()
+        {
+            ProductoDAO prodDao;
+            try
+            {
+                prodDao = new ProductoDAO();
+                prodDao.modificaruso(usom);
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error!!!" + ex.Number + "Ha ocurrido: " + ex.Message,
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void eliminaruso()
+        {
+            ProductoDAO prodDao;
+            try
+            {
+                prodDao = new ProductoDAO();
+                prodDao.eliminaruso(usom);
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error!!!" + ex.Number + "Ha ocurrido: " + ex.Message,
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

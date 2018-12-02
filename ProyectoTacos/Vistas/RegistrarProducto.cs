@@ -53,7 +53,7 @@ namespace ProyectoTacos.Vistas
                 carga_reg();
                 IngredientesProd igp = new IngredientesProd(producto);
                 igp.Show();
-                //limpiar();
+                limpiar();
             }
         }
 
@@ -78,6 +78,42 @@ namespace ProyectoTacos.Vistas
         private void button3_Click(object sender, EventArgs e)
         {
             limpiar();
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+
+            {
+                e.Handled = true;
+
+                return;
+
+            }
+        }
+
+        private void txtDescripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && !char.IsWhiteSpace(e.KeyChar))
+
+            {
+                e.Handled = true;
+
+                return;
+
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && !char.IsWhiteSpace(e.KeyChar))
+
+            {
+                e.Handled = true;
+
+                return;
+
+            }
         }
     }
 
