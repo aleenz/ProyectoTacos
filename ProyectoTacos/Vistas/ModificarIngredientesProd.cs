@@ -35,7 +35,6 @@ namespace ProyectoTacos.Vistas
             this.producto_bean.Prod.Idproducto = producto.Idproducto;
             producto_bean.listaring();
             lst_uso = producto_bean.Lst_Uso;
-            int i = 0;
             foreach (Usomateria uso in lst_uso)
             {
                 Usomateria usomat = uso;
