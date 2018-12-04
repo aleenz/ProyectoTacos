@@ -21,9 +21,9 @@ namespace ProyectoTacos.DAO
                 string SQL;
                 conectar();
                 SQL = "Insert into proveedor(RFC,nombre,correo," +
-                    "telefono,materiap, calle,colonia,cp,numero,status) values (" +
-                    "@RFC,@nombre,@correo,@telefono,@materiap,@calle,@numero,@colonia,@cp," +
-                    "@status)";
+                    "materiap, calle,cp,status,numero,telefono,colonia) values (" +
+                    "@RFC,@nombre,@correo,@materiap,@calle,@cp,@status,@numero,@telefono," +
+                    "@colonia)";
                 Con.Open();
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;
@@ -154,9 +154,6 @@ namespace ProyectoTacos.DAO
                         prov.Status = rdr.GetInt32(7);
                         prov.Numero = rdr.GetInt32(8);
                         lista.Add(prov);
-
-
-                        ;
                     }
                 }
                 Con.Close();
