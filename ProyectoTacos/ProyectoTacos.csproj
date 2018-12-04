@@ -155,6 +155,12 @@
     <Compile Include="Vistas\ModificarUsuarios.Designer.cs">
       <DependentUpon>ModificarUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\RealizarReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\RealizarReportes.Designer.cs">
+      <DependentUpon>RealizarReportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\RegistrarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,24 @@
     </Compile>
     <Compile Include="Vistas\RegistrarUsuario.Designer.cs">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ReporteFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ReporteFacturas.Designer.cs">
+      <DependentUpon>ReporteFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ReporteProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ReporteProducto.Designer.cs">
+      <DependentUpon>ReporteProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ReporteVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ReporteVentas.Designer.cs">
+      <DependentUpon>ReporteVentas.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Vistas\Acceso.resx">
       <DependentUpon>Acceso.cs</DependentUpon>
@@ -231,6 +255,9 @@
     <EmbeddedResource Include="Vistas\ModificarUsuarios.resx">
       <DependentUpon>ModificarUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\RealizarReportes.resx">
+      <DependentUpon>RealizarReportes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegistrarCliente.resx">
       <DependentUpon>RegistrarCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +266,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegistrarProducto.resx">
       <DependentUpon>RegistrarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ReporteFacturas.resx">
+      <DependentUpon>ReporteFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ReporteProducto.resx">
+      <DependentUpon>ReporteProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ReporteVentas.resx">
+      <DependentUpon>ReporteVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegistrarProveedor.resx">
       <DependentUpon>RegistrarProveedor.cs</DependentUpon>
