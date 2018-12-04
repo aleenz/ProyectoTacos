@@ -19,9 +19,10 @@ namespace ProyectoTacos.Vistas
         List<provedoor> lst_prov = new List<provedoor>();
         ProveedorBeans ProvedorBeans = new ProveedorBeans();
         DataTable dt = new DataTable();
-        public ConsultaProveedor()
+        public Main main;
+        public ConsultaProveedor(Main main)
         {
-
+            this.main = main;
             InitializeComponent();
             tabla();
             listarAct();
@@ -250,10 +251,10 @@ namespace ProyectoTacos.Vistas
             DataGridViewRow selectedRow = dataGridView1.Rows[indice];
             string a = Convert.ToString(selectedRow.Cells["idProv"].Value);
             prove.Idproveedo = Convert.ToInt32(a);
-            ModificarProveedor modp = new ModificarProveedor(prove);
-            modp.ShowDialog();
-            tabla();
-            listarAct();
+            ModificarProveedor modp = new ModificarProveedor(prove,this);
+            main.abrirForm(modp);
+            this.Hide();
+           
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -264,7 +265,7 @@ namespace ProyectoTacos.Vistas
             string a = Convert.ToString(selectedRow.Cells["idProv"].Value);
             prove.Idproveedo = Convert.ToInt32(a);
             this.ProvedorBeans.Provedor.Idproveedo = prove.Idproveedo;
-            if (button3.Text == "Eliminar")
+            if (button3.Text == "erase")
             {
                 ProvedorBeans.buscarid();
                 prove = ProvedorBeans.Provedor;
@@ -283,7 +284,7 @@ namespace ProyectoTacos.Vistas
                 tabla();
                 listarAct();
                 button4.Text = "Show all";
-                button3.Text = "Eliminar";
+                button3.Text = "erase";
             }
 
         }
@@ -303,7 +304,7 @@ namespace ProyectoTacos.Vistas
             }
             else
             {
-                button3.Text = "Eliminar";
+                button3.Text = "erase";
             }
         }
 
@@ -320,7 +321,7 @@ namespace ProyectoTacos.Vistas
 
         private void button4_Click_2(object sender, EventArgs e)
         {
-            if (button4.Text == "Show all")
+            if (button4.Text == "Todos")
             {
                 tabla();
                 listar();
@@ -330,7 +331,7 @@ namespace ProyectoTacos.Vistas
             {
                 tabla();
                 listarAct();
-                button4.Text = "Show all";
+                button4.Text = "Todos";
             }
 
         }
@@ -379,7 +380,7 @@ namespace ProyectoTacos.Vistas
                 //tabla();
                 //listarAct();
                 //button4.Text = "Show all";
-                //button3.Text = "Eliminar";
+                //button3.Text = "erase";
             }
         }
 
@@ -401,7 +402,7 @@ namespace ProyectoTacos.Vistas
                 }
                 else
                 {
-                    button3.Text = "Eliminar";
+                    button3.Text = "erase";
                 }
             }
         }
@@ -413,9 +414,15 @@ namespace ProyectoTacos.Vistas
 
         private void BTNAgregar_Click(object sender, EventArgs e)
         {
-            RegistrarProvedor rp = new RegistrarProvedor();
-            rp.Show();
+            RegistrarProvedor form = new RegistrarProvedor(this);
+            main.abrirForm(form);
+            this.Hide();
+        }
 
+        public void actualizar()
+        {
+            tabla();
+            listarAct();
         }
     }
 }

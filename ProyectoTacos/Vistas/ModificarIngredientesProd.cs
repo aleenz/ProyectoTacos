@@ -22,13 +22,15 @@ namespace ProyectoTacos.Vistas
         List<Usomateria> lst_uso = new List<Usomateria>();
         List<Usomateria> lst_uso2 = new List<Usomateria>();
         DataTable dt = new DataTable();
+        ModificarProducto form;
         int idprod;
         public ModificarIngredientesProd()
         {
             InitializeComponent();
         }
-        public ModificarIngredientesProd(Producto pro) : this()
+        public ModificarIngredientesProd(Producto pro, ModificarProducto form) : this()
         {
+            this.form = form;
             this.producto = pro;
             pictureBox2.Image = producto.Foto.Image;
             label5.Text = producto.Nombre;
@@ -156,7 +158,8 @@ namespace ProyectoTacos.Vistas
                 }
                 
                 this.Close();
-                
+                form.frm.actualizar();
+                form.frm.main.abrirForm(form.frm);
             }
         }
 
@@ -184,6 +187,8 @@ namespace ProyectoTacos.Vistas
         private void btmCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+            form.frm.actualizar();
+            form.frm.main.abrirForm(form.frm);
         }
 
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)

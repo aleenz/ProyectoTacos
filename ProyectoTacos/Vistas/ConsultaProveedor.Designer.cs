@@ -49,9 +49,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.BTNAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -71,9 +73,9 @@
             this.Numero,
             this.CP,
             this.Status});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 143);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 83);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(957, 246);
+            this.dataGridView1.Size = new System.Drawing.Size(728, 246);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp_1);
@@ -145,38 +147,38 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Name",
             "Id"});
-            this.comboBox1.Location = new System.Drawing.Point(97, 61);
+            this.comboBox1.Location = new System.Drawing.Point(411, 54);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 1;
-            this.comboBox1.Text = "Search by";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(275, 62);
+            this.textBox1.Location = new System.Drawing.Point(538, 56);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(199, 20);
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(408, 59);
+            this.button1.Location = new System.Drawing.Point(749, 54);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
-            this.button1.Text = "Search";
+            this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(518, 59);
+            this.button2.Location = new System.Drawing.Point(749, 83);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -187,21 +189,21 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.SystemColors.Control;
-            this.button3.Location = new System.Drawing.Point(708, 59);
+            this.button3.Location = new System.Drawing.Point(749, 141);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 5;
-            this.button3.Text = "Eliminar";
+            this.button3.Text = "Desactivar";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(616, 104);
+            this.button4.Location = new System.Drawing.Point(749, 273);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 6;
-            this.button4.Text = "Show all";
+            this.button4.Text = "Todos";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click_2);
             // 
@@ -209,18 +211,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label1.Location = new System.Drawing.Point(241, 12);
+            this.label1.Location = new System.Drawing.Point(85, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(211, 26);
+            this.label1.Size = new System.Drawing.Size(346, 26);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Consultar Proveedor";
+            this.label1.Text = "Tabla de Consulta de Proveedores";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = global::ProyectoTacos.Properties.Resources.logo1;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(70, 70);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -230,7 +232,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.SystemColors.Control;
-            this.button5.Location = new System.Drawing.Point(616, 60);
+            this.button5.Location = new System.Drawing.Point(749, 112);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 12;
@@ -238,12 +240,31 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Controls.Add(this.BTNAgregar);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(837, 339);
+            this.panel1.TabIndex = 13;
+            // 
             // BTNAgregar
             // 
-            this.BTNAgregar.Location = new System.Drawing.Point(932, 12);
+            this.BTNAgregar.Location = new System.Drawing.Point(791, 6);
             this.BTNAgregar.Name = "BTNAgregar";
             this.BTNAgregar.Size = new System.Drawing.Size(33, 23);
-            this.BTNAgregar.TabIndex = 18;
+            this.BTNAgregar.TabIndex = 17;
             this.BTNAgregar.Text = "+";
             this.BTNAgregar.UseVisualStyleBackColor = true;
             this.BTNAgregar.Click += new System.EventHandler(this.BTNAgregar_Click);
@@ -252,25 +273,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 396);
-            this.Controls.Add(this.BTNAgregar);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.BackColor = System.Drawing.Color.Orange;
+            this.ClientSize = new System.Drawing.Size(861, 363);
+            this.Controls.Add(this.panel1);
             this.Name = "ConsultaProveedor";
             this.Text = "ConsultaProveedor";
             this.Load += new System.EventHandler(this.ConsultaProveedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -297,6 +310,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn CP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BTNAgregar;
     }
 }

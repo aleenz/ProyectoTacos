@@ -16,12 +16,14 @@ namespace ProyectoTacos.Vistas
     {
         Producto producto = new Producto();
         ProductoBeans producto_bean = new ProductoBeans();
+        public ConsultarProducto frm;
         public ModificarProducto()
         {
             InitializeComponent();
         }
-        public ModificarProducto(Producto pro) : this()
+        public ModificarProducto(Producto pro, ConsultarProducto frm) : this()
         {
+            this.frm = frm;
             this.producto = pro;
             this.producto_bean.Prod.Idproducto = producto.Idproducto;
             producto_bean.buscarid();
@@ -71,8 +73,9 @@ namespace ProyectoTacos.Vistas
             else
             {
                 carga_reg();
-                ModificarIngredientesProd igp = new ModificarIngredientesProd(producto);
-                igp.Show();
+                ModificarIngredientesProd igp = new ModificarIngredientesProd(producto,this);
+                this.Hide();
+                frm.main.abrirForm(igp);
                 igp.FormClosing += Formed_Closing;
             }
         }
@@ -139,6 +142,8 @@ namespace ProyectoTacos.Vistas
         private void button3_Click_1(object sender, EventArgs e)
         {
             this.Close();
+            frm.actualizar();
+            frm.main.abrirForm(frm);
         }
     }
 }

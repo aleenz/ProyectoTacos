@@ -412,5 +412,35 @@
   <ItemGroup>
     <None Include="Resources\tacosbg.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nodisp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\empleado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\materiap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pedido.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pedidosmp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\productos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\proveedor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reportes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuarios.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -41,9 +41,15 @@ namespace ProyectoTacos.Vistas
 
             foreach (Producto p in lista)
             {
-                
+                Image img;
 
-                ItemProducto item = new ItemProducto(this, p.Nombre, "$"+p.Precioun, p.Idproducto, ProyectoTacos.Properties.Resources.tacos1 , new Point(x, y));
+                if (p.Foto != null)
+                {
+                    Console.WriteLine("yaaay");
+                    img = p.Foto.Image;
+                }
+                else img = ProyectoTacos.Properties.Resources.nodisp;
+                ItemProducto item = new ItemProducto(this, p.Nombre, "$"+p.Precioun, p.Idproducto, img , new Point(x, y));
 
                 if (x == 730)
                 {

@@ -78,7 +78,12 @@ namespace ProyectoTacos.DAO
                         producto.Nombre = rdr.GetString(1);
                         producto.Descripcion = rdr.GetString(2);
                         producto.Precioun = rdr.GetDouble(3);
-                     //   producto.Foto = rdr.GetBytes(4); //Generar fotos para busqueda
+                        if (!rdr["foto"].Equals(DBNull.Value))
+                        {
+                            MemoryStream ms = new MemoryStream((byte[])rdr["foto"]);
+                            producto.Foto = new PictureBox();
+                            producto.Foto.Image = new Bitmap(ms);
+                        }
                         producto.Status = rdr.GetInt32(5);
                         lista.Add(producto);
                     }
@@ -118,7 +123,12 @@ namespace ProyectoTacos.DAO
                         producto.Nombre = rdr.GetString(1);
                         producto.Descripcion = rdr.GetString(2);
                         producto.Precioun = rdr.GetDouble(3);
-                        //   producto.Foto = rdr.GetBytes(4); //Generar fotos para busqueda
+                        if (!rdr["foto"].Equals(DBNull.Value))
+                        {
+                            MemoryStream ms = new MemoryStream((byte[])rdr["foto"]);
+                            producto.Foto = new PictureBox();
+                            producto.Foto.Image = new Bitmap(ms);
+                        }
                         producto.Status = rdr.GetInt32(5);
                         lista.Add(producto);
                     }
@@ -204,7 +214,12 @@ namespace ProyectoTacos.DAO
                         producto.Nombre = rdr.GetString(1);
                         producto.Descripcion = rdr.GetString(2);
                         producto.Precioun = rdr.GetDouble(3);
-                        //   producto.Foto = rdr.GetBytes(4); //Generar fotos para busqueda
+                        if (!rdr["foto"].Equals(DBNull.Value))
+                        {
+                            MemoryStream ms = new MemoryStream((byte[])rdr["foto"]);
+                            producto.Foto = new PictureBox();
+                            producto.Foto.Image = new Bitmap(ms);
+                        }
                         producto.Status = rdr.GetInt32(5);
                         lista.Add(producto);
                     }
