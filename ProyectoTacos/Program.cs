@@ -16,7 +16,7 @@ namespace ProyectoTacos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ConsultarProducto());
+            Application.Run(new RealizarReportes());
         }
     }
 }

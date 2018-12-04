@@ -17,8 +17,6 @@ namespace ProyectoTacos.Vistas
         String fecha;
         String[] solofecha;
         ReportesBeans repBeans = new ReportesBeans();
-        ProductoBeans pBeans = new ProductoBeans();
-        Producto producto = new Producto();
         List<Pedidos> lst_pedido = new List<Pedidos>();
         DataTable dt = new DataTable();
         public ReporteFacturas()
@@ -49,7 +47,9 @@ namespace ProyectoTacos.Vistas
                 DataRow fila = dt.NewRow();
 
                 fila["Id"] = pedi.Idpedido;
-                fila["Fecha"] = pedi.Fecha;
+                fecha = Convert.ToString(pedi.Fecha);
+                solofecha = fecha.Split(' ');
+                fila["Fecha"] = solofecha[0];
                 fila["Idproveedor"] = pedi.Idproveedor;
                 fila["Total"] = pedi.Total;
                 if (pedi.Status==1)
@@ -79,7 +79,8 @@ namespace ProyectoTacos.Vistas
         public void tabla()
         {
             dt = new DataTable();
-            dt.Columns.Add("Nombre");
+            dt.Columns.Add("Id");
+            dt.Columns.Add("Fecha");
             dt.Columns.Add("Cantidad");
             dt.Columns.Add("Idproveedor");
             dt.Columns.Add("Total");
@@ -91,5 +92,15 @@ namespace ProyectoTacos.Vistas
             this.Close();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Pedidos ped = new Pedidos();
+            int indice = dataGridView1.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[indice];
+            string a = Convert.ToString(selectedRow.Cells["Id"].Value);
+            ped.Idpedido = Convert.ToInt32(a);
+            ReporteDetallePedido rp = new ReporteDetallePedido(ped);
+            rp.Show();
+        }
     }
 }

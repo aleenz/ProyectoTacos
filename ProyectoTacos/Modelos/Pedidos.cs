@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoTacos.Modelos
 {
-    class Pedidos
+  public  class Pedidos
 
 
     {
