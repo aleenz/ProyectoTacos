@@ -1,4 +1,5 @@
-﻿using ProyectoTacos.Modelos;
+﻿using ProyectoTacos.Beans;
+using ProyectoTacos.Modelos;
 using ProyectoTacos.Prefabs;
 using System;
 using System.Collections.Generic;
@@ -26,10 +27,23 @@ namespace ProyectoTacos.Vistas
 
         private void Agregar_producto_Load(object sender, EventArgs e)
         {
-            for (int i = 1; i < 31; i++)
+
+            ProductoBeans pbeans = new ProductoBeans();
+            int disp = pbeans.verificarDisponibilidad(prod);
+            if(disp > 0)
             {
-                CBXCantidad.Items.Add(i);
+                for (int i = 1; i <= disp; i++)
+                {
+                    CBXCantidad.Items.Add(i);
+                }
             }
+            else
+            {
+                MessageBox.Show("Lo sentimos, este producto no se encuentra disponible");
+                this.Close();
+                return;
+            }
+            
             CBXCantidad.SelectedIndex = 0;
 
             pictureBox1.Image = ProyectoTacos.Properties.Resources.tacos1;

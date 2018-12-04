@@ -75,12 +75,35 @@ namespace ProyectoTacos.Vistas
             VentaBeans v_beans = new VentaBeans();
             Error er = v_beans.registrar(v);
             if (er != null) MessageBox.Show(er.Descripcion);
-
+            quitarInventario();
             Main.carrito = new List<ProductoVenta>();
             Main.dinero.Text = "0";
 
             this.Close();
             
+            
+        }
+
+        private void quitarInventario()
+        {
+            foreach (ProductoVenta pv in Main.carrito)
+            {
+                Producto p = pv.Producto;
+                ProductoBeans p_b = new ProductoBeans();
+                p_b.Prod = p;
+                p_b.listaring();
+                List<Usomateria> lista = p_b.Lst_Uso;
+                List<Usomateria> nueva = new List<Usomateria>();
+                
+               foreach(Usomateria uso in lista)
+                {
+                    Usomateria nuevo = uso;
+                    nuevo.Cantidad = nuevo.Cantidad * pv.Cantidad;
+                    nueva.Add(nuevo);
+                }
+                MateriapBeans m_beans = new MateriapBeans();
+                m_beans.quitarInventario(nueva);
+            }
 
         }
     }

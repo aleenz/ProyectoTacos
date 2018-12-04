@@ -71,6 +71,8 @@ namespace ProyectoTacos.Vistas
 
         public void dibujar()
         {
+            
+
             Panel barraArriba = new Panel();
             barraArriba.Size = new Size(this.Size.Width, 50);
             barraArriba.Location = new Point(0, 0);
@@ -78,11 +80,21 @@ namespace ProyectoTacos.Vistas
             barraArriba.Parent = this;
             barraArriba.Show();
 
+            Label cerrarSesion = new Label();
+            cerrarSesion.Size = new Size(100, 15);
+            cerrarSesion.Location = new Point(10,15);
+            cerrarSesion.Text = "Cerrar Sesión";
+            cerrarSesion.ForeColor = Color.White;
+            cerrarSesion.Font = new Font("Arial", 9f);
+            cerrarSesion.Click += new EventHandler(cerrarSesionM);
+            cerrarSesion.Parent = barraArriba;
+            cerrarSesion.TextAlign = ContentAlignment.MiddleCenter;
+            cerrarSesion.Show();
 
             Label titulo = new Label();
             titulo.Size = new Size(this.Size.Width / 3,45);
             titulo.Location = new Point((this.Size.Width / 2) - ((this.Size.Width / 3) / 2));
-            titulo.Text = "Bienvenido a la taqueria el chancho contento";
+            titulo.Text = "Bienvenido a la taquería \"Los Chanchos a domicilio\"";
             titulo.ForeColor = Color.White;
             titulo.Font = new Font("Arial", 14f);
             titulo.Parent = barraArriba;
@@ -173,7 +185,10 @@ namespace ProyectoTacos.Vistas
 
         private void pagar(object sender, EventArgs e)
         {
-            abrirForm(new Subtotal());
+            if (Main.dinero.Text != "0")
+                abrirForm(new Subtotal());
+            else
+                MessageBox.Show("Debe agregar un producto primero");
         }
 
         private void cambiarImagen(object sender, EventArgs e)
@@ -207,6 +222,13 @@ namespace ProyectoTacos.Vistas
             actual.Location = new Point(posx, posy);
            
             actual.Show();
+        }
+
+
+        public void cerrarSesionM(object sender, EventArgs e)
+        {
+            Usuario.Activo = null;
+            Application.Restart();
         }
 
 

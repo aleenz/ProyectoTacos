@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using ProyectoTacos.DAO;
 using ProyectoTacos.Modelos;
 using System.Windows.Forms;
+using ProyectoTacos.Prefabs;
 
 namespace ProyectoTacos.Beans
 {
@@ -243,6 +244,24 @@ namespace ProyectoTacos.Beans
                 MessageBox.Show("Error!!!" + ex.Number + "Ha ocurrido: " + ex.Message,
                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public int verificarDisponibilidad(Producto pv)
+        {
+            ProductoDAO prodDao;
+            int disp = 0;
+            try
+            {
+                prodDao = new ProductoDAO();
+                disp = prodDao.verificarDisponibilidad(pv);
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error!!!" + ex.Number + "Ha ocurrido: " + ex.Message,
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return disp;
         }
     }
 }
