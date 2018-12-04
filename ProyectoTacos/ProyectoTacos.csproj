@@ -49,6 +49,7 @@
     <Compile Include="Beans\ClienteBeans.cs" />
     <Compile Include="Beans\EmpleadoBeans.cs" />
     <Compile Include="Beans\MateriapBeans.cs" />
+    <Compile Include="Beans\PedidoBeans.cs" />
     <Compile Include="Beans\PersonaBeans.cs" />
     <Compile Include="Beans\ProductoBeans.cs" />
     <Compile Include="Beans\ProveedorBeans.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="DAO\ConexionDAO.cs" />
     <Compile Include="DAO\EmpleadoDAO.cs" />
     <Compile Include="DAO\MateriapDAO.cs" />
+    <Compile Include="DAO\PedidiosDao.cs" />
     <Compile Include="DAO\PersonaDAO.cs" />
     <Compile Include="DAO\ProductoDAO.cs" />
     <Compile Include="DAO\ProveedorDAO.cs" />
@@ -125,6 +127,12 @@
     </Compile>
     <Compile Include="Vistas\ConsultarMateriaP.Designer.cs">
       <DependentUpon>ConsultarMateriaP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ConsultarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ConsultarPedido.designer.cs">
+      <DependentUpon>ConsultarPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ConsultarProducto.cs">
       <SubType>Form</SubType>
@@ -209,6 +217,12 @@
     </Compile>
     <Compile Include="Vistas\RegistrarMateriaP.Designer.cs">
       <DependentUpon>RegistrarMateriaP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Registrarpedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Registrarpedido.designer.cs">
+      <DependentUpon>Registrarpedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\RegistrarProducto.cs">
       <SubType>Form</SubType>
@@ -295,6 +309,9 @@
     <EmbeddedResource Include="Vistas\ConsultarMateriaP.resx">
       <DependentUpon>ConsultarMateriaP.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ConsultarPedido.resx">
+      <DependentUpon>ConsultarPedido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ConsultarProducto.resx">
       <DependentUpon>ConsultarProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegistrarMateriaP.resx">
       <DependentUpon>RegistrarMateriaP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Registrarpedido.resx">
+      <DependentUpon>Registrarpedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegistrarProducto.resx">
       <DependentUpon>RegistrarProducto.cs</DependentUpon>

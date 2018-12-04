@@ -34,7 +34,7 @@ namespace ProyectoTacos.Vistas
             formsMenu[0] = new Ventas_Catalogo();
             formsMenu[1] = new ConsultarProducto(this);
             formsMenu[2] = new ConsultaCliente(this);
-            formsMenu[3] = new Form();//pedidos
+            formsMenu[3] = new ConsultarPedido();
             formsMenu[4] = new ConsultaUsuarios(this);
             formsMenu[5] = new ConsultaEmpleado(this);
             formsMenu[6] = new ConsultaProveedor(this);
