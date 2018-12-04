@@ -305,5 +305,13 @@ namespace ProyectoTacos.Vistas
         {
             txtBusqueda.Text = null;
         }
+
+        private void BTNAgregar_Click(object sender, EventArgs e)
+        {
+            RegistrarProducto rp = new RegistrarProducto();
+            rp.Show();
+            tabla();
+            listarAct();
+        }
     }
 }

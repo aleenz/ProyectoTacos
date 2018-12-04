@@ -43,6 +43,7 @@
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.BTNAgregar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -51,6 +52,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.BTNAgregar);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.txtBusqueda);
             this.panel1.Controls.Add(this.comboBox1);
@@ -208,6 +210,16 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
+            // BTNAgregar
+            // 
+            this.BTNAgregar.Location = new System.Drawing.Point(520, 12);
+            this.BTNAgregar.Name = "BTNAgregar";
+            this.BTNAgregar.Size = new System.Drawing.Size(33, 23);
+            this.BTNAgregar.TabIndex = 18;
+            this.BTNAgregar.Text = "+";
+            this.BTNAgregar.UseVisualStyleBackColor = true;
+            this.BTNAgregar.Click += new System.EventHandler(this.BTNAgregar_Click);
+            // 
             // ConsultarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,5 +254,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.Button BTNAgregar;
     }
 }
