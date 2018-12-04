@@ -82,7 +82,7 @@ namespace ProyectoTacos.Vistas
             Label titulo = new Label();
             titulo.Size = new Size(this.Size.Width / 3,45);
             titulo.Location = new Point((this.Size.Width / 2) - ((this.Size.Width / 3) / 2));
-            titulo.Text = "Bienvenido a la taqueria el chancho contento";
+            titulo.Text = "Bienvenido a la taqueria Los Chanchos a domicilio";
             titulo.ForeColor = Color.White;
             titulo.Font = new Font("Arial", 14f);
             titulo.Parent = barraArriba;
