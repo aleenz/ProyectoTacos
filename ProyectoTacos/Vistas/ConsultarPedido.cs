@@ -266,6 +266,12 @@ namespace ProyectoTacos.Vistas
 
             }
         }
+
+        private void BTNAgregar_Click(object sender, EventArgs e)
+        {
+            Registrarpedido rp = new Registrarpedido();
+            rp.Show();
+        }
     }
 }
 

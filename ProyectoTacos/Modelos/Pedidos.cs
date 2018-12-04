@@ -13,7 +13,7 @@ namespace ProyectoTacos.Modelos
         private int idpedido;
         private DateTime fecha;
         private DateTime fecharec;
-        private int status;
+        private string status;
         private int idproveedor;
         private int idempleado;
         private Double total;
@@ -26,7 +26,7 @@ namespace ProyectoTacos.Modelos
 
 
         public int Idpedido { get => idpedido; set => idpedido = value; }
-        public int Status { get => status; set => status = value; }
+        public string Status { get => status; set => status = value; }
         public int Idproveedor { get => idproveedor; set => idproveedor = value; }
         public int Idempleado { get => idempleado; set => idempleado = value; }
         public DateTime Fecha { get => fecha; set => fecha = value; }

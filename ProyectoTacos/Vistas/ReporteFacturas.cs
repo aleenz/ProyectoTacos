@@ -52,7 +52,7 @@ namespace ProyectoTacos.Vistas
                 fila["Fecha"] = solofecha[0];
                 fila["Idproveedor"] = pedi.Idproveedor;
                 fila["Total"] = pedi.Total;
-                if (pedi.Status==1)
+                if (pedi.Status=="1")
                 {
                     fila["Status"] = "Por pagar";
                 }

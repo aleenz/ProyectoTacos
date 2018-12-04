@@ -43,6 +43,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.BTNAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -167,11 +168,22 @@
             this.label2.TabIndex = 26;
             this.label2.Text = "Buscar por ID:";
             // 
+            // BTNAgregar
+            // 
+            this.BTNAgregar.Location = new System.Drawing.Point(626, 178);
+            this.BTNAgregar.Name = "BTNAgregar";
+            this.BTNAgregar.Size = new System.Drawing.Size(33, 23);
+            this.BTNAgregar.TabIndex = 27;
+            this.BTNAgregar.Text = "+";
+            this.BTNAgregar.UseVisualStyleBackColor = true;
+            this.BTNAgregar.Click += new System.EventHandler(this.BTNAgregar_Click);
+            // 
             // ConsultarPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BTNAgregar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
@@ -206,5 +218,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button BTNAgregar;
     }
 }
