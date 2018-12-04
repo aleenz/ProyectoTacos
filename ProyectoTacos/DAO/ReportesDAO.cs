@@ -14,15 +14,16 @@ namespace ProyectoTacos.DAO
     {
         SqlCommand cmd = new SqlCommand();
 
-        public List<MateriaPrima> listar()
+        //Listar ventas por fecha
+        public List<Venta> listarVentas(DateTime fecha1, DateTime fecha2)
         {
-            List<MateriaPrima> lista = new List<MateriaPrima>();
+            List<Venta> lista = new List<Venta>();
             SqlDataReader rdr;
             try
             {
                 string SQL;
                 conectar();
-                SQL = "SELECT * FROM materiaprima";
+                SQL = "SELECT * FROM venta WHERE fecha BETWEEN '" + fecha1 + "' AND '" + fecha2 + "' AND status = 1";
                 Con.Open();
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;
@@ -31,14 +32,12 @@ namespace ProyectoTacos.DAO
                 {
                     while (rdr.Read())
                     {
-                        MateriaPrima matep = new MateriaPrima();
-                        matep.Idmateria = rdr.GetInt32(0);
-                        matep.Nombre = rdr.GetString(1);
-                        matep.Unidadmed = rdr.GetString(2);
-                        matep.Inventario = rdr.GetInt32(3);
-                        matep.Costomed = rdr.GetDouble(4);
-                        matep.Status = rdr.GetInt32(5);
-                        lista.Add(matep);
+                        Venta venta = new Venta();
+                        venta.Idventa = rdr.GetInt32(0);
+                        venta.Status = Convert.ToInt32(rdr.GetString(1));
+                        venta.Fecha = rdr.GetDateTime(2);
+                        venta.Total = rdr.GetDouble(3);
+                        lista.Add(venta);
                     }
                 }
                 Con.Close();
@@ -55,15 +54,15 @@ namespace ProyectoTacos.DAO
             return lista;
         }
 
-        public MateriaPrima buscarid(MateriaPrima matp)
+        public List<Partida> listarPartida(Venta venta)
         {
-            MateriaPrima materiap = null;
+            List<Partida> lista = new List<Partida>();
             SqlDataReader rdr;
             try
             {
                 string SQL;
                 conectar();
-                SQL = "SELECT * FROM materiaprima WHERE idmateria='" + matp.Idmateria + "'";
+                SQL = "SELECT p.idproducto, p.nombre, d.cantidad, d.costo FROM partida d INNER JOIN producto p ON d.idproducto = p.idproducto where d.idventa='" + venta.Idventa + "'";
                 Con.Open();
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;
@@ -72,13 +71,12 @@ namespace ProyectoTacos.DAO
                 {
                     while (rdr.Read())
                     {
-                        materiap = new MateriaPrima();
-                        materiap.Idmateria = rdr.GetInt32(0);
-                        materiap.Nombre = rdr.GetString(1);
-                        materiap.Unidadmed = rdr.GetString(2);
-                        materiap.Inventario = rdr.GetInt32(3);
-                        materiap.Costomed = rdr.GetDouble(4);
-                        materiap.Status = rdr.GetInt32(5);
+                        Partida partida = new Partida();
+                        partida.Idproducto = rdr.GetInt32(0);
+                        partida.Nombre = rdr.GetString(1);
+                        partida.Cantidad = rdr.GetInt32(2);
+                        partida.Costo = rdr.GetDouble(3);
+                        lista.Add(partida);
                     }
                 }
                 Con.Close();
@@ -92,8 +90,9 @@ namespace ProyectoTacos.DAO
             {
                 Con.Close();
             }
-            return materiap;
+            return lista;
         }
+
         //Listar Pedidos sin pagar
         public List<Pedidos> listarPedidos(DateTime fecha1, DateTime fecha2)
         {
@@ -115,10 +114,50 @@ namespace ProyectoTacos.DAO
                         Pedidos pedido = new Pedidos();
                         pedido.Idpedido = rdr.GetInt32(0);
                         pedido.Fecha = rdr.GetDateTime(1);
-                        pedido.Status = rdr.GetInt32(3);
-                        pedido.Idproveedor = rdr.GetInt32(4);
+                        pedido.Status = Convert.ToInt32(rdr.GetString(3));
+                       // pedido.Idproveedor = rdr.GetInt32(4);
                         pedido.Total = rdr.GetDouble(6);
                         lista.Add(pedido);
+                    }
+                }
+                Con.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Con.Close();
+            }
+            return lista;
+        }
+
+        public List<DetallePedido> listarDetalle(Pedidos pedido)
+        {
+            List<DetallePedido> lista = new List<DetallePedido>();
+            SqlDataReader rdr;
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "SELECT m.idmateria, m.nombre, d.cantidad, d.preciounit, d.preciocant FROM detalleped d INNER JOIN materiaprima m ON d.idmateria = m.idmateria where d.idpedido='"+pedido.Idpedido+"'";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        DetallePedido detalle = new DetallePedido();
+                        detalle.Idmateria = rdr.GetInt32(0);
+                        detalle.Nombre = rdr.GetString(1);
+                        detalle.Cantidad = rdr.GetInt32(2);
+                        detalle.Preciounit = rdr.GetDouble(3);
+                        detalle.Preciocant = rdr.GetDouble(4);
+                        lista.Add(detalle);
                     }
                 }
                 Con.Close();

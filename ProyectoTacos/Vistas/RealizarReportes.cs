@@ -51,7 +51,7 @@ namespace ProyectoTacos.Vistas
             fecha1 = new DateTime(Convert.ToInt16(CBXAno.Text), CBXMes.SelectedIndex + 1, Convert.ToInt16(CBXDia.Text));
             fecha2 = new DateTime(Convert.ToInt16(CBXaño2.Text), CBXmes2.SelectedIndex + 1, Convert.ToInt16(CBXdia2.Text));
             //MessageBox.Show(":)" +fecha1);
-            ReporteVentas reporte = new ReporteVentas();
+            ReporteVentas reporte = new ReporteVentas(fecha1, fecha2);
             reporte.Show();
         }
 
