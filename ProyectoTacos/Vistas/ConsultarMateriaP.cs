@@ -332,5 +332,11 @@ namespace ProyectoTacos.Vistas
         {
 
         }
+
+        private void BTNAgregar_Click(object sender, EventArgs e)
+        {
+            RegistrarMateriaP rm = new RegistrarMateriaP();
+            rm.Show();
+        }
     }
 }

@@ -38,6 +38,7 @@ namespace ProyectoTacos.Vistas
             tabla();
             listar();
             Producto promas = new Producto();
+            if (lst_producto.Count()!=0) { 
             promas = lst_producto[0];
             for (int i = 0; i < lst_producto.Count(); i++)
             {                
@@ -45,6 +46,7 @@ namespace ProyectoTacos.Vistas
                     {
                         promas = lst_producto[i];
                     }
+            }
             }
             textBox3.Text = promas.Nombre;
             textBox4.Text = Convert.ToString(promas.Cantidad);
@@ -65,7 +67,7 @@ namespace ProyectoTacos.Vistas
                 Producto producto2 = pBeans.Prod;
                 producto2.Cantidad = proc.Cantidad;
                 producto2.Idproducto = proc.Idproducto;
-                MessageBox.Show("Se añadio el ingrediente :)" + producto2.Idproducto);
+                //MessageBox.Show("Se añadio el ingrediente :)" + producto2.Idproducto);
                 lst_producto2.Add(producto2);
             }
             lst_producto = lst_producto2;

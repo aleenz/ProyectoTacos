@@ -264,7 +264,7 @@ namespace ProyectoTacos.Vistas
             string a = Convert.ToString(selectedRow.Cells["idProv"].Value);
             prove.Idproveedo = Convert.ToInt32(a);
             this.ProvedorBeans.Provedor.Idproveedo = prove.Idproveedo;
-            if (button3.Text == "erase")
+            if (button3.Text == "Eliminar")
             {
                 ProvedorBeans.buscarid();
                 prove = ProvedorBeans.Provedor;
@@ -283,7 +283,7 @@ namespace ProyectoTacos.Vistas
                 tabla();
                 listarAct();
                 button4.Text = "Show all";
-                button3.Text = "erase";
+                button3.Text = "Eliminar";
             }
 
         }
@@ -303,7 +303,7 @@ namespace ProyectoTacos.Vistas
             }
             else
             {
-                button3.Text = "erase";
+                button3.Text = "Eliminar";
             }
         }
 
@@ -379,7 +379,7 @@ namespace ProyectoTacos.Vistas
                 //tabla();
                 //listarAct();
                 //button4.Text = "Show all";
-                //button3.Text = "erase";
+                //button3.Text = "Eliminar";
             }
         }
 
@@ -401,13 +401,20 @@ namespace ProyectoTacos.Vistas
                 }
                 else
                 {
-                    button3.Text = "erase";
+                    button3.Text = "Eliminar";
                 }
             }
         }
 
         private void ConsultaProveedor_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void BTNAgregar_Click(object sender, EventArgs e)
+        {
+            RegistrarProvedor rp = new RegistrarProvedor();
+            rp.Show();
 
         }
     }

@@ -58,6 +58,7 @@ namespace ProyectoTacos.Vistas
             ProductoVenta prod_v = new ProductoVenta();
             prod_v.Cantidad = Convert.ToInt32(CBXCantidad.Text);
             prod_v.Producto = prod;
+            
 
             frm.anadirProducto(prod_v);
         }

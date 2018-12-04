@@ -18,6 +18,7 @@ namespace ProyectoTacos.Vistas
     {
         DataTable dt;
         double precio = 0;
+        int idventa=0;
         public Subtotal()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace ProyectoTacos.Vistas
 
                 dr["Cantidad"] = pv.Cantidad;
                 dr["Monto"] = pv.Producto.Precioun * pv.Cantidad;
+                pv.Costo = pv.Producto.Precioun * pv.Cantidad;
                 dt.Rows.Add(dr);
 
                 precio += pv.Producto.Precioun * pv.Cantidad;
@@ -75,6 +77,8 @@ namespace ProyectoTacos.Vistas
             VentaBeans v_beans = new VentaBeans();
             Error er = v_beans.registrar(v);
             if (er != null) MessageBox.Show(er.Descripcion);
+            v_beans.ultimavent();
+            idventa = v_beans.Idventa;
             quitarInventario();
             Main.carrito = new List<ProductoVenta>();
             Main.dinero.Text = "0";
@@ -88,8 +92,13 @@ namespace ProyectoTacos.Vistas
         {
             foreach (ProductoVenta pv in Main.carrito)
             {
+
                 Producto p = pv.Producto;
                 ProductoBeans p_b = new ProductoBeans();
+                pv.Idventa = idventa;
+                p_b.Prodve = pv;
+                p_b.partida();
+
                 p_b.Prod = p;
                 p_b.listaring();
                 List<Usomateria> lista = p_b.Lst_Uso;

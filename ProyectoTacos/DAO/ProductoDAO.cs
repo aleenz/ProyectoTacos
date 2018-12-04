@@ -577,7 +577,36 @@ namespace ProyectoTacos.DAO
             return disp;
         }
 
-
+        public void partida(ProductoVenta prodve)
+        {
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "Insert into partida(cantidad,costo,idventa,idproducto) values (" +
+                    "@cantidad,@costo,@idventa,@idproducto)";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                cmd.Parameters.AddWithValue("@cantidad", prodve.Cantidad);
+                cmd.Parameters.AddWithValue("@costo", prodve.Costo);
+                cmd.Parameters.AddWithValue("@idventa", prodve.Idventa);
+                cmd.Parameters.AddWithValue("@idproducto", prodve.Producto.Idproducto);
+                cmd.ExecuteNonQuery();
+                Con.Close();
+               
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("error" + ex,
+                    "Advertencia!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Con.Close();
+            }
+        }
 
     }
 }
