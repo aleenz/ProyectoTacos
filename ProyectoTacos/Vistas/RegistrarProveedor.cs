@@ -17,9 +17,11 @@ namespace ProyectoTacos.Vistas
     {
         provedoor prove = new provedoor();
         ProveedorBeans ProveedorBeans = new ProveedorBeans();
-        public RegistrarProvedor()
+        ConsultaProveedor frm;
+        public RegistrarProvedor(ConsultaProveedor frm)
         {
             InitializeComponent();
+            this.frm = frm;
         }
         public void clean()
         {
@@ -35,10 +37,14 @@ namespace ProyectoTacos.Vistas
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            clean();
+            this.Close();
+                
+               
+                frm.actualizar();
+                frm.main.abrirForm(frm);
 
 
-        }
+            }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -74,6 +80,11 @@ namespace ProyectoTacos.Vistas
             this.ProveedorBeans.Provedor.Cp = Convert.ToInt32(textCodigoP.Text);
             this.ProveedorBeans.Provedor.Numero = Convert.ToInt32(textNumero.Text);
             this.ProveedorBeans.Provedor.Status = 1;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

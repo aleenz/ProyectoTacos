@@ -142,7 +142,34 @@
   <data name="tacosbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tacosbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="clientes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clientes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="empleado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\empleado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="materiap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\materiap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="nodisp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nodisp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pedido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pedido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pedidosmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pedidosmp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="productos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\productos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="proveedor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\proveedor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reportes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reportes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="usuarios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usuarios.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

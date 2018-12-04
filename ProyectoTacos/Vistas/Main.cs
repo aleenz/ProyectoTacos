@@ -32,12 +32,12 @@ namespace ProyectoTacos.Vistas
             InitializeComponent();
             formsMenu = new Form[9];
             formsMenu[0] = new Ventas_Catalogo();
-            formsMenu[1] = new ConsultarProducto();
+            formsMenu[1] = new ConsultarProducto(this);
             formsMenu[2] = new ConsultaCliente(this);
             formsMenu[3] = new Form();//pedidos
             formsMenu[4] = new ConsultaUsuarios(this);
             formsMenu[5] = new ConsultaEmpleado(this);
-            formsMenu[6] = new ConsultaProveedor();
+            formsMenu[6] = new ConsultaProveedor(this);
             formsMenu[7] = new ConsultarMateriaP();
             formsMenu[8] = new RealizarReportes();
         }
@@ -113,22 +113,22 @@ namespace ProyectoTacos.Vistas
 
             if (Usuario.Activo.Rol == 0)
             {
-                ItemMenu realizarPedido = new ItemMenu(this, "Realizar Pedido", 0, new Bitmap(ProyectoTacos.Properties.Resources.logo), 60);
+                ItemMenu realizarPedido = new ItemMenu(this, "Realizar Pedido", 0, ProyectoTacos.Properties.Resources.pedido, 60);
             }
             else
             {
-                ItemMenu BTNproductos = new ItemMenu(this, "Productos", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 60);
-                ItemMenu BTNClientes = new ItemMenu(this, "Clientes", 2, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
-                ItemMenu BTNPedidos = new ItemMenu(this, "Pedidos", 3, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 220);
+                ItemMenu BTNproductos = new ItemMenu(this, "Productos", 1, ProyectoTacos.Properties.Resources.productos, 60);
+                ItemMenu BTNClientes = new ItemMenu(this, "Clientes", 2, ProyectoTacos.Properties.Resources.clientes, 140);
+                ItemMenu BTNPedidos = new ItemMenu(this, "Pedidos", 3, ProyectoTacos.Properties.Resources.pedidosmp, 220);
             }
 
             if(Usuario.Activo.Rol >= 2)
             {
-                ItemMenu BTNUsuarios = new ItemMenu(this, "Usuarios", 4, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 300);
-                ItemMenu BTNEmpleados = new ItemMenu(this, "Empleados", 5, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 380);
-                ItemMenu BTNProveedores = new ItemMenu(this, "Proveedor", 6, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 460);
-                ItemMenu BTNMateriaPrima = new ItemMenu(this, "Materia Prima", 7, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 540);
-                ItemMenu BTNReportes = new ItemMenu(this, "Reportes", 8, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 620);
+                ItemMenu BTNUsuarios = new ItemMenu(this, "Usuarios", 4, ProyectoTacos.Properties.Resources.usuarios, 300);
+                ItemMenu BTNEmpleados = new ItemMenu(this, "Empleados", 5, ProyectoTacos.Properties.Resources.empleado, 380);
+                ItemMenu BTNProveedores = new ItemMenu(this, "Proveedor", 6, ProyectoTacos.Properties.Resources.proveedor, 460);
+                ItemMenu BTNMateriaPrima = new ItemMenu(this, "Materia Prima", 7, ProyectoTacos.Properties.Resources.materiap, 540);
+                ItemMenu BTNReportes = new ItemMenu(this, "Reportes", 8, ProyectoTacos.Properties.Resources.reportes, 620);
             }
 
 
@@ -207,7 +207,7 @@ namespace ProyectoTacos.Vistas
 
         public void abrirForm(Form frm)
         {
-            gal.Visible = false;
+            gal.Dispose();
             if(actual!= null)
             {
                 actual.Hide();

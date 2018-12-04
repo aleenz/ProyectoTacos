@@ -17,8 +17,10 @@ namespace ProyectoTacos.Vistas
         List<Producto> lst_producto = new List<Producto>();
         ProductoBeans producto_bean = new ProductoBeans();
         DataTable dt = new DataTable();
-        public ConsultarProducto()
+        public Main main;
+        public ConsultarProducto(Main main)
         {
+            this.main = main;
             InitializeComponent();
             tabla();
             listarAct();
@@ -171,7 +173,7 @@ namespace ProyectoTacos.Vistas
                         }
                         else
                         {
-                            ModificarProducto mod = new ModificarProducto(producto);
+                            ModificarProducto mod = new ModificarProducto(producto,this);
                             mod.ShowDialog();
                         }
                     }
@@ -186,7 +188,7 @@ namespace ProyectoTacos.Vistas
             DataGridViewRow selectedRow = dataGridView1.Rows[indice];
             string a = Convert.ToString(selectedRow.Cells["Id"].Value);
             producto.Idproducto = Convert.ToInt32(a);
-            ModificarProducto mod = new ModificarProducto(producto);
+            ModificarProducto mod = new ModificarProducto(producto,this);
             mod.ShowDialog();
             tabla();
             listarAct();
@@ -308,10 +310,19 @@ namespace ProyectoTacos.Vistas
 
         private void BTNAgregar_Click(object sender, EventArgs e)
         {
-            RegistrarProducto rp = new RegistrarProducto();
-            rp.Show();
+            RegistrarProducto rp = new RegistrarProducto(this);
+            main.abrirForm(rp);
+        }
+
+        public void actualizar()
+        {
             tabla();
             listarAct();
+        }
+
+        private void ConsultarProducto_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

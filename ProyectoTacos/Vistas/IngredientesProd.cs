@@ -21,14 +21,16 @@ namespace ProyectoTacos.Vistas
         List<MateriaPrima> lst_MateriaP = new List<MateriaPrima>();
         List<Usomateria> lst_uso = new List<Usomateria>();
         DataTable dt = new DataTable();
+        RegistrarProducto frm;
         int idprod;
         public IngredientesProd()
         {
             InitializeComponent();
         }
 
-        public IngredientesProd(Producto pro) : this()
+        public IngredientesProd(Producto pro, RegistrarProducto form) : this()
         {
+            this.frm = form;
             this.producto = pro;
             pictureBox2.Image = producto.Foto.Image;
             label5.Text = producto.Nombre;
@@ -142,6 +144,8 @@ namespace ProyectoTacos.Vistas
                 producto_bean.registrar();
                 producto_bean.registraruso();
                 this.Close();
+                frm.frm.actualizar();
+                frm.frm.main.abrirForm(frm.frm);
             }
         }
 
@@ -165,6 +169,7 @@ namespace ProyectoTacos.Vistas
         private void btmCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+            frm.frm.main.abrirForm(frm);
         }
 
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
