@@ -94,6 +94,46 @@ namespace ProyectoTacos.DAO
             }
             return materiap;
         }
+        //Listar Pedidos sin pagar
+        public List<Pedidos> listarPedidos(DateTime fecha1, DateTime fecha2)
+        {
+            List<Pedidos> lista = new List<Pedidos>();
+            SqlDataReader rdr;
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = " SELECT * FROM pedido WHERE fecha BETWEEN '" + fecha1 + "' AND '" + fecha2 + "' AND status = 1";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        Pedidos pedido = new Pedidos();
+                        pedido.Idpedido = rdr.GetInt32(0);
+                        pedido.Fecha = rdr.GetDateTime(1);
+                        pedido.Status = rdr.GetInt32(3);
+                        pedido.Idproveedor = rdr.GetInt32(4);
+                        pedido.Total = rdr.GetDouble(6);
+                        lista.Add(pedido);
+                    }
+                }
+                Con.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Con.Close();
+            }
+            return lista;
+        }
 
         //Listar Producto que más aparece
 
@@ -105,7 +145,7 @@ namespace ProyectoTacos.DAO
             {
                 string SQL;
                 conectar();
-                SQL = "SELECT p.idproducto,SUM(p.cantidad) FROM venta v INNER JOIN partida p ON v.idventa = p.idventa WHERE v.fecha BETWEEN '" + fecha1 + "' AND '" + fecha2 + "' AND v.status = 1 GROUP BY p.idproducto";
+                SQL = "SELECT p.idproducto,SUM(p.cantidad) as cantidad FROM venta v INNER JOIN partida p ON v.idventa = p.idventa WHERE v.fecha BETWEEN '" + fecha1 + "' AND '" + fecha2 + "' AND v.status = 1 GROUP BY p.idproducto order by cantidad desc";
                 Con.Open();
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;

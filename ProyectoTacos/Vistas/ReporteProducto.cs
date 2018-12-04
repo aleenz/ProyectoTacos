@@ -37,31 +37,45 @@ namespace ProyectoTacos.Vistas
             this.repBeans.Fecha2 = fecha2;
             tabla();
             listar();
+            Producto promas = new Producto();
+            promas = lst_producto[0];
+            for (int i = 0; i < lst_producto.Count(); i++)
+            {                
+                    if (promas.Cantidad<lst_producto[i].Cantidad)
+                    {
+                        promas = lst_producto[i];
+                    }
+            }
+            textBox3.Text = promas.Nombre;
+            textBox4.Text = Convert.ToString(promas.Cantidad);
+
         }
 
         public void listar()
         {
-            List<Producto> lst_producto2 = new List<Producto>();
             repBeans.listarProducto();
             lst_producto = repBeans.Lst_Producto;
-            foreach (Producto pro in lst_producto)
+            List<Producto> lst_producto2 = new List<Producto>();
+            foreach (Producto proc in lst_producto)
             {
-                this.pBeans.Prod.Idproducto =pro.Idproducto;
+               // Producto producto2 = new Producto();
+                this.pBeans.Prod.Idproducto = proc.Idproducto;
+               // MessageBox.Show("Se añadio el ingrediente :)"+ proc.Idproducto);
                 pBeans.buscarid();
-                Producto producto2 = new Producto();
-                producto2 = pBeans.Prod;
-                producto2.Cantidad = pro.Cantidad;
+                Producto producto2 = pBeans.Prod;
+                producto2.Cantidad = proc.Cantidad;
+                producto2.Idproducto = proc.Idproducto;
+                MessageBox.Show("Se añadio el ingrediente :)" + producto2.Idproducto);
                 lst_producto2.Add(producto2);
             }
             lst_producto = lst_producto2;
-            foreach (Producto pro in lst_producto)
+            foreach (Producto pro in lst_producto2)
             {
                 Producto prod = pro;
                 DataRow fila = dt.NewRow();
-
-                fila["Id"] = prod.Idproducto;
+                
                 fila["Nombre"] = prod.Nombre;
-                fila["Cantidad"] = prod.Precioun;
+                fila["Cantidad"] = prod.Cantidad;
                 dt.Rows.Add(fila);
             }
             dataGridView1.Rows.Clear();
@@ -69,16 +83,14 @@ namespace ProyectoTacos.Vistas
             foreach (DataRow fila in dt.Rows)
             {
                 int num = dataGridView1.Rows.Add();
-                dataGridView1.Rows[num].Cells[0].Value = fila["Id"].ToString();
-                dataGridView1.Rows[num].Cells[1].Value = fila["Nombre"].ToString();
-                dataGridView1.Rows[num].Cells[2].Value = fila["Cantidad"].ToString();
+                dataGridView1.Rows[num].Cells[0].Value = fila["Nombre"].ToString();
+                dataGridView1.Rows[num].Cells[1].Value = fila["Cantidad"].ToString();
             }
         }
 
         public void tabla()
         {
             dt = new DataTable();
-            dt.Columns.Add("Id");
             dt.Columns.Add("Nombre");
             dt.Columns.Add("Cantidad");
         }
