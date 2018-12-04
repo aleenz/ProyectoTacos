@@ -46,7 +46,11 @@ namespace ProyectoTacos.Vistas
             
             CBXCantidad.SelectedIndex = 0;
 
-            pictureBox1.Image = ProyectoTacos.Properties.Resources.tacos1;
+            Image img;
+            if (prod.Foto != null) img = prod.Foto.Image;
+            else img = ProyectoTacos.Properties.Resources.nodisp;
+
+            pictureBox1.Image = img;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             LBLPrecio.Text = prod.Precioun+"";
             

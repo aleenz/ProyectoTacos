@@ -93,6 +93,16 @@ namespace ProyectoTacos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nodisp {
+            get {
+                object obj = ResourceManager.GetObject("nodisp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tacos1 {
             get {
                 object obj = ResourceManager.GetObject("tacos1", resourceCulture);

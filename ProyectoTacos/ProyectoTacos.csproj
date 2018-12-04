@@ -412,5 +412,8 @@
   <ItemGroup>
     <None Include="Resources\tacosbg.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nodisp.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
