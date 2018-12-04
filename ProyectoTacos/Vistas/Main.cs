@@ -23,6 +23,8 @@ namespace ProyectoTacos.Vistas
         public int anchoBandaDerecha = 300;
         PictureBox gal;
         public static Label dinero;
+        public static List<ProductoVenta> carrito;
+
         Image[] tacos = { ProyectoTacos.Properties.Resources.tacos1, ProyectoTacos.Properties.Resources.tacos2, ProyectoTacos.Properties.Resources.tacos3, ProyectoTacos.Properties.Resources.tacos4 };
         int img_actual = 0;
         public Main()
@@ -134,8 +136,20 @@ namespace ProyectoTacos.Vistas
 
             if (Usuario.Activo.Rol == 0)
             {
+                Label sim = new Label();
+                sim.Text = "$";
+                sim.Font = new Font("Arial", 12f, FontStyle.Bold);
+                sim.Size = new Size(10, 30);
+                sim.ForeColor = Color.White;
+                sim.BackColor = Color.Orange;
+                sim.Parent = barraArriba;
+                sim.Location = new Point(this.Width - 195, 10);
+                sim.TextAlign = ContentAlignment.MiddleCenter;
+                sim.BringToFront();
+                sim.Show();
+
                 dinero = new Label();
-                dinero.Text = "$ 0";
+                dinero.Text = "0";
                 dinero.Font = new Font("Arial", 12f, FontStyle.Bold);
                 dinero.Size = new Size(70, 30);
                 dinero.ForeColor = Color.White;
@@ -152,9 +166,14 @@ namespace ProyectoTacos.Vistas
                 btn.Size = new Size(65, 30);
                 btn.Location = new Point(this.Width - 80, 10);
                 btn.Parent = barraArriba;
-                
+                btn.Click += new EventHandler(pagar);
                 btn.Show();
             }
+        }
+
+        private void pagar(object sender, EventArgs e)
+        {
+            abrirForm(new Subtotal());
         }
 
         private void cambiarImagen(object sender, EventArgs e)

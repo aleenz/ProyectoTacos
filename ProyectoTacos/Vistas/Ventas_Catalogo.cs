@@ -16,13 +16,12 @@ namespace ProyectoTacos.Vistas
     public partial class Ventas_Catalogo : Form
     {
 
-        public static List<ProductoVenta> carrito;
         public static double precio = 0.0;
 
         public Ventas_Catalogo()
         {
             InitializeComponent();
-            carrito = new List<ProductoVenta>();
+            Main.carrito = new List<ProductoVenta>();
         }
 
         private void Ventas_Catalogo_Load(object sender, EventArgs e)
@@ -43,7 +42,9 @@ namespace ProyectoTacos.Vistas
             foreach (Producto p in lista)
             {
                 
+
                 ItemProducto item = new ItemProducto(this, p.Nombre, "$"+p.Precioun, p.Idproducto, ProyectoTacos.Properties.Resources.tacos1 , new Point(x, y));
+
                 if (x == 730)
                 {
                     x = 10;
@@ -61,20 +62,25 @@ namespace ProyectoTacos.Vistas
         {
             ProductoBeans p_beans = new ProductoBeans();
             Producto p = new Producto();
+
             p.Idproducto = tag;
+
             p_beans.Prod.Idproducto = p.Idproducto;
+
             p_beans.buscarid();
             p = p_beans.Prod;
             
 
             
-            Agregar_producto ap = new Agregar_producto(p);
+            Agregar_producto ap = new Agregar_producto(p,this);
             ap.ShowDialog();
         }
 
         public void anadirProducto(ProductoVenta pv)
         {
-
+            Main.carrito.Add(pv);
+            double total = (Convert.ToInt32(Main.dinero.Text)) + (pv.Producto.Precioun*pv.Cantidad);
+            Main.dinero.Text ="" + total + "";
         }
 
 

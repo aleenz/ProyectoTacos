@@ -1,4 +1,5 @@
 ﻿using ProyectoTacos.Modelos;
+using ProyectoTacos.Prefabs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +15,10 @@ namespace ProyectoTacos.Vistas
     public partial class Agregar_producto : Form
     {
         Producto prod;
-        public Agregar_producto(Producto p)
+        Ventas_Catalogo frm;
+        public Agregar_producto(Producto p,Ventas_Catalogo frm)
         {
+            this.frm = frm;
             prod = p;
             InitializeComponent();
 
@@ -23,10 +26,11 @@ namespace ProyectoTacos.Vistas
 
         private void Agregar_producto_Load(object sender, EventArgs e)
         {
-            for (int i = 1; i < 51; i++)
+            for (int i = 1; i < 31; i++)
             {
                 CBXCantidad.Items.Add(i);
             }
+            CBXCantidad.SelectedIndex = 0;
 
             pictureBox1.Image = ProyectoTacos.Properties.Resources.tacos1;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -36,7 +40,12 @@ namespace ProyectoTacos.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Close();
+            ProductoVenta prod_v = new ProductoVenta();
+            prod_v.Cantidad = Convert.ToInt32(CBXCantidad.Text);
+            prod_v.Producto = prod;
 
+            frm.anadirProducto(prod_v);
         }
     }
 }

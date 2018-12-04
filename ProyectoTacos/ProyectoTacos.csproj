@@ -222,6 +222,12 @@
     <Compile Include="Vistas\ReporteVentas.Designer.cs">
       <DependentUpon>ReporteVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Subtotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Subtotal.Designer.cs">
+      <DependentUpon>Subtotal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Ventas_Catalogo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegistrarUsuario.resx">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Subtotal.resx">
+      <DependentUpon>Subtotal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Ventas_Catalogo.resx">
       <DependentUpon>Ventas_Catalogo.cs</DependentUpon>

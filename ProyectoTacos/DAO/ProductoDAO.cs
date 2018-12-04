@@ -153,6 +153,7 @@ namespace ProyectoTacos.DAO
                 {
                     while (rdr.Read())
                     {
+                        
                         producto = new Producto();
                         producto.Idproducto = rdr.GetInt32(0);
                         producto.Nombre = rdr.GetString(1);
