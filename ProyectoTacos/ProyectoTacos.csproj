@@ -63,6 +63,7 @@
     <Compile Include="Modelos\Empleado.cs" />
     <Compile Include="Modelos\Error.cs" />
     <Compile Include="Modelos\MateriaPrima.cs" />
+    <Compile Include="Modelos\Pedidos.cs" />
     <Compile Include="Modelos\Producto.cs" />
     <Compile Include="Modelos\provedoor.cs" />
     <Compile Include="Modelos\UsoMateria.cs" />
