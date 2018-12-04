@@ -120,10 +120,11 @@ namespace ProyectoTacos.Vistas
         }
         public void carga_reg()
         {
+            this.producto_bean.Prod.Idproducto = producto.Idproducto;
             this.producto_bean.Prod.Nombre = producto.Nombre;
             this.producto_bean.Prod.Descripcion = producto.Descripcion;
             this.producto_bean.Prod.Precioun = producto.Precioun;
-            this.producto_bean.Prod.Foto = producto.Foto;
+            this.producto_bean.Prod.Foto = pictureBox2;
             this.producto_bean.Prod.Status = 1;
             
         }
