@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Beans\ClienteBeans.cs" />
+    <Compile Include="Beans\EmpleadoBeans.cs" />
     <Compile Include="Beans\MateriapBeans.cs" />
     <Compile Include="Beans\PersonaBeans.cs" />
     <Compile Include="Beans\ProductoBeans.cs" />
@@ -53,7 +55,9 @@
     <Compile Include="Beans\ReportesBeans.cs" />
     <Compile Include="Beans\UsuarioBeans.cs" />
     <Compile Include="Beans\VentaBeans.cs" />
+    <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
+    <Compile Include="DAO\EmpleadoDAO.cs" />
     <Compile Include="DAO\MateriapDAO.cs" />
     <Compile Include="DAO\PersonaDAO.cs" />
     <Compile Include="DAO\ProductoDAO.cs" />
@@ -72,6 +76,9 @@
     <Compile Include="Modelos\provedoor.cs" />
     <Compile Include="Modelos\UsoMateria.cs" />
     <Compile Include="Modelos\Venta.cs" />
+    <Compile Include="Prefabs\FormP.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Prefabs\ProductoVenta.cs" />
     <Compile Include="Prefabs\ItemMenu.cs">
       <SubType>Component</SubType>
@@ -100,6 +107,18 @@
     </Compile>
     <Compile Include="Vistas\Agregar producto.Designer.cs">
       <DependentUpon>Agregar producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ConsultaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ConsultaCliente.Designer.cs">
+      <DependentUpon>ConsultaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ConsultaEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ConsultaEmpleado.Designer.cs">
+      <DependentUpon>ConsultaEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ConsultarMateriaP.cs">
       <SubType>Form</SubType>
@@ -266,6 +285,12 @@
     </Compile>
     <EmbeddedResource Include="Vistas\Agregar producto.resx">
       <DependentUpon>Agregar producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ConsultaCliente.resx">
+      <DependentUpon>ConsultaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ConsultaEmpleado.resx">
+      <DependentUpon>ConsultaEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ConsultarMateriaP.resx">
       <DependentUpon>ConsultarMateriaP.cs</DependentUpon>

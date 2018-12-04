@@ -8,10 +8,12 @@ namespace ProyectoTacos.Modelos
 {
     class Empleado : Persona
     {
+        private int idempleado;
 
         private DateTime fechaIng;
 
         public DateTime FechaIng {get => fechaIng; set => fechaIng = value;}
 
+        public int IdEmpleado { get => idempleado; set => idempleado = value; }
     }
 }

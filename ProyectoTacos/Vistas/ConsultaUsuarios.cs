@@ -207,7 +207,7 @@ namespace ProyectoTacos.Vistas
 
         private void BTNAgregar_Click(object sender, EventArgs e)
         {
-            ModificarUsuario form = new ModificarUsuario(this);
+            ModificarUsuario form = new ModificarUsuario(this,1);
             main.abrirForm(form);
             this.Hide();
         }

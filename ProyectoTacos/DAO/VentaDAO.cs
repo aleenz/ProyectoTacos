@@ -15,7 +15,6 @@ namespace ProyectoTacos.DAO
         public Error registrar(Venta v)
         {
 
-            Error er = null;
             SqlDataReader rdr;
 
             try

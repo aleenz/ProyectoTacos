@@ -14,12 +14,13 @@ namespace ProyectoTacos.Vistas
 {
     public partial class ModificarUsuario : Form
     {
-        ConsultaUsuarios antiguo;
+        Form antiguo;
+        int rol;
         String[] meses = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
-        public ModificarUsuario(ConsultaUsuarios antiguo)
+        public ModificarUsuario(Form antiguo, int rol)
         {
             InitializeComponent();
-            
+            this.rol = rol;
             this.antiguo = antiguo;
         }
 
@@ -137,6 +138,14 @@ namespace ProyectoTacos.Vistas
             CBXMes.SelectedIndex = 0;
             CBXGenero.SelectedIndex = 0;
             CBXAno.SelectedIndex = 0;
+            CBXRol.SelectedIndex = rol;
+
+            if (rol == 0)
+            {
+                CBXRol.Items.RemoveAt(2);
+                CBXRol.Items.RemoveAt(1);
+
+            }
         }
 
         private void CBXRol_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,8 +163,23 @@ namespace ProyectoTacos.Vistas
         private void BTNCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            antiguo.actualizar();
-            antiguo.main.abrirForm(antiguo);
+            if(antiguo is ConsultaUsuarios)
+            {
+                ConsultaUsuarios a = antiguo as ConsultaUsuarios;
+                a.actualizar();
+                a.main.abrirForm(antiguo);
+            }else if(antiguo is ConsultaEmpleado)
+            {
+                ConsultaEmpleado a = antiguo as ConsultaEmpleado;
+                a.actualizar();
+                a.main.abrirForm(antiguo);
+            }else if(antiguo is ConsultaCliente)
+            {
+                ConsultaCliente a = antiguo as ConsultaCliente;
+                a.actualizar();
+                a.main.abrirForm(antiguo);
+            }
+            
         }
     }
 }
