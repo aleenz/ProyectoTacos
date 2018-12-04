@@ -92,5 +92,10 @@ namespace ProyectoTacos.Vistas
             ReportePartidaVenta rp = new ReportePartidaVenta(venta);
             rp.Show();
         }
+
+        private void ReporteVentas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

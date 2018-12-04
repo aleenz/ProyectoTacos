@@ -33,13 +33,13 @@ namespace ProyectoTacos.Vistas
             formsMenu = new Form[9];
             formsMenu[0] = new Ventas_Catalogo();
             formsMenu[1] = new ConsultarProducto();
-            formsMenu[2] = new Form();
-            formsMenu[3] = new Form();
+            formsMenu[2] = new Form();//clientes
+            formsMenu[3] = new Form();//pedidos
             formsMenu[4] = new ConsultaUsuarios(this);
-            formsMenu[5] = new Form();
+            formsMenu[5] = new Form();//empleados
             formsMenu[6] = new ConsultaProveedor();
             formsMenu[7] = new ConsultarMateriaP();
-            formsMenu[8] = new Form();
+            formsMenu[8] = new RealizarReportes();
         }
 
         private void Main_Load(object sender, EventArgs e)

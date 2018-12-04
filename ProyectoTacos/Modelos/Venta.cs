@@ -14,6 +14,7 @@ namespace ProyectoTacos.Modelos
         private Double total;
         private int idcliente;
         private int idempleado;
+        private int metodo;
 
         public int Idventa { get => idventa; set => idventa = value; }
         public int Status { get => status; set => status = value; }
@@ -21,5 +22,6 @@ namespace ProyectoTacos.Modelos
         public double Total { get => total; set => total = value; }
         public int Idcliente { get => idcliente; set => idcliente = value; }
         public int Idempleado { get => idempleado; set => idempleado = value; }
+        public int Metodo { get => metodo; set => metodo = value; }
     }
 }

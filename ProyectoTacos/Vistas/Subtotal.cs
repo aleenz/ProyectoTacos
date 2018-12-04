@@ -1,4 +1,7 @@
-﻿using ProyectoTacos.Prefabs;
+﻿using ProyectoTacos.Beans;
+using ProyectoTacos.DAO;
+using ProyectoTacos.Modelos;
+using ProyectoTacos.Prefabs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,6 +56,31 @@ namespace ProyectoTacos.Vistas
 
         private void BTNPagar_Click(object sender, EventArgs e)
         {
+            int metodo = 0;
+
+            if (RDBCredito.Checked) metodo = 4;
+            else if (RDBDebito.Checked) metodo = 28;
+            else metodo = 1;
+
+            PersonaDAO u_beans = new PersonaDAO();
+           Cliente c = u_beans.buscarCliente(Usuario.Activo.Persona.IdPersona);
+
+            Venta v = new Venta();
+            v.Fecha = DateTime.Now;
+            v.Idcliente = c.IdCliente;
+            Console.WriteLine(c.IdCliente);
+            v.Total = precio;
+            v.Metodo = metodo;
+            
+            VentaBeans v_beans = new VentaBeans();
+            Error er = v_beans.registrar(v);
+            if (er != null) MessageBox.Show(er.Descripcion);
+
+            Main.carrito = new List<ProductoVenta>();
+            Main.dinero.Text = "0";
+
+            this.Close();
+            
 
         }
     }

@@ -68,7 +68,7 @@ namespace ProyectoTacos.DAO
             {
                 string SQL;
                 conectar();
-                SQL = "Select p.idPersona, p.nombre, p.apaterno,p.amaterno, p.fechanac, p.genero, p.telefono, p.cp, p.domicilio, p.colonia, p.status, c.email, c.fechareg from persona as p inner join cliente as c  on c.idpersona = p.idpersona where c.idpersona = '" + id + "'";
+                SQL = "Select p.idPersona, p.nombre, p.apaterno,p.amaterno, p.fechanac, p.genero, p.telefono, p.cp, p.domicilio, p.colonia, p.status, c.email, c.fechareg, c.idcliente from persona as p inner join cliente as c  on c.idpersona = p.idpersona where c.idpersona = '" + id + "'";
                 Con.Open();
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;
@@ -98,6 +98,8 @@ namespace ProyectoTacos.DAO
 
                         c.Email = rdr.GetString(11);
                         c.FechaIng = rdr.GetDateTime(12);
+                        c.IdCliente = rdr.GetInt32(13);
+
                     }
 
                 }
