@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.Sql;
 using System.Drawing;
 using System.IO;
+using ProyectoTacos.Prefabs;
 
 namespace ProyectoTacos.DAO
 {
@@ -524,5 +525,59 @@ namespace ProyectoTacos.DAO
                 Con.Close();
             }
         }
+
+        public int verificarDisponibilidad(Producto pv)
+        {
+            int disp = 1000000000;
+           
+            List<Usomateria> lista = listaingred(pv);
+            string SQL;
+            SqlDataReader rdr;
+
+            conectar();
+            try
+            {
+                Con.Open();
+                foreach (Usomateria uso in lista)
+                {
+                
+                   
+                        SQL = "Select inventario FROM materiaprima WHERE idmateria=@idmateria" ;
+                        
+                        cmd.Connection = Con;
+                        cmd.CommandText = SQL;
+                        cmd.Parameters.AddWithValue("@idmateria", uso.Idmatep);
+                       
+                        rdr = cmd.ExecuteReader();
+                    cmd = new SqlCommand();
+                    if (rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+                            
+                            int inv = rdr.GetInt32(0);
+                            double c = inv / uso.Cantidad;
+                            int d = Convert.ToInt32(Math.Floor(c));
+                            if (d < disp) disp = d;
+                        }
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("error" + ex,
+                    "Advertencia!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Con.Close();
+            }
+            return disp;
+        }
+
+
+
     }
 }
