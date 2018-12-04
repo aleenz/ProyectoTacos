@@ -11,9 +11,12 @@ namespace ProyectoTacos.Prefabs
     {
         private int cantidad;
         private Producto producto;
+        private Double costo;
+        private int idventa;
 
         public int Cantidad { get => cantidad; set => cantidad = value; }
         public Producto Producto { get => producto; set => producto = value; }
-
+        public Double Costo { get => costo; set => costo = value; }
+        public int Idventa { get => idventa; set => idventa = value; }
     }
 }

@@ -68,5 +68,43 @@ namespace ProyectoTacos.DAO
            
 
         }
+        public int ultimavent()
+        {
+            int id=0;
+            SqlDataReader rdr;
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "Select top 1 idventa from venta order by idventa DESC";
+                cmd = new SqlCommand();
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        id = rdr.GetInt32(0);
+                    }
+
+                }
+                rdr.Close();
+                Con.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Con.Close();
+            }
+            return id;
+        }
+
+
     }
 }

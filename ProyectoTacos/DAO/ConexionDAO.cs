@@ -15,7 +15,7 @@ namespace ProyectoTacos.DAO
         {
             //DESKTOP-5EUQD5F
             //DESKTOP-E90SOJ0
-            string connectionSTring = "Server=DESKTOP-E90SOJ0;" +
+            string connectionSTring = "Server=SANCHEZ;" +
                 "persist security info = True; Integrated Security = true;" +
                 "Database = tacos;";
             try

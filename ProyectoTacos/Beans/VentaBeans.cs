@@ -6,11 +6,16 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProyectoTacos.Beans
 {
     class VentaBeans
     {
+        private int idventa;
+
+        public int Idventa { get => idventa; set => idventa = value; }
+
         public Error registrar(Venta nuevo)
         {
             VentaDAO ventaDAO;
@@ -31,6 +36,20 @@ namespace ProyectoTacos.Beans
             }
 
             return er;
+        }
+        public void ultimavent()
+        {
+            VentaDAO ventaDAO;
+            try
+            {
+                ventaDAO = new VentaDAO();
+                Idventa = ventaDAO.ultimavent();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                   "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
