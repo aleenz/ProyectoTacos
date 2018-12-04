@@ -21,8 +21,10 @@ namespace ProyectoTacos.Vistas
         DataTable dt = new DataTable();
         public ConsultaProveedor()
         {
-            
+
             InitializeComponent();
+            tabla();
+            listarAct();
         }
 
         public void listar()
@@ -34,7 +36,7 @@ namespace ProyectoTacos.Vistas
                 provedoor prov = pv;
                 DataRow fila = dt.NewRow();
 
-                fila["IdProv"] = prov.Idproveedo;
+                fila["idProv"] = prov.Idproveedo;
                 fila["RFC"] = prov.Rfc;
                 fila["Nombre"] = prov.Nombre;
                 fila["Correo"] = prov.Correo;
@@ -52,7 +54,7 @@ namespace ProyectoTacos.Vistas
             foreach (DataRow fila in dt.Rows)
             {
                 int num = dataGridView1.Rows.Add();
-                dataGridView1.Rows[num].Cells[0].Value = fila["IdProv"].ToString();
+                dataGridView1.Rows[num].Cells[0].Value = fila["idProv"].ToString();
                 dataGridView1.Rows[num].Cells[1].Value = fila["RFC"].ToString();
                 dataGridView1.Rows[num].Cells[2].Value = fila["Nombre"].ToString();
                 dataGridView1.Rows[num].Cells[3].Value = fila["Correo"].ToString();
@@ -76,7 +78,7 @@ namespace ProyectoTacos.Vistas
                 provedoor prov = pv;
                 DataRow fila = dt.NewRow();
 
-                fila["IdProv"] = prov.Idproveedo;
+                fila["idProv"] = prov.Idproveedo;
                 fila["RFC"] = prov.Rfc;
                 fila["Nombre"] = prov.Nombre;
                 fila["Correo"] = prov.Correo;
@@ -94,7 +96,7 @@ namespace ProyectoTacos.Vistas
             foreach (DataRow fila in dt.Rows)
             {
                 int num = dataGridView1.Rows.Add();
-                dataGridView1.Rows[num].Cells[0].Value = fila["IdProv"].ToString();
+                dataGridView1.Rows[num].Cells[0].Value = fila["idProv"].ToString();
                 dataGridView1.Rows[num].Cells[1].Value = fila["RFC"].ToString();
                 dataGridView1.Rows[num].Cells[2].Value = fila["Nombre"].ToString();
                 dataGridView1.Rows[num].Cells[3].Value = fila["Correo"].ToString();
@@ -117,7 +119,7 @@ namespace ProyectoTacos.Vistas
                 provedoor prov = pv;
                 DataRow fila = dt.NewRow();
 
-                fila["IdProv"] = prov.Idproveedo;
+                fila["idProv"] = prov.Idproveedo;
                 fila["RFC"] = prov.Rfc;
                 fila["Nombre"] = prov.Nombre;
                 fila["Correo"] = prov.Correo;
@@ -135,7 +137,7 @@ namespace ProyectoTacos.Vistas
             foreach (DataRow fila in dt.Rows)
             {
                 int num = dataGridView1.Rows.Add();
-                dataGridView1.Rows[num].Cells[0].Value = fila["IdProv"].ToString();
+                dataGridView1.Rows[num].Cells[0].Value = fila["idProv"].ToString();
                 dataGridView1.Rows[num].Cells[1].Value = fila["RFC"].ToString();
                 dataGridView1.Rows[num].Cells[2].Value = fila["Nombre"].ToString();
                 dataGridView1.Rows[num].Cells[3].Value = fila["Correo"].ToString();
@@ -146,14 +148,14 @@ namespace ProyectoTacos.Vistas
                 dataGridView1.Rows[num].Cells[8].Value = fila["Numero"].ToString();
                 dataGridView1.Rows[num].Cells[9].Value = fila["Cp"].ToString();
                 dataGridView1.Rows[num].Cells[10].Value = fila["Status"].ToString();
-            
-        
-    }
+
+
+            }
         }
         public void tabla()
         {
             dt = new DataTable();
-            dt.Columns.Add("IdProv");
+            dt.Columns.Add("idProv");
             dt.Columns.Add("RFC");
             dt.Columns.Add("Nombre");
             dt.Columns.Add("Correo");
@@ -185,19 +187,26 @@ namespace ProyectoTacos.Vistas
                 }
                 else
                 {
-                    if (param == "Nombre")
+                    if (param == "Name")
                     {
+                        provedoor prove = new provedoor();
                         this.ProvedorBeans.Provedor.Nombre = textBox1.Text;
+                        ProvedorBeans.buscarnom();
+                        prove = ProvedorBeans.Provedor;
                         tabla();
                         listarNombre();
                     }
                     else if (param == "Id")
                     {
+
                         provedoor prove = new provedoor();
                         prove.Idproveedo = Convert.ToInt32(textBox1.Text);
                         this.ProvedorBeans.Provedor.Idproveedo = prove.Idproveedo;
+
                         ProvedorBeans.buscarid();
                         prove = ProvedorBeans.Provedor;
+                        tabla();
+                        listarNombre();
                         if (prove == null)
                         {
                             MessageBox.Show("No se encontraron registros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Question);
@@ -205,8 +214,9 @@ namespace ProyectoTacos.Vistas
                         }
                         else
                         {
-                            ModificarProveedor modp = new ModificarProveedor (prove);
-                            modp.ShowDialog();
+
+                            //ModificarProveedor modp = new ModificarProveedor (prove);
+                            // modp.ShowDialog();
                         }
                     }
                 }
@@ -231,14 +241,14 @@ namespace ProyectoTacos.Vistas
 
 
         }
-    
+
 
         private void button2_Click(object sender, EventArgs e)
         {
             provedoor prove = new provedoor();
             int indice = dataGridView1.CurrentCell.RowIndex;
             DataGridViewRow selectedRow = dataGridView1.Rows[indice];
-            string a = Convert.ToString(selectedRow.Cells["IdProv"].Value);
+            string a = Convert.ToString(selectedRow.Cells["idProv"].Value);
             prove.Idproveedo = Convert.ToInt32(a);
             ModificarProveedor modp = new ModificarProveedor(prove);
             modp.ShowDialog();
@@ -251,22 +261,22 @@ namespace ProyectoTacos.Vistas
             provedoor prove = new provedoor();
             int indice = dataGridView1.CurrentCell.RowIndex;
             DataGridViewRow selectedRow = dataGridView1.Rows[indice];
-            string a = Convert.ToString(selectedRow.Cells["IdProv"].Value);
+            string a = Convert.ToString(selectedRow.Cells["idProv"].Value);
             prove.Idproveedo = Convert.ToInt32(a);
             this.ProvedorBeans.Provedor.Idproveedo = prove.Idproveedo;
-            if (button3.Text == "Erase")
+            if (button3.Text == "erase")
             {
                 ProvedorBeans.buscarid();
                 prove = ProvedorBeans.Provedor;
 
                 ProvedorBeans.eliminar();
-                        tabla();
-                        listarAct();
-                        button4.Text = "Show all";
+                tabla();
+                listarAct();
+                button4.Text = "Show all";
             }
 
-           
-            
+
+
             else
             {
                 ProvedorBeans.activar();
@@ -282,7 +292,7 @@ namespace ProyectoTacos.Vistas
             provedoor prove = new provedoor();
             int indice = dataGridView1.CurrentCell.RowIndex;
             DataGridViewRow selectedRow = dataGridView1.Rows[indice];
-            string a = Convert.ToString(selectedRow.Cells["IdProv"].Value);
+            string a = Convert.ToString(selectedRow.Cells["idProv"].Value);
             prove.Idproveedo = Convert.ToInt32(a);
             this.ProvedorBeans.Provedor.Idproveedo = prove.Idproveedo;
             ProvedorBeans.buscarid();
@@ -293,19 +303,94 @@ namespace ProyectoTacos.Vistas
             }
             else
             {
-                button3.Text = "Erase";
+                button3.Text = "erase";
             }
         }
 
 
         private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
         {
+
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click_2(object sender, EventArgs e)
+        {
+            if (button4.Text == "Show all")
+            {
+                tabla();
+                listar();
+                button4.Text = "Activos";
+            }
+            else if (button4.Text == "Activos")
+            {
+                tabla();
+                listarAct();
+                button4.Text = "Show all";
+            }
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && !(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && !char.IsWhiteSpace(e.KeyChar))
+
+            {
+                e.Handled = true;
+
+                return;
+
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            provedoor prove = new provedoor();
+            int indice = dataGridView1.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[indice];
+            string a = Convert.ToString(selectedRow.Cells["idProv"].Value);
+            prove.Idproveedo = Convert.ToInt32(a);
+            this.ProvedorBeans.Provedor.Idproveedo = prove.Idproveedo;
+            if (button5.Text == "Activar")
+            {
+                ProvedorBeans.buscarid();
+                prove = ProvedorBeans.Provedor;
+
+                ProvedorBeans.activar();
+                tabla();
+                listarAct();
+                button4.Text = "Show all";
+            }
+
+
+
+            else
+            {
+                //ProvedorBeans.activar();
+                //tabla();
+                //listarAct();
+                //button4.Text = "Show all";
+                //button3.Text = "erase";
+            }
+        }
+
+        private void dataGridView1_KeyUp_1(object sender, KeyEventArgs e)
+        {
             if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
                 provedoor prove = new provedoor();
                 int indice = dataGridView1.CurrentCell.RowIndex;
                 DataGridViewRow selectedRow = dataGridView1.Rows[indice];
-                string a = Convert.ToString(selectedRow.Cells["IdProv"].Value);
+                string a = Convert.ToString(selectedRow.Cells["idProv"].Value);
                 prove.Idproveedo = Convert.ToInt32(a);
                 this.ProvedorBeans.Provedor.Idproveedo = prove.Idproveedo;
                 ProvedorBeans.buscarid();
@@ -316,9 +401,14 @@ namespace ProyectoTacos.Vistas
                 }
                 else
                 {
-                    button3.Text = "Erase";
+                    button3.Text = "erase";
                 }
             }
+        }
+
+        private void ConsultaProveedor_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace ProyectoTacos.Vistas
+﻿using System;
+
+namespace ProyectoTacos.Vistas
 {
-    partial class RegistrarCliente
+    partial class ModificarUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -46,7 +48,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.TXTCP = new System.Windows.Forms.TextBox();
+            this.TXTEmail = new System.Windows.Forms.TextBox();
             this.TXTTelefono = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.TXTColonia = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.TXTDireccion = new System.Windows.Forms.TextBox();
@@ -54,16 +58,16 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CBXRol = new System.Windows.Forms.ComboBox();
             this.TXTContrasena2 = new System.Windows.Forms.TextBox();
             this.TXTContrasena1 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.TXTNombreUsuario = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.TXTEmail = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -85,9 +89,8 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(485, 309);
-            this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.Size = new System.Drawing.Size(485, 335);
+            this.panel1.TabIndex = 1;
             // 
             // groupBox4
             // 
@@ -130,7 +133,7 @@
             // 
             // BTNAceptar
             // 
-            this.BTNAceptar.Location = new System.Drawing.Point(317, 278);
+            this.BTNAceptar.Location = new System.Drawing.Point(317, 263);
             this.BTNAceptar.Name = "BTNAceptar";
             this.BTNAceptar.Size = new System.Drawing.Size(75, 23);
             this.BTNAceptar.TabIndex = 14;
@@ -140,7 +143,7 @@
             // 
             // BTNCancelar
             // 
-            this.BTNCancelar.Location = new System.Drawing.Point(401, 278);
+            this.BTNCancelar.Location = new System.Drawing.Point(401, 263);
             this.BTNCancelar.Name = "BTNCancelar";
             this.BTNCancelar.Size = new System.Drawing.Size(75, 23);
             this.BTNCancelar.TabIndex = 7;
@@ -200,7 +203,6 @@
             this.label8.Size = new System.Drawing.Size(42, 13);
             this.label8.TabIndex = 5;
             this.label8.Text = "Genero";
-            this.label8.Click += new System.EventHandler(this.label2_Click);
             // 
             // TXTNombre
             // 
@@ -217,7 +219,6 @@
             this.label5.Size = new System.Drawing.Size(86, 13);
             this.label5.TabIndex = 5;
             this.label5.Text = "Apellido Materno";
-            this.label5.Click += new System.EventHandler(this.label2_Click);
             // 
             // label6
             // 
@@ -227,7 +228,6 @@
             this.label6.Size = new System.Drawing.Size(84, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "Apellido Paterno";
-            this.label6.Click += new System.EventHandler(this.label2_Click);
             // 
             // label7
             // 
@@ -237,27 +237,25 @@
             this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 5;
             this.label7.Text = "Nombre";
-            this.label7.Click += new System.EventHandler(this.label2_Click);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.TXTCP);
             this.groupBox3.Controls.Add(this.TXTEmail);
             this.groupBox3.Controls.Add(this.TXTTelefono);
-            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.TXTColonia);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.TXTDireccion);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Location = new System.Drawing.Point(9, 176);
+            this.groupBox3.Location = new System.Drawing.Point(9, 199);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(231, 130);
+            this.groupBox3.Size = new System.Drawing.Size(231, 133);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Contacto";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // TXTCP
             // 
@@ -266,12 +264,28 @@
             this.TXTCP.Size = new System.Drawing.Size(100, 20);
             this.TXTCP.TabIndex = 5;
             // 
+            // TXTEmail
+            // 
+            this.TXTEmail.Location = new System.Drawing.Point(119, 105);
+            this.TXTEmail.Name = "TXTEmail";
+            this.TXTEmail.Size = new System.Drawing.Size(100, 20);
+            this.TXTEmail.TabIndex = 6;
+            // 
             // TXTTelefono
             // 
             this.TXTTelefono.Location = new System.Drawing.Point(119, 82);
             this.TXTTelefono.Name = "TXTTelefono";
             this.TXTTelefono.Size = new System.Drawing.Size(100, 20);
             this.TXTTelefono.TabIndex = 6;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(81, 108);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(32, 13);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Email";
             // 
             // TXTColonia
             // 
@@ -288,7 +302,6 @@
             this.label9.Size = new System.Drawing.Size(49, 13);
             this.label9.TabIndex = 5;
             this.label9.Text = "Teléfono";
-            this.label9.Click += new System.EventHandler(this.label2_Click);
             // 
             // TXTDireccion
             // 
@@ -305,7 +318,6 @@
             this.label10.Size = new System.Drawing.Size(72, 13);
             this.label10.TabIndex = 5;
             this.label10.Text = "Codigo Postal";
-            this.label10.Click += new System.EventHandler(this.label2_Click);
             // 
             // label11
             // 
@@ -315,7 +327,6 @@
             this.label11.Size = new System.Drawing.Size(42, 13);
             this.label11.TabIndex = 5;
             this.label11.Text = "Colonia";
-            this.label11.Click += new System.EventHandler(this.label2_Click);
             // 
             // label12
             // 
@@ -325,22 +336,37 @@
             this.label12.Size = new System.Drawing.Size(52, 13);
             this.label12.TabIndex = 5;
             this.label12.Text = "Dirección";
-            this.label12.Click += new System.EventHandler(this.label2_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CBXRol);
             this.groupBox1.Controls.Add(this.TXTContrasena2);
             this.groupBox1.Controls.Add(this.TXTContrasena1);
+            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.TXTNombreUsuario);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(9, 84);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(231, 91);
+            this.groupBox1.Size = new System.Drawing.Size(231, 110);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cuenta";
+            // 
+            // CBXRol
+            // 
+            this.CBXRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBXRol.FormattingEnabled = true;
+            this.CBXRol.Items.AddRange(new object[] {
+            "Cliente",
+            "Empleado",
+            "Administrador"});
+            this.CBXRol.Location = new System.Drawing.Point(119, 82);
+            this.CBXRol.Name = "CBXRol";
+            this.CBXRol.Size = new System.Drawing.Size(100, 21);
+            this.CBXRol.TabIndex = 10;
+            this.CBXRol.SelectedIndexChanged += new System.EventHandler(this.CBXRol_SelectedIndexChanged);
             // 
             // TXTContrasena2
             // 
@@ -358,6 +384,15 @@
             this.TXTContrasena1.Size = new System.Drawing.Size(100, 20);
             this.TXTContrasena1.TabIndex = 1;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(90, 85);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(23, 13);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "Rol";
+            // 
             // TXTNombreUsuario
             // 
             this.TXTNombreUsuario.Location = new System.Drawing.Point(119, 13);
@@ -373,7 +408,6 @@
             this.label4.Size = new System.Drawing.Size(108, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "Confirmar Contraseña";
-            this.label4.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -383,7 +417,6 @@
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Contraseña";
-            this.label3.Click += new System.EventHandler(this.label2_Click);
             // 
             // label2
             // 
@@ -393,7 +426,6 @@
             this.label2.Size = new System.Drawing.Size(96, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Nombre de usuario";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -401,9 +433,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.label1.Location = new System.Drawing.Point(152, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 26);
+            this.label1.Size = new System.Drawing.Size(265, 26);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Registro de cliente nuevo";
+            this.label1.Text = "Registro de usuario nuevo";
             // 
             // pictureBox1
             // 
@@ -417,34 +449,17 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(81, 107);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(32, 13);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "Email";
-            this.label13.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // TXTEmail
-            // 
-            this.TXTEmail.Location = new System.Drawing.Point(119, 104);
-            this.TXTEmail.Name = "TXTEmail";
-            this.TXTEmail.Size = new System.Drawing.Size(100, 20);
-            this.TXTEmail.TabIndex = 6;
-            // 
-            // RegistrarCliente
+            // ModificarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(510, 335);
+            this.ClientSize = new System.Drawing.Size(510, 361);
             this.Controls.Add(this.panel1);
-            this.Name = "RegistrarCliente";
+            this.Name = "ModificarUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "RegistrarCliente";
-            this.Load += new System.EventHandler(this.RegistrarCliente_Load);
+            this.Text = "RegistrarUsuario";
+            this.Load += new System.EventHandler(this.RegistrarUsuario_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -459,20 +474,20 @@
 
         }
 
+     
+
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox TXTNombreUsuario;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ComboBox CBXAno;
+        private System.Windows.Forms.ComboBox CBXMes;
+        private System.Windows.Forms.ComboBox CBXDia;
+        private System.Windows.Forms.Button BTNAceptar;
+        private System.Windows.Forms.Button BTNCancelar;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox TXTTelefono;
+        private System.Windows.Forms.ComboBox CBXGenero;
         private System.Windows.Forms.TextBox TXTAmaterno;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox TXTApaterno;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox TXTNombre;
@@ -481,21 +496,25 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox TXTCP;
+        private System.Windows.Forms.TextBox TXTTelefono;
         private System.Windows.Forms.TextBox TXTColonia;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox TXTDireccion;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox TXTContrasena2;
         private System.Windows.Forms.TextBox TXTContrasena1;
-        private System.Windows.Forms.Button BTNAceptar;
-        private System.Windows.Forms.Button BTNCancelar;
-        private System.Windows.Forms.TextBox TXTDireccion;
-        private System.Windows.Forms.ComboBox CBXGenero;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox CBXAno;
-        private System.Windows.Forms.ComboBox CBXMes;
-        private System.Windows.Forms.ComboBox CBXDia;
-        private System.Windows.Forms.TextBox TXTEmail;
+        private System.Windows.Forms.TextBox TXTNombreUsuario;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox CBXRol;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox TXTEmail;
+        private System.Windows.Forms.Label label14;
     }
 }

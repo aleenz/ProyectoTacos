@@ -16,20 +16,33 @@ namespace ProyectoTacos.Vistas
 
     public partial class Main : Form
     {
-        public Form[] formsMenu = { new RegistrarCliente(new Form()), new RegistrarMateriaP()};
+        public Form[] formsMenu;
         Form actual = null;
         public Panel p;
+        public Form main;
         public int anchoBandaDerecha = 300;
+        PictureBox gal;
+        Image[] tacos = { ProyectoTacos.Properties.Resources.tacos1, ProyectoTacos.Properties.Resources.tacos2, ProyectoTacos.Properties.Resources.tacos3, ProyectoTacos.Properties.Resources.tacos4 };
+        int img_actual = 0;
         public Main()
         {
             InitializeComponent();
-
+            formsMenu = new Form[9];
+            formsMenu[0] = new Form();
+            formsMenu[1] = new ConsultarProducto();
+            formsMenu[2] = new Form();
+            formsMenu[3] = new Form();
+            formsMenu[4] = new ConsultaUsuarios(this);
+            formsMenu[5] = new Form();
+            formsMenu[6] = new ConsultaProveedor();
+            formsMenu[7] = new ConsultarMateriaP();
+            formsMenu[8] = new Form();
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
             //  this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-
+            main = this;
             cargar();
 
         }
@@ -78,27 +91,64 @@ namespace ProyectoTacos.Vistas
             p.Parent = this;
             p.Show();
 
+
+
+
+            if (Usuario.Activo.Rol == 0)
+            {
+                ItemMenu realizarPedido = new ItemMenu(this, "Realizar Pedido", 0, new Bitmap(ProyectoTacos.Properties.Resources.logo), 60);
+            }
+            else
+            {
+                ItemMenu BTNproductos = new ItemMenu(this, "Productos", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 60);
+                ItemMenu BTNClientes = new ItemMenu(this, "Clientes", 2, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
+                ItemMenu BTNPedidos = new ItemMenu(this, "Pedidos", 3, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 220);
+            }
+
+            if(Usuario.Activo.Rol >= 2)
+            {
+                ItemMenu BTNUsuarios = new ItemMenu(this, "Usuarios", 4, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 300);
+                ItemMenu BTNEmpleados = new ItemMenu(this, "Empleados", 5, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 380);
+                ItemMenu BTNProveedores = new ItemMenu(this, "Proveedor", 6, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 460);
+                ItemMenu BTNMateriaPrima = new ItemMenu(this, "Materia Prima", 7, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 540);
+                ItemMenu BTNReportes = new ItemMenu(this, "Reportes", 8, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 620);
+            }
+
+
+            gal = new PictureBox();
+            gal.Image = ProyectoTacos.Properties.Resources.tacos1;
+            gal.Size = new Size(this.Size.Width-300, this.Size.Height-50);
+            gal.Location = new Point(300, 50);
+            gal.SizeMode = PictureBoxSizeMode.StretchImage;
+            gal.Parent = this;
             
 
+            gal.Show();
+            Timer timer = new Timer();
+            timer.Interval = 5000;
+            timer.Tick += new EventHandler(cambiarImagen);
+            timer.Start();
 
-
-            ItemMenu realizarPedido = new ItemMenu(this, "Realizar Pedido", 0, new Bitmap(ProyectoTacos.Properties.Resources.logo), 60);
-            ItemMenu BTNproductos = new ItemMenu(this, "Productos", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
-            ItemMenu BTNClientes = new ItemMenu(this, "Clientes", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
-            ItemMenu BTNProveedores = new ItemMenu(this, "Proveedor", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
-            ItemMenu BTNMateriaPrima = new ItemMenu(this, "Materia Prima", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
-            ItemMenu BTNEmpleados = new ItemMenu(this, "Empleados", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
-            ItemMenu BTNPedidos = new ItemMenu(this, "Pedidos", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
-            ItemMenu BTNReportes = new ItemMenu(this, "Reportes", 1, new Bitmap(ProyectoTacos.Properties.Resources.logo1), 140);
 
         }
 
+        private void cambiarImagen(object sender, EventArgs e)
+        {
+            if(img_actual == tacos.Length - 1)
+            {
+                img_actual = 0;
+            }
+            else
+            {
+                img_actual++;
+            }
 
-
-
+            gal.Image = tacos[img_actual];
+        }
 
         public void abrirForm(Form frm)
         {
+            gal.Visible = false;
             if(actual!= null)
             {
                 actual.Hide();
@@ -106,10 +156,12 @@ namespace ProyectoTacos.Vistas
             }
             actual = frm;
             actual.MdiParent = this;
-            //actual.FormBorderStyle = FormBorderStyle.None;
+            actual.FormBorderStyle = FormBorderStyle.None;
+            actual.StartPosition = FormStartPosition.Manual;
             int posx = (((this.Width - anchoBandaDerecha) / 2) - (actual.Width / 2)) + anchoBandaDerecha;
             int posy = (this.Height / 2) - (actual.Height / 2);
             actual.Location = new Point(posx, posy);
+           
             actual.Show();
         }
 

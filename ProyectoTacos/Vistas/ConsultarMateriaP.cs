@@ -243,25 +243,25 @@ namespace ProyectoTacos.Vistas
 
 
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            MateriaPrima materiap = new MateriaPrima();
-            int indice = dataGridView1.CurrentCell.RowIndex;
-            DataGridViewRow selectedRow = dataGridView1.Rows[indice];
-            string a = Convert.ToString(selectedRow.Cells["Id"].Value);
-            materiap.Idmateria = Convert.ToInt32(a);
-            this.materiaP_bean.Materiap.Idmateria = materiap.Idmateria;
-            materiaP_bean.buscarid();
-            materiap = materiaP_bean.Materiap;
-            if (materiap.Status == 0)
+            private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
             {
-                button3.Text = "Activar";
+                MateriaPrima materiap = new MateriaPrima();
+                int indice = dataGridView1.CurrentCell.RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[indice];
+                string a = Convert.ToString(selectedRow.Cells["Id"].Value);
+                materiap.Idmateria = Convert.ToInt32(a);
+                this.materiaP_bean.Materiap.Idmateria = materiap.Idmateria;
+                materiaP_bean.buscarid();
+                materiap = materiaP_bean.Materiap;
+                if (materiap.Status == 0)
+                {
+                    button3.Text = "Activar";
+                }
+                else
+                {
+                    button3.Text = "Eliminar";
+                }
             }
-            else
-            {
-                button3.Text = "Eliminar";
-            }
-        }
 
 
         private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
@@ -326,6 +326,11 @@ namespace ProyectoTacos.Vistas
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtBusqueda.Text = null;
+        }
+
+        private void ConsultarMateriaP_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

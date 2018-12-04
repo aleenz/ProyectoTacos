@@ -49,15 +49,20 @@
     <Compile Include="Beans\MateriapBeans.cs" />
     <Compile Include="Beans\PersonaBeans.cs" />
     <Compile Include="Beans\ProductoBeans.cs" />
+    <Compile Include="Beans\ProveedorBeans.cs" />
     <Compile Include="Beans\UsuarioBeans.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
     <Compile Include="DAO\MateriapDAO.cs" />
     <Compile Include="DAO\PersonaDAO.cs" />
     <Compile Include="DAO\ProductoDAO.cs" />
+    <Compile Include="DAO\ProveedorDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
+    <Compile Include="Modelos\Cliente.cs" />
+    <Compile Include="Modelos\Empleado.cs" />
     <Compile Include="Modelos\Error.cs" />
     <Compile Include="Modelos\MateriaPrima.cs" />
     <Compile Include="Modelos\Producto.cs" />
+    <Compile Include="Modelos\provedoor.cs" />
     <Compile Include="Modelos\UsoMateria.cs" />
     <Compile Include="Prefabs\ItemMenu.cs">
       <SubType>Component</SubType>
@@ -89,6 +94,18 @@
     </Compile>
     <Compile Include="Vistas\ConsultarProducto.Designer.cs">
       <DependentUpon>ConsultarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ConsultaProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ConsultaProveedor.Designer.cs">
+      <DependentUpon>ConsultaProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ConsultaUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ConsultaUsuarios.Designer.cs">
+      <DependentUpon>ConsultaUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Content.cs">
       <SubType>Form</SubType>
@@ -126,6 +143,18 @@
     <Compile Include="Vistas\ModificarProducto.Designer.cs">
       <DependentUpon>ModificarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\ModificarProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ModificarProveedor.Designer.cs">
+      <DependentUpon>ModificarProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ModificarUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ModificarUsuarios.Designer.cs">
+      <DependentUpon>ModificarUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\RegistrarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +172,18 @@
     </Compile>
     <Compile Include="Vistas\RegistrarProducto.Designer.cs">
       <DependentUpon>RegistrarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\RegistrarProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\RegistrarProveedor.Designer.cs">
+      <DependentUpon>RegistrarProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\RegistrarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\RegistrarUsuario.Designer.cs">
+      <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Vistas\Acceso.resx">
       <DependentUpon>Acceso.cs</DependentUpon>
@@ -163,6 +204,12 @@
     <EmbeddedResource Include="Vistas\ConsultarProducto.resx">
       <DependentUpon>ConsultarProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ConsultaProveedor.resx">
+      <DependentUpon>ConsultaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ConsultaUsuarios.resx">
+      <DependentUpon>ConsultaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\IngredientesProd.resx">
       <DependentUpon>IngredientesProd.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +225,12 @@
     <EmbeddedResource Include="Vistas\ModificarProducto.resx">
       <DependentUpon>ModificarProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ModificarProveedor.resx">
+      <DependentUpon>ModificarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ModificarUsuarios.resx">
+      <DependentUpon>ModificarUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegistrarCliente.resx">
       <DependentUpon>RegistrarCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +239,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegistrarProducto.resx">
       <DependentUpon>RegistrarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\RegistrarProveedor.resx">
+      <DependentUpon>RegistrarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\RegistrarUsuario.resx">
+      <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -220,6 +279,20 @@
   <ItemGroup>
     <None Include="Resources\logo1.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\tacos1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tacos2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tacos3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tacos4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tacosbg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
