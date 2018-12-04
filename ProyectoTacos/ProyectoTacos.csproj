@@ -64,7 +64,11 @@
     <Compile Include="Modelos\Producto.cs" />
     <Compile Include="Modelos\provedoor.cs" />
     <Compile Include="Modelos\UsoMateria.cs" />
+    <Compile Include="Prefabs\ProductoVenta.cs" />
     <Compile Include="Prefabs\ItemMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Prefabs\ItemProducto.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Vistas\Acceso.cs">
@@ -82,6 +86,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>tacosDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Agregar producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Agregar producto.Designer.cs">
+      <DependentUpon>Agregar producto.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ConsultarMateriaP.cs">
       <SubType>Form</SubType>
@@ -209,6 +219,12 @@
     <Compile Include="Vistas\ReporteVentas.Designer.cs">
       <DependentUpon>ReporteVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Ventas_Catalogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Ventas_Catalogo.Designer.cs">
+      <DependentUpon>Ventas_Catalogo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Vistas\Acceso.resx">
       <DependentUpon>Acceso.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,6 +238,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vistas\Agregar producto.resx">
+      <DependentUpon>Agregar producto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ConsultarMateriaP.resx">
       <DependentUpon>ConsultarMateriaP.cs</DependentUpon>
     </EmbeddedResource>
@@ -281,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegistrarUsuario.resx">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Ventas_Catalogo.resx">
+      <DependentUpon>Ventas_Catalogo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

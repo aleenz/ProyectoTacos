@@ -22,13 +22,14 @@ namespace ProyectoTacos.Vistas
         public Form main;
         public int anchoBandaDerecha = 300;
         PictureBox gal;
+        public static Label dinero;
         Image[] tacos = { ProyectoTacos.Properties.Resources.tacos1, ProyectoTacos.Properties.Resources.tacos2, ProyectoTacos.Properties.Resources.tacos3, ProyectoTacos.Properties.Resources.tacos4 };
         int img_actual = 0;
         public Main()
         {
             InitializeComponent();
             formsMenu = new Form[9];
-            formsMenu[0] = new Form();
+            formsMenu[0] = new Ventas_Catalogo();
             formsMenu[1] = new ConsultarProducto();
             formsMenu[2] = new Form();
             formsMenu[3] = new Form();
@@ -44,7 +45,8 @@ namespace ProyectoTacos.Vistas
             //  this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             main = this;
             cargar();
-
+            
+            
         }
 
         public void cargar()
@@ -59,6 +61,7 @@ namespace ProyectoTacos.Vistas
             else
             {
                 dibujar();
+               
                 Console.WriteLine("Usuario");
             }
         }
@@ -129,7 +132,29 @@ namespace ProyectoTacos.Vistas
             timer.Tick += new EventHandler(cambiarImagen);
             timer.Start();
 
+            if (Usuario.Activo.Rol == 0)
+            {
+                dinero = new Label();
+                dinero.Text = "$ 0";
+                dinero.Font = new Font("Arial", 12f, FontStyle.Bold);
+                dinero.Size = new Size(70, 30);
+                dinero.ForeColor = Color.White;
+                dinero.BackColor = Color.Orange;
+                dinero.Parent = barraArriba;
+                dinero.Location = new Point(this.Width - 180, 10);
+                dinero.TextAlign = ContentAlignment.MiddleCenter;
+                dinero.BringToFront();
+                dinero.Show();
 
+                Button btn = new Button();
+                btn.Text = "Pagar";
+                btn.BackColor = Color.White;
+                btn.Size = new Size(65, 30);
+                btn.Location = new Point(this.Width - 80, 10);
+                btn.Parent = barraArriba;
+                
+                btn.Show();
+            }
         }
 
         private void cambiarImagen(object sender, EventArgs e)

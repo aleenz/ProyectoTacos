@@ -1,4 +1,5 @@
-﻿using ProyectoTacos.Vistas;
+﻿using ProyectoTacos.Prefabs;
+using ProyectoTacos.Vistas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace ProyectoTacos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RealizarReportes());
+            Application.Run(new Main());
         }
     }
 }
