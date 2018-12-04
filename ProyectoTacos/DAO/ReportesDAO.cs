@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace ProyectoTacos.DAO
 {
+    //asdasdad
     class ReportesDAO:ConexionDAO
     {
         SqlCommand cmd = new SqlCommand();
