@@ -50,12 +50,14 @@
     <Compile Include="Beans\PersonaBeans.cs" />
     <Compile Include="Beans\ProductoBeans.cs" />
     <Compile Include="Beans\ProveedorBeans.cs" />
+    <Compile Include="Beans\ReportesBeans.cs" />
     <Compile Include="Beans\UsuarioBeans.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
     <Compile Include="DAO\MateriapDAO.cs" />
     <Compile Include="DAO\PersonaDAO.cs" />
     <Compile Include="DAO\ProductoDAO.cs" />
     <Compile Include="DAO\ProveedorDAO.cs" />
+    <Compile Include="DAO\ReportesDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Modelos\Cliente.cs" />
     <Compile Include="Modelos\Empleado.cs" />
