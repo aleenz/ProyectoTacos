@@ -74,7 +74,7 @@ namespace ProyectoTacos.Vistas
             }
             else
             {
-                Persona p = new Persona();
+                Cliente p = new Cliente();
                 p.Nombre = TXTNombre.Text;
                 p.Apaterno = TXTApaterno.Text;
                 p.Amaterno = TXTAmaterno.Text;
@@ -88,6 +88,9 @@ namespace ProyectoTacos.Vistas
 
 
                 p.Domicilio = d;
+                p.Email = TXTEmail.Text;
+                p.FechaIng = DateTime.Now;
+
 
                 Usuario user = new Usuario();
                 user.Nombre = TXTNombreUsuario.Text;

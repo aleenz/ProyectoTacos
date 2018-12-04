@@ -82,7 +82,7 @@ namespace ProyectoTacos.Beans
             {
                 provDao = new ProveedorDAO();
                 lst_Prov = provDao.buscarnombre(provedor);
-              
+
             }
             catch (SqlException ex)
             {

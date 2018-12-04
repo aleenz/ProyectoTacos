@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoTacos.Modelos
 {
-    class Persona { 
+    public class Persona { 
 
 
 
@@ -18,6 +18,7 @@ namespace ProyectoTacos.Modelos
         private string genero;
         private Domicilio domicilio;
         private string telefono;
+        private int status;
 
         public int IdPersona { get => idpersona; set => idpersona = value; }
         public string Nombre { get => nombre; set => nombre = value; }
@@ -27,6 +28,8 @@ namespace ProyectoTacos.Modelos
         public string Genero { get => genero; set => genero = value; }
         public Domicilio Domicilio { get => domicilio; set => domicilio = value; }
         public string Telefono { get => telefono; set => telefono = value; }
+
+        public int Status { get => status; set => status = value; }
 
 
 
