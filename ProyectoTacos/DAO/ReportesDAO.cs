@@ -114,7 +114,7 @@ namespace ProyectoTacos.DAO
                         Pedidos pedido = new Pedidos();
                         pedido.Idpedido = rdr.GetInt32(0);
                         pedido.Fecha = rdr.GetDateTime(1);
-                        pedido.Status = Convert.ToInt32(rdr.GetString(3));
+                        pedido.Status = rdr.GetString(3);
                        // pedido.Idproveedor = rdr.GetInt32(4);
                         pedido.Total = rdr.GetDouble(6);
                         lista.Add(pedido);

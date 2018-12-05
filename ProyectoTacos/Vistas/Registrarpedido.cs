@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoTacos.Modelos;
 using ProyectoTacos.Beans;
+using ProyectoTacos.DAO;
 namespace ProyectoTacos.Vistas
 
 {
@@ -21,6 +22,7 @@ namespace ProyectoTacos.Vistas
         List<Pedidos> lst_Pedido = new List<Pedidos>();
         Pedidos pedido = new Pedidos();
         PedidoBeans pedidoBeans = new PedidoBeans();
+        ConexionDAO cd = new ConexionDAO();
 
         public Registrarpedido(ConsultarPedido frm)
         {
@@ -122,9 +124,8 @@ namespace ProyectoTacos.Vistas
             SqlConnection con;
             SqlCommand cmd;
             SqlDataReader dr;
-            con = new SqlConnection("Server=DESKTOP-TG2K6G9;" +
-                "persist security info = True; Integrated Security = true;" +
-                "Database = tacos;");
+            cd.conectar();
+            con = cd.Con;
             cmd = new SqlCommand();
             con.Open();
             cmd.Connection = con;
@@ -146,9 +147,8 @@ namespace ProyectoTacos.Vistas
             SqlConnection con;
             SqlCommand cmd;
             SqlDataReader dr;
-            con = new SqlConnection("Server=DESKTOP-TG2K6G9;" +
-                "persist security info = True; Integrated Security = true;" +
-                "Database = tacos;");
+            cd.conectar();
+            con = cd.Con;
             cmd = new SqlCommand();
             con.Open();
             cmd.Connection = con;
@@ -203,9 +203,8 @@ namespace ProyectoTacos.Vistas
             SqlConnection con;
             SqlCommand cmd;
             SqlDataReader dr;
-            con = new SqlConnection("Server=DESKTOP-TG2K6G9;" +
-                "persist security info = True; Integrated Security = true;" +
-                "Database = tacos;");
+            cd.conectar();
+            con = cd.Con;
             cmd = new SqlCommand();
             con.Open();
             cmd.Connection = con;
@@ -225,9 +224,8 @@ namespace ProyectoTacos.Vistas
             SqlConnection con;
             SqlCommand cmd;
             SqlDataReader dr;
-            con = new SqlConnection("Server=DESKTOP-TG2K6G9;" +
-                "persist security info = True; Integrated Security = true;" +
-                "Database = tacos;");
+            cd.conectar();
+            con = cd.Con;
             cmd = new SqlCommand();
             con.Open();
             cmd.Connection = con;
@@ -266,9 +264,8 @@ namespace ProyectoTacos.Vistas
             SqlConnection con;
             SqlCommand cmd;
             SqlDataReader dr;
-            con = new SqlConnection("Server=DESKTOP-TG2K6G9;" +
-                "persist security info = True; Integrated Security = true;" +
-                "Database = tacos;");
+            cd.conectar();
+            con = cd.Con;
             cmd = new SqlCommand();
             con.Open();
             cmd.Connection = con;
@@ -300,9 +297,8 @@ namespace ProyectoTacos.Vistas
             SqlConnection con;
             SqlCommand cmd;
             SqlDataReader dr;
-            con = new SqlConnection("Server=DESKTOP-TG2K6G9;" +
-                "persist security info = True; Integrated Security = true;" +
-                "Database = tacos;");
+            cd.conectar();
+            con = cd.Con;
             cmd = new SqlCommand();
             con.Open();
             cmd.Connection = con;
