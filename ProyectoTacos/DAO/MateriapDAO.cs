@@ -298,5 +298,46 @@ namespace ProyectoTacos.DAO
                 Con.Close();
             }
         }
+
+
+        public void quitarMateria(List<Usomateria> lista)
+        {
+            try
+            {
+                string SQL;
+                conectar();
+                    foreach (Usomateria uso in lista)
+                    {
+                    MateriaPrima mp = new MateriaPrima();
+                    mp.Idmateria = uso.Idmatep;
+                    mp = this.buscarid(mp);
+
+                    int nueva_cantidad = mp.Inventario - uso.Cantidad;
+                    if (nueva_cantidad < 0) nueva_cantidad = 0;
+                        SQL = "UPDATE materiaprima SET " +
+                            "inventario=@inv" +
+                            " WHERE idmateria=@idmateria";
+                        Con.Open();
+                        cmd = new SqlCommand();
+                        cmd.Connection = Con;
+                        cmd.CommandText = SQL;
+                        cmd.Parameters.AddWithValue("@inv", nueva_cantidad);
+                    cmd.Parameters.AddWithValue("@idmateria", mp.Idmateria);
+
+                    cmd.ExecuteNonQuery();
+                        
+                
+                    }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                   "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Con.Close();
+            }
+        }
     }
 }

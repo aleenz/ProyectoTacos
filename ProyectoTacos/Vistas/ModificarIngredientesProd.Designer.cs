@@ -55,7 +55,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.txtUnidad);
@@ -71,7 +71,7 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(514, 316);
             this.panel1.TabIndex = 2;
@@ -87,7 +87,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(9, 113);
+            this.pictureBox2.Location = new System.Drawing.Point(11, 98);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(67, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -148,7 +148,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(431, 56);
+            this.button1.Location = new System.Drawing.Point(431, 43);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 15;
@@ -158,7 +158,7 @@
             // 
             // btmCancelar
             // 
-            this.btmCancelar.Location = new System.Drawing.Point(431, 240);
+            this.btmCancelar.Location = new System.Drawing.Point(431, 256);
             this.btmCancelar.Name = "btmCancelar";
             this.btmCancelar.Size = new System.Drawing.Size(75, 23);
             this.btmCancelar.TabIndex = 14;
@@ -203,7 +203,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(431, 98);
+            this.button3.Location = new System.Drawing.Point(431, 70);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 12;
@@ -247,8 +247,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(521, 323);
+            this.BackColor = System.Drawing.Color.Orange;
+            this.ClientSize = new System.Drawing.Size(537, 341);
             this.Controls.Add(this.panel1);
             this.Name = "ModificarIngredientesProd";
             this.Text = "ModificarIngredientesProd";

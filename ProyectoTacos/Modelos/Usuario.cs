@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace ProyectoTacos.Modelos
 {
-    class Usuario
+     public class Usuario
     {
-
+        private int idusuario;
         private Persona persona;
         private string nombre;
         private int rol;
         private static Usuario activo;
+        public int IdUsuario { get => idusuario; set => idusuario = value; }
 
         public Persona Persona { get => persona; set => persona = value; }
         public string Nombre { get => nombre; set => nombre = value; }

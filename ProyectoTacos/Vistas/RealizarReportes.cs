@@ -13,7 +13,8 @@ namespace ProyectoTacos.Vistas
     public partial class RealizarReportes : Form
     {
         String[] meses = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
-
+        DateTime fecha1;
+        DateTime fecha2;
         public RealizarReportes()
         {
             InitializeComponent();
@@ -47,17 +48,28 @@ namespace ProyectoTacos.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            fecha1 = new DateTime(Convert.ToInt16(CBXAno.Text), CBXMes.SelectedIndex + 1, Convert.ToInt16(CBXDia.Text));
+            fecha2 = new DateTime(Convert.ToInt16(CBXaño2.Text), CBXmes2.SelectedIndex + 1, Convert.ToInt16(CBXdia2.Text));
+            //MessageBox.Show(":)" +fecha1);
+            ReporteVentas reporte = new ReporteVentas(fecha1, fecha2);
+            reporte.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            fecha1 = new DateTime(Convert.ToInt16(CBXAno.Text), CBXMes.SelectedIndex + 1, Convert.ToInt16(CBXDia.Text));
+            fecha2 = new DateTime(Convert.ToInt16(CBXaño2.Text), CBXmes2.SelectedIndex + 1, Convert.ToInt16(CBXdia2.Text));
+            ReporteProducto reporte = new ReporteProducto(fecha1, fecha2);
+            reporte.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            fecha1 = new DateTime(Convert.ToInt16(CBXAno.Text), CBXMes.SelectedIndex + 1, Convert.ToInt16(CBXDia.Text));
+            fecha2 = new DateTime(Convert.ToInt16(CBXaño2.Text), CBXmes2.SelectedIndex + 1, Convert.ToInt16(CBXdia2.Text));
+            ReporteFacturas reporte = new ReporteFacturas(fecha1,fecha2);
+            reporte.Show();
         }
+        
     }
 }

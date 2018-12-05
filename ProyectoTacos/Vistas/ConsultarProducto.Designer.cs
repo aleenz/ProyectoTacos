@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BTNAgregar = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -50,7 +51,8 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Controls.Add(this.BTNAgregar);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.txtBusqueda);
             this.panel1.Controls.Add(this.comboBox1);
@@ -60,10 +62,20 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(569, 328);
             this.panel1.TabIndex = 1;
+            // 
+            // BTNAgregar
+            // 
+            this.BTNAgregar.Location = new System.Drawing.Point(520, 12);
+            this.BTNAgregar.Name = "BTNAgregar";
+            this.BTNAgregar.Size = new System.Drawing.Size(33, 23);
+            this.BTNAgregar.TabIndex = 18;
+            this.BTNAgregar.Text = "+";
+            this.BTNAgregar.UseVisualStyleBackColor = true;
+            this.BTNAgregar.Click += new System.EventHandler(this.BTNAgregar_Click);
             // 
             // button4
             // 
@@ -77,23 +89,23 @@
             // 
             // txtBusqueda
             // 
-            this.txtBusqueda.Location = new System.Drawing.Point(233, 58);
+            this.txtBusqueda.Location = new System.Drawing.Point(284, 66);
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(100, 20);
+            this.txtBusqueda.Size = new System.Drawing.Size(188, 20);
             this.txtBusqueda.TabIndex = 14;
             this.txtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusqueda_KeyPress);
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Nombre",
             "Id"});
-            this.comboBox1.Location = new System.Drawing.Point(90, 58);
+            this.comboBox1.Location = new System.Drawing.Point(157, 65);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 13;
-            this.comboBox1.Text = "Buscar Por:";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button3
@@ -118,7 +130,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(478, 55);
+            this.button1.Location = new System.Drawing.Point(478, 66);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
@@ -190,7 +202,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label1.Location = new System.Drawing.Point(131, 9);
+            this.label1.Location = new System.Drawing.Point(133, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(321, 26);
             this.label1.TabIndex = 8;
@@ -212,11 +224,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(575, 335);
+            this.BackColor = System.Drawing.Color.Orange;
+            this.ClientSize = new System.Drawing.Size(594, 354);
             this.Controls.Add(this.panel1);
             this.Name = "ConsultarProducto";
             this.Text = "ConsultarProducto";
+            this.Load += new System.EventHandler(this.ConsultarProducto_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -242,5 +255,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.Button BTNAgregar;
     }
 }

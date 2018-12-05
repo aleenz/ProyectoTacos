@@ -15,6 +15,7 @@ namespace ProyectoTacos.Modelos
         private Double precioun;
         private PictureBox foto;
         private int status;
+        private int cantidad;
 
         public int Idproducto { get => idproducto; set => idproducto = value; }
         public string Nombre { get => nombre; set => nombre = value; }
@@ -22,5 +23,6 @@ namespace ProyectoTacos.Modelos
         public Double Precioun { get => precioun; set => precioun = value; }
         public PictureBox Foto { get => foto; set => foto = value; }
         public int Status { get => status; set => status = value; }
+        public int Cantidad { get => cantidad; set => cantidad = value; }
     }
 }

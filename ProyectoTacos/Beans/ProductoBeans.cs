@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using ProyectoTacos.DAO;
 using ProyectoTacos.Modelos;
 using System.Windows.Forms;
+using ProyectoTacos.Prefabs;
 
 namespace ProyectoTacos.Beans
 {
@@ -16,11 +17,13 @@ namespace ProyectoTacos.Beans
         private List<Producto> lst_Producto = new List<Producto>();
         private Usomateria usom = new Usomateria();
         private List<Usomateria> lst_Uso = new List<Usomateria>();
+        private ProductoVenta prodve = new ProductoVenta();
 
-        internal Producto Prod { get => prod; set => prod = value; }
+        internal ProductoVenta Prodve { get => prodve; set => prodve = value; }
         internal List<Producto> Lst_Producto { get => lst_Producto; set => lst_Producto = value; }
         internal Usomateria Usom { get => usom; set => usom = value; }
         internal List<Usomateria> Lst_Uso { get => lst_Uso; set => lst_Uso = value; }
+        public Producto Prod { get => prod; set => prod = value; }
 
         public void registrar()
         {
@@ -28,7 +31,22 @@ namespace ProyectoTacos.Beans
             try
             {
                 prodDao = new ProductoDAO();
-                prodDao.registrar(prod);
+                prodDao.registrar(Prod);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error!!!" + ex.Number + "Ha ocurrido: " + ex.Message,
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void partida()
+        {
+            ProductoDAO prodDao;
+            try
+            {
+                prodDao = new ProductoDAO();
+                prodDao.partida(Prodve);
+
             }
             catch (SqlException ex)
             {
@@ -71,7 +89,7 @@ namespace ProyectoTacos.Beans
             try
             {
                 prodDao = new ProductoDAO();
-                Prod = prodDao.buscarid(prod);
+                Prod = prodDao.buscarid(Prod);
             }
             catch (SqlException ex)
             {
@@ -85,7 +103,7 @@ namespace ProyectoTacos.Beans
             try
             {
                 prodDao = new ProductoDAO();
-                Lst_Producto = prodDao.buscarnombre(prod);
+                Lst_Producto = prodDao.buscarnombre(Prod);
             }
             catch (SqlException ex)
             {
@@ -99,7 +117,7 @@ namespace ProyectoTacos.Beans
             try
             {
                 prodDao = new ProductoDAO();
-                prodDao.modificar(prod);
+                prodDao.modificar(Prod);
             }
             catch (SqlException ex)
             {
@@ -114,7 +132,7 @@ namespace ProyectoTacos.Beans
             try
             {
                 prodDao = new ProductoDAO();
-                prodDao.eliminar(prod);
+                prodDao.eliminar(Prod);
             }
             catch (SqlException ex)
             {
@@ -128,7 +146,7 @@ namespace ProyectoTacos.Beans
             try
             {
                 prodDao = new ProductoDAO();
-                prodDao.activar(prod);
+                prodDao.activar(Prod);
             }
             catch (SqlException ex)
             {
@@ -190,7 +208,7 @@ namespace ProyectoTacos.Beans
             try
             {
                 prodDao = new ProductoDAO();
-                Lst_Uso = prodDao.listaingred(prod);
+                Lst_Uso = prodDao.listaingred(Prod);
             }
             catch (SqlException ex)
             {
@@ -243,6 +261,24 @@ namespace ProyectoTacos.Beans
                 MessageBox.Show("Error!!!" + ex.Number + "Ha ocurrido: " + ex.Message,
                     "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public int verificarDisponibilidad(Producto pv)
+        {
+            ProductoDAO prodDao;
+            int disp = 0;
+            try
+            {
+                prodDao = new ProductoDAO();
+                disp = prodDao.verificarDisponibilidad(pv);
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error!!!" + ex.Number + "Ha ocurrido: " + ex.Message,
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return disp;
         }
     }
 }

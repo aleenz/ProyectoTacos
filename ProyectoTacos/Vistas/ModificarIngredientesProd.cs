@@ -22,20 +22,21 @@ namespace ProyectoTacos.Vistas
         List<Usomateria> lst_uso = new List<Usomateria>();
         List<Usomateria> lst_uso2 = new List<Usomateria>();
         DataTable dt = new DataTable();
+        ModificarProducto form;
         int idprod;
         public ModificarIngredientesProd()
         {
             InitializeComponent();
         }
-        public ModificarIngredientesProd(Producto pro) : this()
+        public ModificarIngredientesProd(Producto pro, ModificarProducto form) : this()
         {
+            this.form = form;
             this.producto = pro;
             pictureBox2.Image = producto.Foto.Image;
             label5.Text = producto.Nombre;
             this.producto_bean.Prod.Idproducto = producto.Idproducto;
             producto_bean.listaring();
             lst_uso = producto_bean.Lst_Uso;
-            int i = 0;
             foreach (Usomateria uso in lst_uso)
             {
                 Usomateria usomat = uso;
@@ -121,10 +122,11 @@ namespace ProyectoTacos.Vistas
         }
         public void carga_reg()
         {
+            this.producto_bean.Prod.Idproducto = producto.Idproducto;
             this.producto_bean.Prod.Nombre = producto.Nombre;
             this.producto_bean.Prod.Descripcion = producto.Descripcion;
             this.producto_bean.Prod.Precioun = producto.Precioun;
-            this.producto_bean.Prod.Foto = producto.Foto;
+            this.producto_bean.Prod.Foto = pictureBox2;
             this.producto_bean.Prod.Status = 1;
             
         }
@@ -156,7 +158,8 @@ namespace ProyectoTacos.Vistas
                 }
                 
                 this.Close();
-                
+                form.frm.actualizar();
+                form.frm.main.abrirForm(form.frm);
             }
         }
 
@@ -184,6 +187,8 @@ namespace ProyectoTacos.Vistas
         private void btmCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+            form.frm.actualizar();
+            form.frm.main.abrirForm(form.frm);
         }
 
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)

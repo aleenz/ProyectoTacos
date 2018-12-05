@@ -30,7 +30,7 @@ namespace ProyectoTacos.Prefabs
             pb.Image = img;
             pb.Size = new Size(45, 45);
             pb.Location = new Point(10, 10);
-            pb.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb.SizeMode = PictureBoxSizeMode.Zoom;
             pb.MouseEnter += new EventHandler(MouseSobre);
             pb.MouseLeave += new EventHandler(MouseSale);
             pb.Click += new EventHandler(OnClick);

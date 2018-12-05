@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.Sql;
 using System.Drawing;
 using System.IO;
+using ProyectoTacos.Prefabs;
 
 namespace ProyectoTacos.DAO
 {
@@ -77,7 +78,12 @@ namespace ProyectoTacos.DAO
                         producto.Nombre = rdr.GetString(1);
                         producto.Descripcion = rdr.GetString(2);
                         producto.Precioun = rdr.GetDouble(3);
-                     //   producto.Foto = rdr.GetBytes(4); //Generar fotos para busqueda
+                        if (!rdr["foto"].Equals(DBNull.Value))
+                        {
+                            MemoryStream ms = new MemoryStream((byte[])rdr["foto"]);
+                            producto.Foto = new PictureBox();
+                            producto.Foto.Image = new Bitmap(ms);
+                        }
                         producto.Status = rdr.GetInt32(5);
                         lista.Add(producto);
                     }
@@ -117,7 +123,12 @@ namespace ProyectoTacos.DAO
                         producto.Nombre = rdr.GetString(1);
                         producto.Descripcion = rdr.GetString(2);
                         producto.Precioun = rdr.GetDouble(3);
-                        //   producto.Foto = rdr.GetBytes(4); //Generar fotos para busqueda
+                        if (!rdr["foto"].Equals(DBNull.Value))
+                        {
+                            MemoryStream ms = new MemoryStream((byte[])rdr["foto"]);
+                            producto.Foto = new PictureBox();
+                            producto.Foto.Image = new Bitmap(ms);
+                        }
                         producto.Status = rdr.GetInt32(5);
                         lista.Add(producto);
                     }
@@ -153,6 +164,7 @@ namespace ProyectoTacos.DAO
                 {
                     while (rdr.Read())
                     {
+                        
                         producto = new Producto();
                         producto.Idproducto = rdr.GetInt32(0);
                         producto.Nombre = rdr.GetString(1);
@@ -202,7 +214,12 @@ namespace ProyectoTacos.DAO
                         producto.Nombre = rdr.GetString(1);
                         producto.Descripcion = rdr.GetString(2);
                         producto.Precioun = rdr.GetDouble(3);
-                        //   producto.Foto = rdr.GetBytes(4); //Generar fotos para busqueda
+                        if (!rdr["foto"].Equals(DBNull.Value))
+                        {
+                            MemoryStream ms = new MemoryStream((byte[])rdr["foto"]);
+                            producto.Foto = new PictureBox();
+                            producto.Foto.Image = new Bitmap(ms);
+                        }
                         producto.Status = rdr.GetInt32(5);
                         lista.Add(producto);
                     }
@@ -523,5 +540,88 @@ namespace ProyectoTacos.DAO
                 Con.Close();
             }
         }
+
+        public int verificarDisponibilidad(Producto pv)
+        {
+            int disp = 1000000000;
+           
+            List<Usomateria> lista = listaingred(pv);
+            string SQL;
+            SqlDataReader rdr;
+
+            conectar();
+            try
+            {
+                Con.Open();
+                foreach (Usomateria uso in lista)
+                {
+                
+                   
+                        SQL = "Select inventario FROM materiaprima WHERE idmateria=@idmateria" ;
+                        
+                        cmd.Connection = Con;
+                        cmd.CommandText = SQL;
+                        cmd.Parameters.AddWithValue("@idmateria", uso.Idmatep);
+                       
+                        rdr = cmd.ExecuteReader();
+                    cmd = new SqlCommand();
+                    if (rdr.HasRows)
+                    {
+                        while (rdr.Read())
+                        {
+                            
+                            int inv = rdr.GetInt32(0);
+                            double c = inv / uso.Cantidad;
+                            int d = Convert.ToInt32(Math.Floor(c));
+                            if (d < disp) disp = d;
+                        }
+                    }
+                    rdr.Close();
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("error" + ex,
+                    "Advertencia!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Con.Close();
+            }
+            return disp;
+        }
+
+        public void partida(ProductoVenta prodve)
+        {
+            try
+            {
+                string SQL;
+                conectar();
+                SQL = "Insert into partida(cantidad,costo,idventa,idproducto) values (" +
+                    "@cantidad,@costo,@idventa,@idproducto)";
+                Con.Open();
+                cmd.Connection = Con;
+                cmd.CommandText = SQL;
+                cmd.Parameters.AddWithValue("@cantidad", prodve.Cantidad);
+                cmd.Parameters.AddWithValue("@costo", prodve.Costo);
+                cmd.Parameters.AddWithValue("@idventa", prodve.Idventa);
+                cmd.Parameters.AddWithValue("@idproducto", prodve.Producto.Idproducto);
+                cmd.ExecuteNonQuery();
+                Con.Close();
+               
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("error" + ex,
+                    "Advertencia!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                Con.Close();
+            }
+        }
+
     }
 }

@@ -133,6 +133,20 @@ namespace ProyectoTacos.Beans
             }
         }
 
+        public void quitarInventario(List<Usomateria> lista)
+        {
+            MateriapDAO matepDao;
+            try
+            {
+                matepDao = new MateriapDAO();
+                matepDao.quitarMateria(lista);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " Ha ocurrido" + ex.Message,
+                                   "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
     }
 }

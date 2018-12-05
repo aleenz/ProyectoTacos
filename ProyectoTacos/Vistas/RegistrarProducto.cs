@@ -16,9 +16,11 @@ namespace ProyectoTacos.Vistas
     {
         Producto producto = new Producto();
         ProductoBeans producto_bean = new ProductoBeans();
-        public RegistrarProducto()
+        public ConsultarProducto frm;
+        public RegistrarProducto(ConsultarProducto form)
         {
             InitializeComponent();
+            this.frm = form;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,9 +53,10 @@ namespace ProyectoTacos.Vistas
             else
             {
                 carga_reg();
-                IngredientesProd igp = new IngredientesProd(producto);
-                igp.Show();
-                limpiar();
+                IngredientesProd igp = new IngredientesProd(producto,this);
+                this.Hide();
+                
+                frm.main.abrirForm(igp);
             }
         }
 
@@ -114,6 +117,13 @@ namespace ProyectoTacos.Vistas
                 return;
 
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frm.actualizar();
+            frm.main.abrirForm(frm);
         }
     }
 

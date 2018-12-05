@@ -44,6 +44,7 @@
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.BTNAgregar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,6 +53,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.BTNAgregar);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.txtBusqueda);
             this.panel1.Controls.Add(this.comboBox1);
@@ -219,6 +221,16 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
+            // BTNAgregar
+            // 
+            this.BTNAgregar.Location = new System.Drawing.Point(520, 9);
+            this.BTNAgregar.Name = "BTNAgregar";
+            this.BTNAgregar.Size = new System.Drawing.Size(33, 23);
+            this.BTNAgregar.TabIndex = 19;
+            this.BTNAgregar.Text = "+";
+            this.BTNAgregar.UseVisualStyleBackColor = true;
+            this.BTNAgregar.Click += new System.EventHandler(this.BTNAgregar_Click);
+            // 
             // ConsultarMateriaP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,6 +240,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "ConsultarMateriaP";
             this.Text = "ConsultarMateriaP";
+            this.Load += new System.EventHandler(this.ConsultarMateriaP_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -254,5 +267,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CostoMed;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button BTNAgregar;
     }
 }

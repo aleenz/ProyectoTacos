@@ -21,9 +21,9 @@ namespace ProyectoTacos.DAO
                 string SQL;
                 conectar();
                 SQL = "Insert into proveedor(RFC,nombre,correo," +
-                    "telefono,materiap, calle,colonia,cp,numero,status) values (" +
-                    "@RFC,@nombre,@correo,@telefono,@materiap,@calle,@numero,@colonia,@cp," +
-                    "@status)";
+                    "materiap, calle,cp,status,numero,telefono,colonia) values (" +
+                    "@RFC,@nombre,@correo,@materiap,@calle,@cp,@status,@numero,@telefono," +
+                    "@colonia)";
                 Con.Open();
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;
@@ -69,6 +69,7 @@ namespace ProyectoTacos.DAO
                 Con.Open();
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;
+                cmd.Parameters.AddWithValue("@idproveedor", prov.Idproveedo);
                 cmd.Parameters.AddWithValue("@RFC", prov.Rfc);
                 cmd.Parameters.AddWithValue("@nombre", prov.Nombre);
                 cmd.Parameters.AddWithValue("@correo", prov.Correo);
@@ -145,17 +146,14 @@ namespace ProyectoTacos.DAO
                         prov.Rfc = rdr.GetString(1);
                         prov.Nombre = rdr.GetString(2);
                         prov.Correo = rdr.GetString(3);
-                        prov.Telefono = rdr.GetString(4);
-                        prov.Materiap = rdr.GetString(5);
-                        prov.Calle = rdr.GetString(6);
-                        prov.Colonia = rdr.GetString(7);
-                        prov.Cp = rdr.GetInt32(8);
-                        prov.Status = rdr.GetInt32(10);
-                        prov.Numero = rdr.GetString(9);
+                        prov.Telefono = rdr.GetInt64(9);
+                        prov.Materiap = rdr.GetString(4);
+                        prov.Calle = rdr.GetString(5);
+                        prov.Colonia = rdr.GetString(10);
+                        prov.Cp = rdr.GetInt32(6);
+                        prov.Status = rdr.GetInt32(7);
+                        prov.Numero = rdr.GetInt32(8);
                         lista.Add(prov);
-
-                        
-                        ;
                     }
                 }
                 Con.Close();
@@ -193,13 +191,13 @@ namespace ProyectoTacos.DAO
                         prove.Rfc = rdr.GetString(1);
                         prove.Nombre = rdr.GetString(2);
                         prove.Correo = rdr.GetString(3);
-                        prove.Telefono = rdr.GetString(4);
-                        prove.Materiap = rdr.GetString(5);
-                        prove.Calle = rdr.GetString(6);
-                        prove.Colonia = rdr.GetString(7);
-                        prove.Cp = rdr.GetInt32(8);
-                        prove.Status = rdr.GetInt32(10);
-                        prove.Numero = rdr.GetString(9);
+                        prove.Telefono = rdr.GetInt64(9);
+                        prove.Materiap = rdr.GetString(4);
+                        prove.Calle = rdr.GetString(5);
+                        prove.Colonia = rdr.GetString(10);
+                        prove.Cp = rdr.GetInt32(6);
+                        prove.Status = rdr.GetInt32(7);
+                        prove.Numero = rdr.GetInt32(8);
                         lista.Add(prove);
                     }
                 }
@@ -238,15 +236,14 @@ namespace ProyectoTacos.DAO
                         prov.Rfc = rdr.GetString(1);
                         prov.Nombre = rdr.GetString(2);
                         prov.Correo = rdr.GetString(3);
-                        prov.Telefono = rdr.GetString(4);
-                        prov.Materiap = rdr.GetString(5);
-                        prov.Calle = rdr.GetString(6);
-                        prov.Colonia = rdr.GetString(7);
-                        prov.Cp = rdr.GetInt32(8);
-                        prov.Status = rdr.GetInt32(10);
-                        prov.Numero = rdr.GetString(9);
+                        prov.Telefono = rdr.GetInt64(9);
+                        prov.Materiap = rdr.GetString(4);
+                        prov.Calle = rdr.GetString(5);
+                        prov.Colonia = rdr.GetString(10);
+                        prov.Cp = rdr.GetInt32(6);
+                        prov.Status = rdr.GetInt32(7);
+                        prov.Numero = rdr.GetInt32(8);
                         lista.Add(prov);
-
 
                         ;
                     }
@@ -286,13 +283,13 @@ namespace ProyectoTacos.DAO
                         prov.Rfc = rdr.GetString(1);
                         prov.Nombre = rdr.GetString(2);
                         prov.Correo = rdr.GetString(3);
-                        prov.Telefono = rdr.GetString(4);
-                        prov.Materiap = rdr.GetString(5);
-                        prov.Calle = rdr.GetString(6);
-                        prov.Colonia = rdr.GetString(7);
-                        prov.Cp = rdr.GetInt32(8);
-                        prov.Status = rdr.GetInt32(10);
-                        prov.Numero = rdr.GetString(9);
+                        prov.Telefono = rdr.GetInt64(9);
+                        prov.Materiap = rdr.GetString(4);
+                        prov.Calle = rdr.GetString(5);
+                        prov.Colonia = rdr.GetString(10);
+                        prov.Cp = rdr.GetInt32(6);
+                        prov.Status = rdr.GetInt32(7);
+                        prov.Numero = rdr.GetInt32(8);
                         lista.Add(prov);
 
 
@@ -329,17 +326,19 @@ namespace ProyectoTacos.DAO
                 {
                     while (rdr.Read())
                     {
+                        prove = new provedoor();
                         prove.Idproveedo = rdr.GetInt32(0);
                         prove.Rfc = rdr.GetString(1);
                         prove.Nombre = rdr.GetString(2);
                         prove.Correo = rdr.GetString(3);
-                        prove.Telefono = rdr.GetString(4);
-                        prove.Materiap = rdr.GetString(5);
-                        prove.Calle = rdr.GetString(6);
-                        prove.Colonia = rdr.GetString(7);
-                        prove.Cp = rdr.GetInt32(8);
-                        prove.Status = rdr.GetInt32(10);
-                        prove.Numero = rdr.GetString(9);
+                        prove.Telefono = rdr.GetInt64(9);
+                        prove.Materiap = rdr.GetString(4);
+                        prove.Calle = rdr.GetString(5);
+                        prove.Colonia = rdr.GetString(10);
+                        prove.Cp = rdr.GetInt32(6);
+                        prove.Status = rdr.GetInt32(7);
+                        prove.Numero = rdr.GetInt32(8);
+
                     }
                 }
                 Con.Close();
@@ -356,8 +355,8 @@ namespace ProyectoTacos.DAO
             return prove;
         }
 
-        
-       
+
+
         public void activar(provedoor prov)
         {
             try
@@ -373,7 +372,7 @@ namespace ProyectoTacos.DAO
                 cmd.Parameters.AddWithValue("@idproveedor", prov.Idproveedo);
                 cmd.Parameters.AddWithValue("@status", prov.Status);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Se ha dado activado el registro correctamente",
+                MessageBox.Show("Se ha activado el registro correctamente",
                     "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 Con.Close();
             }
@@ -389,4 +388,4 @@ namespace ProyectoTacos.DAO
         }
     }
 
-        }
+}

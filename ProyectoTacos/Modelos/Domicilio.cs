@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoTacos.Modelos
 {
-    class Domicilio
+    public class Domicilio
     {
         private string calle;
         private string ciudad;

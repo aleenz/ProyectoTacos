@@ -46,20 +46,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Beans\ClienteBeans.cs" />
+    <Compile Include="Beans\EmpleadoBeans.cs" />
     <Compile Include="Beans\MateriapBeans.cs" />
+    <Compile Include="Beans\PedidoBeans.cs" />
     <Compile Include="Beans\PersonaBeans.cs" />
     <Compile Include="Beans\ProductoBeans.cs" />
+    <Compile Include="Beans\ProveedorBeans.cs" />
+    <Compile Include="Beans\ReportesBeans.cs" />
     <Compile Include="Beans\UsuarioBeans.cs" />
+    <Compile Include="Beans\VentaBeans.cs" />
+    <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
+    <Compile Include="DAO\EmpleadoDAO.cs" />
     <Compile Include="DAO\MateriapDAO.cs" />
+    <Compile Include="DAO\PedidiosDao.cs" />
     <Compile Include="DAO\PersonaDAO.cs" />
     <Compile Include="DAO\ProductoDAO.cs" />
+    <Compile Include="DAO\ProveedorDAO.cs" />
+    <Compile Include="DAO\ReportesDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
+    <Compile Include="DAO\VentaDAO.cs" />
+    <Compile Include="Modelos\Cliente.cs" />
+    <Compile Include="Modelos\DetallePedido.cs" />
+    <Compile Include="Modelos\Empleado.cs" />
     <Compile Include="Modelos\Error.cs" />
     <Compile Include="Modelos\MateriaPrima.cs" />
+    <Compile Include="Modelos\Partida.cs" />
+    <Compile Include="Modelos\Pedidos.cs" />
     <Compile Include="Modelos\Producto.cs" />
+    <Compile Include="Modelos\provedoor.cs" />
     <Compile Include="Modelos\UsoMateria.cs" />
+    <Compile Include="Modelos\Venta.cs" />
+    <Compile Include="Prefabs\FormP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prefabs\ProductoVenta.cs" />
     <Compile Include="Prefabs\ItemMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Prefabs\ItemProducto.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Vistas\Acceso.cs">
@@ -78,17 +104,53 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>tacosDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Agregar producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Agregar producto.Designer.cs">
+      <DependentUpon>Agregar producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ConsultaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ConsultaCliente.Designer.cs">
+      <DependentUpon>ConsultaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ConsultaEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ConsultaEmpleado.Designer.cs">
+      <DependentUpon>ConsultaEmpleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\ConsultarMateriaP.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\ConsultarMateriaP.Designer.cs">
       <DependentUpon>ConsultarMateriaP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\ConsultarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ConsultarPedido.designer.cs">
+      <DependentUpon>ConsultarPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\ConsultarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\ConsultarProducto.Designer.cs">
       <DependentUpon>ConsultarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ConsultaProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ConsultaProveedor.Designer.cs">
+      <DependentUpon>ConsultaProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ConsultaUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ConsultaUsuarios.Designer.cs">
+      <DependentUpon>ConsultaUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Content.cs">
       <SubType>Form</SubType>
@@ -126,6 +188,18 @@
     <Compile Include="Vistas\ModificarProducto.Designer.cs">
       <DependentUpon>ModificarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\ModificarProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ModificarProveedor.Designer.cs">
+      <DependentUpon>ModificarProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ModificarUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ModificarUsuarios.Designer.cs">
+      <DependentUpon>ModificarUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\RealizarReportes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,17 +218,47 @@
     <Compile Include="Vistas\RegistrarMateriaP.Designer.cs">
       <DependentUpon>RegistrarMateriaP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Registrarpedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Registrarpedido.designer.cs">
+      <DependentUpon>Registrarpedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\RegistrarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\RegistrarProducto.Designer.cs">
       <DependentUpon>RegistrarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\RegistrarProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\RegistrarProveedor.Designer.cs">
+      <DependentUpon>RegistrarProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\RegistrarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\RegistrarUsuario.Designer.cs">
+      <DependentUpon>RegistrarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ReporteDetallePedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ReporteDetallePedido.Designer.cs">
+      <DependentUpon>ReporteDetallePedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\ReporteFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\ReporteFacturas.Designer.cs">
       <DependentUpon>ReporteFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ReportePartidaVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ReportePartidaVenta.Designer.cs">
+      <DependentUpon>ReportePartidaVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ReporteProducto.cs">
       <SubType>Form</SubType>
@@ -167,6 +271,18 @@
     </Compile>
     <Compile Include="Vistas\ReporteVentas.Designer.cs">
       <DependentUpon>ReporteVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Subtotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Subtotal.Designer.cs">
+      <DependentUpon>Subtotal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Ventas_Catalogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Ventas_Catalogo.Designer.cs">
+      <DependentUpon>Ventas_Catalogo.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Vistas\Acceso.resx">
       <DependentUpon>Acceso.cs</DependentUpon>
@@ -181,11 +297,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vistas\Agregar producto.resx">
+      <DependentUpon>Agregar producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ConsultaCliente.resx">
+      <DependentUpon>ConsultaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ConsultaEmpleado.resx">
+      <DependentUpon>ConsultaEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ConsultarMateriaP.resx">
       <DependentUpon>ConsultarMateriaP.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ConsultarPedido.resx">
+      <DependentUpon>ConsultarPedido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ConsultarProducto.resx">
       <DependentUpon>ConsultarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ConsultaProveedor.resx">
+      <DependentUpon>ConsultaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ConsultaUsuarios.resx">
+      <DependentUpon>ConsultaUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\IngredientesProd.resx">
       <DependentUpon>IngredientesProd.cs</DependentUpon>
@@ -202,6 +336,12 @@
     <EmbeddedResource Include="Vistas\ModificarProducto.resx">
       <DependentUpon>ModificarProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ModificarProveedor.resx">
+      <DependentUpon>ModificarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ModificarUsuarios.resx">
+      <DependentUpon>ModificarUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RealizarReportes.resx">
       <DependentUpon>RealizarReportes.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,17 +351,38 @@
     <EmbeddedResource Include="Vistas\RegistrarMateriaP.resx">
       <DependentUpon>RegistrarMateriaP.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Registrarpedido.resx">
+      <DependentUpon>Registrarpedido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegistrarProducto.resx">
       <DependentUpon>RegistrarProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ReporteDetallePedido.resx">
+      <DependentUpon>ReporteDetallePedido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ReporteFacturas.resx">
       <DependentUpon>ReporteFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ReportePartidaVenta.resx">
+      <DependentUpon>ReportePartidaVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ReporteProducto.resx">
       <DependentUpon>ReporteProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ReporteVentas.resx">
       <DependentUpon>ReporteVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\RegistrarProveedor.resx">
+      <DependentUpon>RegistrarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\RegistrarUsuario.resx">
+      <DependentUpon>RegistrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Subtotal.resx">
+      <DependentUpon>Subtotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Ventas_Catalogo.resx">
+      <DependentUpon>Ventas_Catalogo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -256,6 +417,50 @@
   <ItemGroup>
     <None Include="Resources\logo1.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\tacos1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tacos2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tacos3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tacos4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tacosbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nodisp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\empleado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\materiap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pedido.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pedidosmp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\productos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\proveedor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reportes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuarios.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
