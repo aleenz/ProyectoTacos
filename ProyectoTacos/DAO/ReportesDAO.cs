@@ -21,9 +21,13 @@ namespace ProyectoTacos.DAO
             SqlDataReader rdr;
             try
             {
+                string fecha = Convert.ToString(fecha1.Date);
+                string[] solofecha = fecha.Split(' ');
+                string fechas = Convert.ToString(fecha2.Date);
+                string[] solofecha2 = fechas.Split(' ');
                 string SQL;
                 conectar();
-                SQL = "SELECT * FROM venta WHERE fecha BETWEEN '" + fecha1 + "' AND '" + fecha2 + "' AND status = 1";
+                SQL = "SELECT * FROM venta WHERE fecha BETWEEN '" + solofecha[0] + "' AND '" + solofecha2[0] + "' AND status = 1";
                 Con.Open();
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;
@@ -96,13 +100,19 @@ namespace ProyectoTacos.DAO
         //Listar Pedidos sin pagar
         public List<Pedidos> listarPedidos(DateTime fecha1, DateTime fecha2)
         {
+
             List<Pedidos> lista = new List<Pedidos>();
             SqlDataReader rdr;
             try
             {
+                //MessageBox.Show(Convert.ToString(fecha1));
+                string fecha = Convert.ToString(fecha1.Date);
+                string[] solofecha = fecha.Split(' ');
+                string fechas = Convert.ToString(fecha2.Date);
+                string[] solofecha2 = fechas.Split(' ');
                 string SQL;
                 conectar();
-                SQL = " SELECT * FROM pedido WHERE fecha BETWEEN '" + fecha1 + "' AND '" + fecha2 + "' AND status = 1";
+                SQL = "SELECT * FROM pedido WHERE fecha BETWEEN '" + solofecha[0] + "' AND '" + solofecha2[0] + "' AND status = 1";
                 Con.Open();
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;
@@ -115,7 +125,7 @@ namespace ProyectoTacos.DAO
                         pedido.Idpedido = rdr.GetInt32(0);
                         pedido.Fecha = rdr.GetDateTime(1);
                         pedido.Status = rdr.GetString(3);
-                       // pedido.Idproveedor = rdr.GetInt32(4);
+                        pedido.Idproveedor = rdr.GetInt32(4);
                         pedido.Total = rdr.GetDouble(6);
                         lista.Add(pedido);
                     }
@@ -182,9 +192,13 @@ namespace ProyectoTacos.DAO
             SqlDataReader rdr;
             try
             {
+                string fecha = Convert.ToString(fecha1.Date);
+                string[] solofecha = fecha.Split(' ');
+                string fechas = Convert.ToString(fecha2.Date);
+                string[] solofecha2 = fechas.Split(' ');
                 string SQL;
                 conectar();
-                SQL = "SELECT p.idproducto,SUM(p.cantidad) as cantidad FROM venta v INNER JOIN partida p ON v.idventa = p.idventa WHERE v.fecha BETWEEN '" + fecha1 + "' AND '" + fecha2 + "' AND v.status = 1 GROUP BY p.idproducto order by cantidad desc";
+                SQL = "SELECT p.idproducto,SUM(p.cantidad) as cantidad FROM venta v INNER JOIN partida p ON v.idventa = p.idventa WHERE v.fecha BETWEEN '" + solofecha[0] + "' AND '" + solofecha2[0] + "' AND v.status = 1 GROUP BY p.idproducto order by cantidad desc";
                 Con.Open();
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;
