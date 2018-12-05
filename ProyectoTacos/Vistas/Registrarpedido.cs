@@ -17,15 +17,15 @@ namespace ProyectoTacos.Vistas
     {
         DateTime datatimeVariable = DateTime.Now;
         DataTable dt = new DataTable();
-
+        ConsultarPedido frm;
         List<Pedidos> lst_Pedido = new List<Pedidos>();
         Pedidos pedido = new Pedidos();
         PedidoBeans pedidoBeans = new PedidoBeans();
 
-        public Registrarpedido()
+        public Registrarpedido(ConsultarPedido frm)
         {
             tabla();
-            
+            this.frm = frm;
 
 
             InitializeComponent();
@@ -416,6 +416,17 @@ private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
             carga_reg();
             pedidoBeans.registrarpedido();
             pedidoBeans.registrardetallepedido();
+
+            this.Close();
+            frm.actualizar();
+            frm.main.Show(frm);
+            
+        }
+
+        private void BTNCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frm.main.abrirForm(frm);
         }
     }
 }

@@ -20,9 +20,10 @@ namespace ProyectoTacos.Vistas
         List<Pedidos> lst_pedido = new List<Pedidos>();
         PedidoBeans pedidoBeans = new PedidoBeans();
         DataTable dt = new DataTable();
-
-        public ConsultarPedido()
+        public Main main;
+        public ConsultarPedido(Main main)
         {
+            this.main = main;
             InitializeComponent();
             tabla();
             listarAbiertos();
@@ -265,6 +266,20 @@ namespace ProyectoTacos.Vistas
                 dataGridView1.Rows[num].Cells[6].Value = fila["Total"].ToString();
 
             }
+        }
+
+        private void BTNAgregar_Click(object sender, EventArgs e)
+        {
+            Registrarpedido rp = new Registrarpedido(this);
+            
+            main.abrirForm(rp);
+            this.Hide();
+        }
+
+        public void actualizar()
+        {
+            tabla();
+            listarAbiertos();
         }
     }
 }
