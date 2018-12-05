@@ -210,6 +210,7 @@ namespace ProyectoTacos.Vistas
             pedidoBeans.buscardetalle();
             pedido.Idmateria = pedidoBeans.Pedido.Idmateria;
             pedido.Cantidad = pedidoBeans.Pedido.Cantidad;
+            this.pedidoBeans.Pedido.Idpedido = pedido.Idpedido;
             if (button1.Text == "Cerrar")
             {
                 var resultado = MessageBox.Show("Ya se entrego esta materia?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -218,7 +219,7 @@ namespace ProyectoTacos.Vistas
                     pedidoBeans.eliminar();
                     pedidoBeans.fecharec();
 
-                    MessageBox.Show(Convert.ToString(pedido.Cantidad) + "-" + Convert.ToString(pedido.Idmateria));
+                 ///   MessageBox.Show(Convert.ToString(pedido.Cantidad) + "-" + Convert.ToString(pedido.Idmateria));
                     pedidoBeans.actualizarinv();
                     tabla();
                     listarAct();

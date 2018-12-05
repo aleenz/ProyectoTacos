@@ -258,15 +258,13 @@ namespace ProyectoTacos.DAO
             {
                 string SQL;
                 conectar();
-                SQL = "update pedido set status =0 where idpedido=@idpedido";
+                SQL = "update pedido set status='0' where idpedido=@idpedido";
                 Con.Open();
                 cmd.Connection = Con;
                 cmd.CommandText = SQL;
                 cmd.Parameters.AddWithValue("@idPedido", ped.Idpedido);
                 cmd.Parameters.AddWithValue("@status", 0);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Se ha dado de baja el registro correctamente",
-                    "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 Con.Close();
             }
             catch (SqlException ex)
