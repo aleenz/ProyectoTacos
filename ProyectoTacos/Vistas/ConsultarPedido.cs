@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms;
 using ProyectoTacos.Modelos;
 using ProyectoTacos.Beans;
 
@@ -271,7 +270,6 @@ namespace ProyectoTacos.Vistas
         private void BTNAgregar_Click(object sender, EventArgs e)
         {
             Registrarpedido rp = new Registrarpedido(this);
-            
             main.abrirForm(rp);
             this.Hide();
         }

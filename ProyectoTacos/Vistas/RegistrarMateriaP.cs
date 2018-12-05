@@ -16,8 +16,10 @@ namespace ProyectoTacos.Vistas
     {
         MateriaPrima materiap = new MateriaPrima();
         MateriapBeans materiap_bean = new MateriapBeans();
-        public RegistrarMateriaP()
+        ConsultarMateriaP form;
+        public RegistrarMateriaP(ConsultarMateriaP form)
         {
+            this.form = form;
             InitializeComponent();
         }
 
@@ -36,6 +38,8 @@ namespace ProyectoTacos.Vistas
             {
                 carga_reg();
                 materiap_bean.registrar();
+
+
                 limpiar();
             }
         }
@@ -120,7 +124,10 @@ namespace ProyectoTacos.Vistas
 
         private void button3_Click(object sender, EventArgs e)
         {
+            form.main.abrirForm(form);
+            form.actualizar();
             this.Close();
+            
         }
     }
 }

@@ -34,11 +34,11 @@ namespace ProyectoTacos.Vistas
             formsMenu[0] = new Ventas_Catalogo();
             formsMenu[1] = new ConsultarProducto(this);
             formsMenu[2] = new ConsultaCliente(this);
-            formsMenu[3] = new ConsultarPedido();
+            formsMenu[3] = new ConsultarPedido(this);
             formsMenu[4] = new ConsultaUsuarios(this);
             formsMenu[5] = new ConsultaEmpleado(this);
             formsMenu[6] = new ConsultaProveedor(this);
-            formsMenu[7] = new ConsultarMateriaP();
+            formsMenu[7] = new ConsultarMateriaP(this);
             formsMenu[8] = new RealizarReportes();
         }
 

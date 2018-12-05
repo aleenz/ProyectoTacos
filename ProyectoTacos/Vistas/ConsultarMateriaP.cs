@@ -17,8 +17,10 @@ namespace ProyectoTacos.Vistas
         List<MateriaPrima> lst_MateriaP = new List<MateriaPrima>();
         MateriapBeans materiaP_bean = new MateriapBeans();
         DataTable dt = new DataTable();
-        public ConsultarMateriaP()
+        public Main main;
+        public ConsultarMateriaP(Main main)
         {
+            this.main = main;
             InitializeComponent();
             tabla();
             listarAct();
@@ -180,7 +182,7 @@ namespace ProyectoTacos.Vistas
                         }
                         else
                         {
-                            ModificarMateriaP mod = new ModificarMateriaP(materiap);
+                            ModificarMateriaP mod = new ModificarMateriaP(materiap,this);
                             mod.ShowDialog();
                         }
                     }
@@ -195,7 +197,7 @@ namespace ProyectoTacos.Vistas
             DataGridViewRow selectedRow = dataGridView1.Rows[indice];
             string a = Convert.ToString(selectedRow.Cells["Id"].Value);
             materiap.Idmateria = Convert.ToInt32(a);
-            ModificarMateriaP mod = new ModificarMateriaP(materiap);
+            ModificarMateriaP mod = new ModificarMateriaP(materiap,this);
             mod.ShowDialog();
             tabla();
             listarAct();
@@ -335,8 +337,15 @@ namespace ProyectoTacos.Vistas
 
         private void BTNAgregar_Click(object sender, EventArgs e)
         {
-            RegistrarMateriaP rm = new RegistrarMateriaP();
-            rm.Show();
+            RegistrarMateriaP rm = new RegistrarMateriaP(this);
+            this.Hide();
+            main.abrirForm(rm);
+        }
+
+        public void actualizar()
+        {
+            tabla();
+            listarAct();
         }
     }
 }

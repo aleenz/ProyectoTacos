@@ -16,12 +16,14 @@ namespace ProyectoTacos.Vistas
     {
         MateriaPrima matp;
         MateriapBeans materiaP_bean = new MateriapBeans();
+        ConsultarMateriaP form;
         public ModificarMateriaP()
         {
             InitializeComponent();
         }
-        public ModificarMateriaP(MateriaPrima mp) : this()
+        public ModificarMateriaP(MateriaPrima mp, ConsultarMateriaP form) : this()
         {
+            this.form = form;
             this.matp = mp;
             //txtId.Text = Convert.ToString(matp.Idmateria);
             this.materiaP_bean.Materiap.Idmateria = matp.Idmateria;
@@ -47,7 +49,10 @@ namespace ProyectoTacos.Vistas
 
         private void button2_Click(object sender, EventArgs e)
         {
+
             this.Close();
+            this.form.actualizar();
+            this.form.main.abrirForm(form);
         }
 
         private void button1_Click(object sender, EventArgs e)
