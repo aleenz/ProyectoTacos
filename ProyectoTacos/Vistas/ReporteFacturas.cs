@@ -39,13 +39,14 @@ namespace ProyectoTacos.Vistas
 
         public void listar()
         {
+
+            //MessageBox.Show(Convert.ToString(this.repBeans.Fecha2));
             repBeans.listarPedidos();
             lst_pedido = repBeans.Lst_Pedido;
             foreach (Pedidos pedido in lst_pedido)
             {
                 Pedidos pedi = pedido;
                 DataRow fila = dt.NewRow();
-
                 fila["Id"] = pedi.Idpedido;
                 fecha = Convert.ToString(pedi.Fecha);
                 solofecha = fecha.Split(' ');
@@ -81,7 +82,6 @@ namespace ProyectoTacos.Vistas
             dt = new DataTable();
             dt.Columns.Add("Id");
             dt.Columns.Add("Fecha");
-            dt.Columns.Add("Cantidad");
             dt.Columns.Add("Idproveedor");
             dt.Columns.Add("Total");
             dt.Columns.Add("Status");

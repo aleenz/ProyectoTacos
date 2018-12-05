@@ -71,6 +71,7 @@ namespace ProyectoTacos.Beans
             ReportesDAO repDAO;
             try
             {
+                
                 repDAO = new ReportesDAO();
                 Lst_Pedido = repDAO.listarPedidos(fecha1, fecha2);
             }
